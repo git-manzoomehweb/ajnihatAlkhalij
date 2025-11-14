@@ -8,6 +8,7 @@
     overflow-wrap: break-word;
   }
 }
+
 :root {
   --primary: #252c73;
   --primary-50: #e4e5ee;
@@ -24,16 +25,12 @@
 
 
   --special-1: #2458DE;
+  --special-2: #F3F4FF;
 
   --bg: url('');
-  --footer-bg: url('../images/footer-background.jpg');
   --default-bg: url('../images/default-background.jpg');
-  --tourList-bg: url('../images/tour-list-background.jpg');
-  --visaList-bg: url('../images/visa-list-background.jpg');
   --articleList-bg: url('../images/article-list-background.jpg');
   --contact-bg: url('../images/contact-background.jpg');
-  --tourCategory-bg: url('../images/tour-category-pc.jpg');
-  --parallax-bg: url('../images/parallax-image.jpg');
 }
 
 @font-face {
@@ -43,6 +40,7 @@
   font-weight: 400;
   src: url('../fonts/Dana-Regular.ttf') format('truetype');
 }
+
 @font-face {
   font-display: swap;
   font-family: 'Dana';
@@ -50,10 +48,84 @@
   font-weight: 500;
   src: url('../fonts/Dana-Medium.ttf') format('truetype');
 }
+
 @font-face {
   font-display: swap;
   font-family: 'Dana';
   font-style: normal;
   font-weight: 700;
   src: url('../fonts/Dana-Bold.ttf') format('truetype');
+}
+
+.mask-default-back-pc {
+  -webkit-mask-image: url(../images/mask-default-back-pc.svg);
+  mask-image: url(../images/mask-default-back-pc.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+
+}
+.mask-article-card-pc{
+  -webkit-mask-image: url(../images/mask-article-card-pc.svg);
+  mask-image: url(../images/mask-article-card-pc.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.mask-article-image-pc{
+  -webkit-mask-image: url(../images/mask-article-image-pc.svg);
+  mask-image: url(../images/mask-article-image-pc.svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.blur-bottom-mask {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  background: rgba(255, 255, 255, 0.08);
+}
+.blur-bottom-mask-pc {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #011967 0%, #0132C8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.article-blur {
+  backdrop-filter: blur(8.2px);
+  will-change: filter;
+
+  -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 57.95%,
+      rgba(0, 0, 0, 1) 96.07%);
+  mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0) 57.95%,
+      rgba(0, 0, 0, 1) 96.07%);
+}
+
+@keyframes hit-spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes hit-move {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(240px); } 
+}
+
+.group:hover .hit-spin {
+  animation: hit-spin 1.5s ease-in-out forwards;
+}
+.group:hover .hit-move {
+  animation: hit-move 1.5s ease-in-out forwards;
 }

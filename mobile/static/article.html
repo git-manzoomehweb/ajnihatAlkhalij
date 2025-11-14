@@ -1,11 +1,343 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.basiscore.net/basisfly.com/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/output.css">
 </head>
+
 <body>
-    
+    <div class="bg-primary-950 pt-3 h-52">
+    </div>
+    <main>
+        <section class="mx-auto max-lg:w-[90%] -mt-24">
+            <img src="../assets/images/article-card.jpg" class="w-full h-48 object-cover mask-article-image" alt=""
+                width="291" height="192" loading="lazy">
+            <div class="text-primary-200 text-primary-900 text-xs mt-4">Home / blog</div>
+            <div class="flex flex-col gap-2 mt-4">
+                <div class="flex items-center gap-1">
+                    <svg width="24" height="24">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                    </svg>
+                    <span class="text-primary-200 text-xs">2025-02-02</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg width="24" height="24">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-clock"></use>
+                    </svg>
+                    <span class="text-primary-200 text-xs">2025-02-02</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg width="24" height="24">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-user"></use>
+                    </svg>
+                    <span class="text-primary-200 text-xs">2025-02-02</span>
+                </div>
+            </div>
+        </section>
+        <section class="border-x border-b border-primary-100 px-4 pt-5 pb-7 rounded-b-2xl mx-auto max-lg:w-[90%] mt-4">
+            <h2 class="text-primary-950 font-bold mb-3">Songkran ,the biggest water splashing festival in the world</h2>
+            <div class="text-zinc-600 text-xs text-justify leading-5 mb-7">Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris
+                rhoncus
+                aenean vel elit scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi
+                tristique
+                senectus et netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. Sapien faucibus et
+                molestie
+                ac feugiat sed lectus vestibulum. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget.
+                Dictum varius duis at consectetur lorem. Nisi vitae suscipit tellus mauris a diam maecenas sed enim.
+                Velit
+                ut tortor pretium viverra suspendisse potenti nullam. Et molestie ac feugiat sed lectus. Non nisi est
+                sit
+                amet facilisis magna. Dignissim diam quis enim lobortis scelerisque fermentum. Odio ut enim blandit
+                volutpat
+                maecenas volutpat. Ornare lectus sit amet est placerat in egestas erat. Nisi vitae suscipit tellus
+                mauris a
+                diam maecenas sed. Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Lorem ipsum dolor sit
+                amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus aenean vel elit
+                scelerisque. In egestas erat imperdiet sed euismod nisi porta lorem mollis. Morbi tristique senectus et
+                netus. Mattis pellentesque id nibh tortor id aliquet lectus proin. Sapien faucibus et molestie ac
+                feugiat
+                sed lectus vestibulum. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Dictum
+                varius
+                duis at consectetur lorem. Nisi vitae suscipit tellus mauris a diam maecenas sed enim. Velit ut tortor
+                pretium viverra suspendisse potenti nullam. Et molestie ac feugiat sed lectus. Non nisi est sit amet
+                facilisis magna. Dignissim diam quis enim lobortis scelerisque fermentum. Odio ut enim blandit volutpat
+                maecenas volutpat. Ornare lectus sit amet est placerat in egestas erat. Nisi vitae suscipit tellus
+                mauris a
+                diam maecenas sed. Placerat duis ultricies lacus sed</div>
+        </section>
+        <section class="border border-primary-100 rounded-2xl p-3 mx-auto max-lg:w-[90%] mt-4">
+            <h2 class="text-primary-900 font-bold mb-3">Add Your Comment</h2>
+            <div class="flex flex-col gap-2">
+                <input type="text" name="" id=""
+                    class="w-full h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900"
+                    placeholder="First/Last Name">
+                <input type="number" name="" id=""
+                    class="w-full h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900"
+                    placeholder="Number Phone">
+                <textarea name="" id=""
+                    class="w-full h-32 rounded-3xl bg-specialcolor-2 px-6 pt-2 placeholder-primary-300 text-zinc-900"
+                    placeholder="Description"></textarea>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-4">
+            <h2 class="text-gradient font-bold text-center mb-2">User Comments</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="swiper mt-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-4">
+            <div class="bg-primary-950 rounded-xl px-4 py-5">
+                <h2 class="font-bold text-white">Quick Links</h2>
+            </div>
+            <div class="flex flex-col gap-6 divide-y divide-primary-50 mt-6">
+                <a href="" class="flex items-center justify-between gap-2">
+                    <span class="text-sm text-primary-800">Songkran ,the biggest water splashing festival in the
+                        world</span>
+                    <svg width="48" height="48" class="shrink-0">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-mouse"></use>
+                    </svg>
+                </a>
+                <a href="" class="flex items-center justify-between gap-2 pt-6">
+                    <span class="text-sm text-primary-800">Songkran ,the biggest water splashing festival in the
+                        world</span>
+                    <svg width="48" height="48" class="shrink-0">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-mouse"></use>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        <div class="relative mx-auto max-lg:w-[90%] mt-12" id="shareWrap">
+            <button id="shareBtn" type="button"
+                class="flex items-center justify-center w-full h-14 bg-specialcolor-1 rounded-full font-medium text-white"
+                aria-haspopup="menu" aria-expanded="false" data-title="این صفحه عالیه!" data-text="این صفحه رو ببین"
+                data-url="">
+                <svg width="48" height="48" aria-hidden="true">
+                    <use href="../assets/images/sprite-icons-mobile.svg#icon-share"></use>
+                </svg>
+                share
+            </button>
+
+            <div id="shareMenu" class="invisible opacity-0 pointer-events-none absolute z-50 left-0
+            rounded-xl overflow-hidden bg-white shadow-xl
+            transition-opacity duration-300">
+
+                <ul class="flex items-center gap-3 p-2" role="menu" aria-label="گزینه‌های اشتراک‌گذاری">
+                    <li class="group">
+                        <a id="shareTelegram" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="26" height="26" aria-hidden="true" class="text-secondary-600">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-telegram"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Telegram</span>
+                        </a>
+                    </li>
+
+                    <li class="group">
+                        <a id="shareTwitter" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="26" height="26" aria-hidden="true" class="text-secondary-600">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-twitter"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Twitter</span>
+                        </a>
+                    </li>
+
+                    <li class="group">
+                        <a id="shareWhatsapp" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="48" height="48" aria-hidden="true" class="text-secondary-600">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-whatsapp"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Whatsapp</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="relative rounded-[30px] overflow-hidden mx-auto max-lg:w-[90%] mt-11">
+            <img src="../assets/images/dubai-beach.jpg" class="w-full h-[408px] object-cover" alt="" width="288"
+                height="408" loading="lazy">
+            <div class="absolute z-10 px-5 bottom-8">
+                <h2 class="text-2xl font-bold text-white mb-6">Experience the best services with us</h2>
+                <a href=""
+                    class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white">View
+                    more
+                    <svg width="48" height="48">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="bg-black-gradient absolute inset-0 w-full h-full"></div>
+        </section>
+
+        <section class="mx-auto max-lg:w-[90%] mt-6">
+            <h2 class="text-gradient font-bold text-center mb-3">You may also like</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="flex flex-col gap-3 mt-3">
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".swiper", {
+            slidesPerView: 1.3,
+            speed: 400,
+            centeredSlides: false,
+            spaceBetween: 24,
+            grabCursor: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+            },
+            loop: true,
+            breakpoints: {
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 50,
+                },
+            },
+        });
+    </script>
+    <script src="../assets/js/aljenhat-core.js"></script>
 </body>
+
 </html>

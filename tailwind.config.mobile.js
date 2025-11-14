@@ -9,6 +9,8 @@ module.exports = {
           "linear-gradient(0deg, #224EAE 0%, rgba(0, 0, 0, 0) 100%)",
         "articleList-back-gradient":
           "linear-gradient(360deg, rgba(0, 0, 0, 0) -9.73%, rgba(0, 24, 73, 0.71) 100%)",
+        "black-gradient":
+          "linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.82) 100%)",
         default: "var(--default-bg)",
         articleList: "var(--articleList-bg)",
         contact: "var(--contact-bg)",

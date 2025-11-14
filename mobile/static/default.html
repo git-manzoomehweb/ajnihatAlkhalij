@@ -9,258 +9,292 @@
 </head>
 
 <body>
-    <div class="relative mask-default-back">
-        <img src="../assets/images/default-background.jpg" class="w-full h-[455px]" alt="" width="320" height="455"
-            loading="lazy">
-        <div class="absolute inset-0 bg-default-back-gradient w-full h-full"></div>
-        <div class="blur-bottom-mask pointer-events-none"></div>
+    <div class="relative mask-default-back w-full h-[455px] overflow-hidden">
+
+        <img src="../assets/images/default-background.jpg" class="w-full h-full object-cover absolute inset-0 z-0">
+
+        <div class="blur-bottom-mask pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-32"></div>
+
+        <div class="relative z-20 pt-5">
+            <div class="flex flex-col items-center">
+                <h1 class="text-white font-bold mt-20">Experience the world together</h1>
+                <p class="text-white text-xs mt-4">
+                    Find awesome flights,hotel and packages
+                </p>
+                <img src="../assets/images/airplane.png" class="w-full h-20 object-cover -scale-x-100" alt=""
+                    width="272" height="80" loading="lazy">
+
+                <div class="mt-14">
+                    <p class="text-primary-900 font-bold mb-5">You should start from here</p>
+                    <button class="bg-specialcolor-1 text-white rounded-full w-44 h-12">
+                        Get Start
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <section class="mx-auto max-lg:w-[90%] mt-7">
-        <h2 class="text-gradient font-bold text-center mb-2">Our services for customers</h2>
-        <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod
-            tempor incididunt </p>
-        <div class="flex flex-col gap-3 mt-4">
-            <a href="" class="block">
-                <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
-                    <svg width="48" height="48">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-3person"></use>
+    <main>
+        <section class="mx-auto max-lg:w-[90%] mt-7">
+            <h2 class="text-gradient font-bold text-center mb-2">Our services for customers</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="flex flex-col gap-3 mt-4">
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="../assets/images/sprite-icons-mobile.svg#icon-3person"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Corporate Flight Management Service</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="../assets/images/sprite-icons-mobile.svg#icon-diamond"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Multi-Airline Ticketing Solution</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="../assets/images/sprite-icons-mobile.svg#icon-blade"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Global Flight Booking System</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="../assets/images/sprite-icons-mobile.svg#icon-ticket"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Real-Time Fare API Integration</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="../assets/images/sprite-icons-mobile.svg#icon-card"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Dynamic Pricing & Commission Control</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <a href="" class="flex items-center gap-2 mt-4">
+                <span class="text-sm
+                     text-primary-950">View more</span>
+                <button>
+                    <svg width="48" height="48" class="text-specialcolor-1">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                     </svg>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
-                    <h2 class="text-primary-950 font-bold mb-1">Corporate Flight Management Service</h2>
+                </button>
+            </a>
+            <div>
+                <h2 class="font-bold text-3xl text-specialcolor-1 mb-2">services</h2>
+                <div class="text-zinc-700 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+            </div>
+        </section>
+        <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] mt-11">
+            <img src="../assets/images/dubai-beach.jpg" class="w-full h-[517px] object-cover" alt="" width="288"
+                height="517" loading="lazy">
+            <div class="absolute z-10 px-5 bottom-7">
+                <h2 class="text-lg font-bold text-white mb-2">Experience the best services with us</h2>
+                <a href=""
+                    class="flex items-center justify-center w-full h-12 text-white text-sm rounded-full border border-solid border-white">View
+                    more
+                    <svg width="48" height="48">
+                        <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="bg-blue-gradient absolute inset-0 w-full h-full"></div>
+            <div class="article-blur absolute inset-0"></div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-11">
+            <h2 class="text-gradient font-bold text-center mb-3">Your questions to us</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <ul class="flex items-center gap-3 mt-6 overflow-x-auto scrollbar-thin whitespace-nowrap">
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li
+                    class="border border-solid border-primary-900 text-white bg-primary-900 rounded-full py-3 px-8 text-xs">
+                    Servis</li>
+            </ul>
+            <div class="flex flex-col gap-6 mt-14">
+                <div class="bg-specialcolor-2 rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
+                            <svg width="40" height="40">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
+                            </svg>
+                        </div>
+                        <span class="text-5xl text-primary-50 font-bold">1</span>
+                    </div>
+                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
                     <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit, sed
                         do eiusmod tempor incididunt ut </div>
-                    <button class="mt-2">
-                        <svg width="48" height="48" class="text-specialcolor-1">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                        </svg>
-                    </button>
                 </div>
-            </a>
-            <a href="" class="block">
-                <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
-                    <svg width="48" height="48">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-diamond"></use>
-                    </svg>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
-                    <h2 class="text-primary-950 font-bold mb-1">Multi-Airline Ticketing Solution</h2>
+                <div class="bg-specialcolor-2 rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
+                            <svg width="40" height="40">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
+                            </svg>
+                        </div>
+                        <span class="text-5xl text-primary-50 font-bold">2</span>
+                    </div>
+                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
                     <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit, sed
                         do eiusmod tempor incididunt ut </div>
-                    <button class="mt-2">
-                        <svg width="48" height="48" class="text-specialcolor-1">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                        </svg>
-                    </button>
                 </div>
-            </a>
-            <a href="" class="block">
-                <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
-                    <svg width="48" height="48">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-blade"></use>
-                    </svg>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
-                    <h2 class="text-primary-950 font-bold mb-1">Global Flight Booking System</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                    <button class="mt-2">
-                        <svg width="48" height="48" class="text-specialcolor-1">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                        </svg>
-                    </button>
-                </div>
-            </a>
-            <a href="" class="block">
-                <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
-                    <svg width="48" height="48">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-ticket"></use>
-                    </svg>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
-                    <h2 class="text-primary-950 font-bold mb-1">Real-Time Fare API Integration</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                    <button class="mt-2">
-                        <svg width="48" height="48" class="text-specialcolor-1">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                        </svg>
-                    </button>
-                </div>
-            </a>
-            <a href="" class="block">
-                <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
-                    <svg width="48" height="48">
-                        <use href="../assets/images/sprite-icons-mobile.svg#icon-card"></use>
-                    </svg>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
-                    <h2 class="text-primary-950 font-bold mb-1">Dynamic Pricing & Commission Control</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                    <button class="mt-2">
-                        <svg width="48" height="48" class="text-specialcolor-1">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                        </svg>
-                    </button>
-                </div>
-            </a>
-        </div>
-        <a href="" class="flex items-center gap-2 mt-4">
-            <span class="text-sm
-                 text-primary-950">View more</span>
-            <button>
-                <svg width="48" height="48" class="text-specialcolor-1">
-                    <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                </svg>
-            </button>
-        </a>
-        <div>
-            <h2 class="font-bold text-3xl text-specialcolor-1 mb-2">services</h2>
-            <div class="text-zinc-700 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-        </div>
-    </section>
-    <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] mt-11">
-        <img src="../assets/images/dubai-beach.jpg" class="w-full h-[517px] object-cover" alt="" width="288"
-            height="517" loading="lazy">
-        <div class="absolute z-10 px-5 bottom-7">
-            <h2 class="text-lg font-bold text-white mb-2">Experience the best services with us</h2>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-11">
+            <h2 class="text-gradient font-bold text-center mb-3">A travel magazine</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="flex flex-col gap-3 mt-3">
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
             <a href=""
-                class="flex items-center justify-center w-full h-12 text-white text-sm rounded-full border border-solid border-white">View
+                class="flex items-center justify-center w-44 h-12 mx-auto text-specialcolor-1 text-sm rounded-full border border-solid border-specialcolor-1 mt-3">View
                 more
                 <svg width="48" height="48">
                     <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                 </svg>
             </a>
-        </div>
-        <div class="bg-blue-gradient absolute inset-0 w-full h-full"></div>
-        <div class="article-blur absolute inset-0"></div>
-    </section>
-    <section class="mx-auto max-lg:w-[90%] mt-11">
-        <h2 class="text-gradient font-bold text-center mb-3">Your questions to us</h2>
-        <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod
-            tempor incididunt </p>
-        <ul class="flex items-center gap-3 mt-6 overflow-x-auto scrollbar-thin whitespace-nowrap">
-            <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
-            </li>
-            <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
-            </li>
-            <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
-            </li>
-            <li class="border border-solid border-primary-900 text-white bg-primary-900 rounded-full py-3 px-8 text-xs">
-                Servis</li>
-        </ul>
-        <div class="flex flex-col gap-6 mt-14">
-            <div class="bg-specialcolor-2 rounded-3xl p-6">
-                <div class="flex items-center justify-between mb-3">
-                    <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                        <svg width="40" height="40">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
-                        </svg>
-                    </div>
-                    <span class="text-5xl text-primary-50 font-bold">1</span>
-                </div>
-                <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed
-                    do eiusmod tempor incididunt ut </div>
-            </div>
-            <div class="bg-specialcolor-2 rounded-3xl p-6">
-                <div class="flex items-center justify-between mb-3">
-                    <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                        <svg width="40" height="40">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
-                        </svg>
-                    </div>
-                    <span class="text-5xl text-primary-50 font-bold">2</span>
-                </div>
-                <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed
-                    do eiusmod tempor incididunt ut </div>
-            </div>
-        </div>
-    </section>
-    <section class="mx-auto max-lg:w-[90%] mt-11">
-        <h2 class="text-gradient font-bold text-center mb-3">A travel magazine</h2>
-        <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod
-            tempor incididunt </p>
-        <div class="flex flex-col gap-3 mt-3">
-            <a href="" class="rounded-2xl overflow-hidden">
-                <div class="relative">
-                    <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
-                        alt="" width="288" height="192" loading="lazy">
-                    <div class="absolute left-3 bottom-0 flex items-center">
-                        <span class="text-sm
-                                     text-specialcolor-1">Read more</span>
-                        <button>
-                            <svg width="48" height="48" class="text-specialcolor-1">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
-                    <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in the
-                        world</h2>
-                    <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <svg width="20" height="20">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
-                        </svg>
-                        <span class="text-zinc-400 text-xs">2025-02-02</span>
-                    </div>
-                </div>
-            </a>
-            <a href="" class="rounded-2xl overflow-hidden">
-                <div class="relative">
-                    <img src="../assets/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
-                        alt="" width="288" height="192" loading="lazy">
-                    <div class="absolute left-3 bottom-0 flex items-center">
-                        <span class="text-sm
-                                     text-specialcolor-1">Read more</span>
-                        <button>
-                            <svg width="48" height="48" class="text-specialcolor-1">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
-                    <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in the
-                        world</h2>
-                    <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
-                        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </div>
-                    <div class="flex items-center gap-1">
-                        <svg width="20" height="20">
-                            <use href="../assets/images/sprite-icons-mobile.svg#icon-calendar"></use>
-                        </svg>
-                        <span class="text-zinc-400 text-xs">2025-02-02</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <a href=""
-            class="flex items-center justify-center w-44 h-12 mx-auto text-specialcolor-1 text-sm rounded-full border border-solid border-specialcolor-1 mt-3">View
-            more
-            <svg width="48" height="48">
-                <use href="../assets/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-            </svg>
-        </a>
-    </section>
-
-    <main></main>
+        </section>
+    </main>
 </body>
 
 </html>
