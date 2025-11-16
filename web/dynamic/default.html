@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    <div class="relative mask-default-back-pc w-full overflow-hidden">
-
-        <img src="[##cms.cms.cdn##]/images/default-background.jpg"
+    <div class="relative w-full overflow-hidden">
+        <div class="mask-default-back-pc absolute inset-0">
+            <img src="[##cms.cms.cdn##]/images/default-background.jpg"
             class="w-full h-full object-cover absolute inset-0 z-0">
+            <div class="blur-bottom-mask-pc pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-36"></div>
+        </div>
 
-        <div class="blur-bottom-mask-pc pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-36"></div>
         <div class="bg-default-back-gradient absolute inset-0 w-full h-full"></div>
 
         <div class="relative z-20 pt-5">

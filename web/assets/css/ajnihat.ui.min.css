@@ -1224,8 +1224,13 @@
     flex: 2.7;
 }
 
-.Flightclass-Passenger {
+.Flightclass-Passenger,
+.reserve-field.passengers-field {
     flex: 1;
+}
+
+.reserve-field.departure-route{
+    flex: 2.3;
 }
 
 .flighttype-field.flighttype-dropDown,
@@ -1244,6 +1249,7 @@
 
 .flighttype-field.flighttype-dropDown {
     right: 0;
+    cursor: pointer;
 }
 
 .reserve-field.flightclass-field {
@@ -1326,7 +1332,7 @@
     height: 56px !important;
 }
 
-.Basis_Date_Box .clr {
+.Basis_Date_Box .clr{
     position: absolute !important;
 }
 
@@ -1362,7 +1368,7 @@
     top: 33px;
 }
 
-.reserve-field.passengers-field{
+.reserve-field.passengers-field {
     width: 100% !important;
 }
 
@@ -1371,9 +1377,91 @@
     padding-left: 30px;
 }
 
-.passenger-counts{
+.passenger-counts {
     line-height: normal !important;
     height: auto !important;
+}
+
+.searchList {
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    left: 0;
+}
+
+.ul-list ul li {
+    text-align: center !important;
+}
+
+.ul-list ul li:not(:last-child) {
+    border-bottom: 1px solid var(--primary-100);
+}
+
+.ul-list ul li:hover {
+    background-color: var(--special-1);
+    color: white !important;
+    transition: all 300ms ease;
+}
+
+.passengerbox.hidden-box {
+    width: 310px !important;
+    position: absolute !important;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    padding: 24px 16px !important;
+    top: 100%;
+    border: 1px solid #b8d8e6;
+    border-radius: 8px;
+    overflow-x: hidden !important;
+}
+
+.minus-count,
+.plus-count {
+    width: auto !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+.plus-count span,
+.minus-count span {
+    color: white;
+    font-size: 24px !important;
+    padding-top: 0.25rem;
+}
+
+.minus-count div, .plus-count div {
+    width: 24px !important;
+    height: 24px !important;
+    background: var(--special-1);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 4px;
+}
+
+.passenger-item.child-passenger-item ul,
+.passenger-item.adult-passenger-item ul,
+.passenger-item.infant-passenger-item ul,
+.passenger-item.room-passenger-item ul,
+.passengerbox.hidden-box .passenger-item ul {
+    height: auto !important;
+    line-height: normal !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.confirm-passenger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    background-color: var(--special-1);
+    color: white;
+    border-radius: 8px;
+    font-weight: 800;
+    height: 40px !important;
+    transition: all 300ms ease;
 }
 
 .reserve-search {
