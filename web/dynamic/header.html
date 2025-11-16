@@ -39,9 +39,7 @@
             </nav>
             <div
                 class="Login_Information cursor-pointer flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-600 hover:text-primary-600">
-                <!-- <basis core="call" file="authentication/modal" lid="1"></basis> -->
-                <span>Login/ rigester</span>
-
+                <basis core="call" file="authentication/modal" lid="2"></basis>
             </div>
         </div>
     </div>
@@ -49,5 +47,5 @@
 </basis>
 
 <basis core="group" if="'[##cms.cms.page_index##]' = 'mobile phone'">
-    <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindexid|(2)##]"></basis>
+    <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindexid|(2)##]"></basis>
 </basis>

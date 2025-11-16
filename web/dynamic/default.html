@@ -5,37 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <basis core="call" file="style.inc" />
+    <basis core="call" file="style.inc" lid="2" />
 </head>
 
 <body>
     <div class="relative mask-default-back-pc w-full overflow-hidden">
 
-        <img src="[##cms.cms.cdn##]/images/default-background.jpg" class="w-full h-full object-cover absolute inset-0 z-0">
+        <img src="[##cms.cms.cdn##]/images/default-background.jpg"
+            class="w-full h-full object-cover absolute inset-0 z-0">
 
         <div class="blur-bottom-mask-pc pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-36"></div>
         <div class="bg-default-back-gradient absolute inset-0 w-full h-full"></div>
 
         <div class="relative z-20 pt-5">
-            <basis core="call" file="header.inc" />
+            <basis core="call" file="header.inc" lid="2" />
             <div class="flex flex-col items-center mt-28 pb-8">
                 <h1 class="text-white text-5xl font-bold">Experience the world together</h1>
                 <p class="text-white text-2xl mt-4">
                     Find awesome flights,hotel and packages
                 </p>
-                <img src="[##cms.cms.cdn##]/images/airplane.png" class="absolute w-[933px] h-80 object-cover -scale-x-100"
-                    alt="" width="933" height="320" loading="lazy">
-                <div class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-40">
-                    <div
-                    class="search-banner">
-                    <div class="search-box-container">
-                      <div id="search-box" class="dir-rtl">
-                        <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
-                          <span class="search-engine-loader"></span>
+                <img src="[##cms.cms.cdn##]/images/airplane.png"
+                    class="absolute w-[933px] h-80 object-cover -scale-x-100" alt="" width="933" height="320"
+                    loading="lazy">
+                <div class="w-full mx-auto max-xl:w-[97%] xl:max-w-7xl mt-40">
+                    <div class="search-banner">
+                        <div class="relative search-box-container en">
+                            <div class="mask-search-engine absolute inset-0"></div>
+                            <div id="search-box" class="dir-ltr">
+                                <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
+                                    <span class="search-engine-loader"></span>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>
                 </div>
 
                 <div class="flex items-center gap-2 mt-20">
@@ -54,148 +56,162 @@
             <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod
                 tempor incididunt </p>
-                <div class="grid grid-cols-3 gap-6 mt-12">
-                    <a href="" class="group block">
-                        <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
-                            <svg width="48" height="48" class="text-white hit-spin">
-                                <use href="/images/sprite-icons.svg#icon-3person"></use>
+            <div class="grid grid-cols-3 gap-6 mt-12">
+                <a href="" class="group block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                        <svg width="48" height="48" class="text-white hit-spin">
+                            <use href="/images/sprite-icons.svg#icon-3person"></use>
+                        </svg>
+                    </div>
+                    <div
+                        class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                        <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                            <use href="/images/sprite-icons.svg#icon-3person"></use>
+                        </svg>
+                        <h2 class="relative z-10 text-primary-950 font-bold mb-1">Corporate Flight Management Service
+                        </h2>
+                        <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
                             </svg>
-                        </div>
-                        <div class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
-                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
-                                <use href="/images/sprite-icons.svg#icon-3person"></use>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="group block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                        <svg width="48" height="48" class="text-white hit-spin">
+                            <use href="/images/sprite-icons.svg#icon-blade"></use>
+                        </svg>
+                    </div>
+                    <div
+                        class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                        <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                            <use href="/images/sprite-icons.svg#icon-blade"></use>
+                        </svg>
+                        <h2 class="relative z-10 text-primary-950 font-bold mb-1">Global Flight Booking System</h2>
+                        <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
                             </svg>
-                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">Corporate Flight Management Service
-                            </h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">Lorem ipsum dolor sit amet,
-                                consectetur
-                                adipiscing
-                                elit, sed
-                                do eiusmod tempor incididunt ut </div>
-                            <button class="mt-2">
-                                <svg width="48" height="48" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
-                        </div>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="group block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                        <svg width="48" height="48" class="text-white hit-spin">
+                            <use href="/images/sprite-icons.svg#icon-card"></use>
+                        </svg>
+                    </div>
+                    <div
+                        class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                        <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                            <use href="/images/sprite-icons.svg#icon-card"></use>
+                        </svg>
+                        <h2 class="relative z-10 text-primary-950 font-bold mb-1">Dynamic Pricing &amp; Commission
+                            Control
+                        </h2>
+                        <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="group block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                        <svg width="48" height="48" class="text-white hit-spin">
+                            <use href="/images/sprite-icons.svg#icon-diamond"></use>
+                        </svg>
+                    </div>
+                    <div
+                        class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                        <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                            <use href="/images/sprite-icons.svg#icon-diamond"></use>
+                        </svg>
+                        <h2 class="relative z-10 text-primary-950 font-bold mb-1">Multi-Airline Ticketing Solution</h2>
+                        <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="group block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                        <svg width="48" height="48" class="text-white hit-spin">
+                            <use href="/images/sprite-icons.svg#icon-ticket"></use>
+                        </svg>
+                    </div>
+                    <div
+                        class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                        <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                            <use href="/images/sprite-icons.svg#icon-ticket"></use>
+                        </svg>
+                        <h2 class="relative z-10 text-primary-950 font-bold mb-1">Real-Time Fare API Integration</h2>
+                        <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <div class="px-14 py-10">
+                    <a href="" class="group flex items-center gap-2 mt-4 transition-all duration-300">
+                        <span class="text-2xl font-medium
+                                 text-primary-950 transition-all duration-300 group-hover:text-specialcolor-1">View
+                            more</span>
+                        <button>
+                            <svg width="55" height="55" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right-big"></use>
+                            </svg>
+                        </button>
                     </a>
-                    <a href="" class="group block">
-                        <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
-                            <svg width="48" height="48" class="text-white hit-spin">
-                                <use href="/images/sprite-icons.svg#icon-blade"></use>
-                            </svg>
-                        </div>
-                        <div class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
-                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
-                                <use href="/images/sprite-icons.svg#icon-blade"></use>
-                            </svg>
-                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">Global Flight Booking System</h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
-                                consectetur
-                                adipiscing
-                                elit, sed
-                                do eiusmod tempor incididunt ut </div>
-                            <button class="mt-2">
-                                <svg width="48" height="48" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </a>
-                    <a href="" class="group block">
-                        <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
-                            <svg width="48" height="48" class="text-white hit-spin">
-                                <use href="/images/sprite-icons.svg#icon-card"></use>
-                            </svg>
-                        </div>
-                        <div class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
-                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
-                                <use href="/images/sprite-icons.svg#icon-card"></use>
-                            </svg>
-                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">Dynamic Pricing &amp; Commission
-                                Control
-                            </h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
-                                consectetur
-                                adipiscing
-                                elit, sed
-                                do eiusmod tempor incididunt ut </div>
-                            <button class="mt-2">
-                                <svg width="48" height="48" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </a>
-                    <a href="" class="group block">
-                        <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
-                            <svg width="48" height="48" class="text-white hit-spin">
-                                <use href="/images/sprite-icons.svg#icon-diamond"></use>
-                            </svg>
-                        </div>
-                        <div class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
-                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
-                                <use href="/images/sprite-icons.svg#icon-diamond"></use>
-                            </svg>
-                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">Multi-Airline Ticketing Solution</h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
-                                consectetur
-                                adipiscing
-                                elit, sed
-                                do eiusmod tempor incididunt ut </div>
-                            <button class="mt-2">
-                                <svg width="48" height="48" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </a>
-                    <a href="" class="group block">
-                        <div class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
-                            <svg width="48" height="48" class="text-white hit-spin">
-                                <use href="/images/sprite-icons.svg#icon-ticket"></use>
-                            </svg>
-                        </div>
-                        <div class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
-                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
-                                <use href="/images/sprite-icons.svg#icon-ticket"></use>
-                            </svg>
-                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">Real-Time Fare API Integration</h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet,
-                                consectetur
-                                adipiscing
-                                elit, sed
-                                do eiusmod tempor incididunt ut </div>
-                            <button class="mt-2">
-                                <svg width="48" height="48" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                                </svg>
-                            </button>
-                        </div>
-                    </a>
-                    <div class="px-14 py-10">
-                        <a href="" class="group flex items-center gap-2 mt-4 transition-all duration-300">
-                            <span class="text-2xl font-medium
-                                 text-primary-950 transition-all duration-300 group-hover:text-specialcolor-1">View more</span>
-                            <button>
-                                <svg width="55" height="55" class="text-specialcolor-1">
-                                    <use href="/images/sprite-icons.svg#icon-chevron-right-big"></use>
-                                </svg>
-                            </button>
-                        </a>
-                        <div>
-                            <h2 class="font-bold text-5xl text-specialcolor-1 mb-2">services</h2>
-                            <div class="text-zinc-700 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
-                        </div>
+                    <div>
+                        <h2 class="font-bold text-5xl text-specialcolor-1 mb-2">services</h2>
+                        <div class="text-zinc-700 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
                     </div>
                 </div>
+            </div>
 
         </section>
-        <section class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
-            <img src="[##cms.cms.cdn##]/images/dubai-beach.jpg" class="w-full h-[270px] object-cover" alt="" width="1280" height="270" loading="lazy">
+        <section
+            class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
+            <img src="[##cms.cms.cdn##]/images/dubai-beach.jpg" class="w-full h-[270px] object-cover" alt=""
+                width="1280" height="270" loading="lazy">
             <div class="absolute z-10 left-20 top-1/2 -translate-y-1/2">
                 <h2 class="w-[90%] text-5xl font-bold text-white mb-2">Experience the best services with us</h2>
-                <a href="" class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-900 hover:bg-primary-900">View
+                <a href=""
+                    class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-900 hover:bg-primary-900">View
                     more
                     <svg width="48" height="48">
                         <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -240,7 +256,9 @@
                         do eiusmod tempor incididunt ut </div>
                 </div>
                 <div class="relative bg-specialcolor-2 rounded-3xl h-[473px] row-span-2">
-                    <img src="[##cms.cms.cdn##]/images/helpdesk.png" class="absolute bottom-0 w-full h-[553px] object-cover" alt="" width="412" height="553" loading="lazy">
+                    <img src="[##cms.cms.cdn##]/images/helpdesk.png"
+                        class="absolute bottom-0 w-full h-[553px] object-cover" alt="" width="412" height="553"
+                        loading="lazy">
                 </div>
                 <div class="bg-specialcolor-2 rounded-3xl p-6">
                     <div class="flex items-center justify-between mb-3">
@@ -364,7 +382,7 @@
             </a>
         </section>
     </main>
-    <basis core="call" file="footer.inc" />
+    <basis core="call" file="footer.inc" lid="2" />
 </body>
 
 </html>

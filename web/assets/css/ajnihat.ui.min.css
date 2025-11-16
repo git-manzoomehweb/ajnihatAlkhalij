@@ -1,4 +1,5 @@
 @import url(./customized.ui.min.css);
+
 .pointer-events-none {
     pointer-events: none;
 }
@@ -1116,4 +1117,281 @@
     .xl\:max-w-7xl {
         max-width: 80rem;
     }
+}
+
+#search-box {
+    position: relative;
+    z-index: 10;
+    padding: 16px 12px;
+    border-radius: 24px;
+}
+
+.search-box-container input,
+.search-box-container select,
+.search-box-container button {
+    font-family: 'Dana' !important;
+}
+
+.mask-search-engine {
+    background: #ffffff8f;
+    backdrop-filter: blur(9px);
+    -webkit-mask-image: url(../images/mask-search-engine.svg);
+    mask-image: url(../images/mask-search-engine.svg);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    pointer-events: none;
+}
+
+.reservation-item {
+    display: flex;
+    gap: 8px;
+}
+
+.reservation-item svg,
+.down-icon {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.reserve-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 24px 0 12px !important;
+    border-radius: 50px;
+    transition: all 300ms ease;
+}
+
+.reserve-btn:hover .module-name {
+    color: white !important;
+}
+
+.reserve-btn .module-name {
+    color: #52525B;
+    font-weight: 500;
+}
+
+.active-module {
+    background-color: var(--special-1) !important;
+    color: white;
+}
+
+.active-module .module-name {
+    color: white;
+}
+
+.reserve-btn:hover {
+    background-color: var(--special-1);
+}
+
+.reserve-btn .module-name:hover {
+    color: #ffffff !important;
+}
+
+#flightSearch,
+#hotelSearch,
+#flightHotelSearch {
+    background-color: white;
+    border-radius: 24px;
+    padding: 24px;
+}
+
+.form-search svg {
+    width: 24px;
+    height: 24px;
+}
+
+.label-passengers .down-icon,
+.label-flightclass .label-text,
+.reserve-field.departure-route p,
+.reserve-field.destination-route p,
+.reserve-field.departure-date p,
+.reserve-field.return-date p,
+.label-flightclass>svg:first-of-type {
+    display: none !important;
+}
+
+.flight-routes {
+    flex: 4.5;
+}
+
+.Basis_Date_Box {
+    flex: 2.7;
+}
+
+.Flightclass-Passenger {
+    flex: 1;
+}
+
+.flighttype-field.flighttype-dropDown,
+.reserve-field.flightclass-field {
+    position: absolute !important;
+    top: -76px;
+    width: 174px !important;
+    height: 48px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border-radius: 50px;
+    background: #ffffff;
+}
+
+.flighttype-field.flighttype-dropDown {
+    right: 0;
+}
+
+.reserve-field.flightclass-field {
+    right: 192px;
+}
+
+.reserve-field.flightclass-field div:first-of-type {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 12px;
+}
+
+.flighttype-items {
+    background-color: #fff3e0;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 30px !important;
+    top: 100%;
+    left: 0;
+}
+
+.flighttype-dropDown-text {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+}
+
+.flighttype-field-icon {
+    display: block !important;
+    position: unset !important;
+}
+
+.down-icon {
+    margin-top: 0 !important;
+}
+
+.active-r-btn,
+.active-FlightClass {
+    border-radius: 8px !important;
+    background-color: var(--special-1) !important;
+    transition: all 300ms ease;
+}
+
+#oneway:hover,
+#backtoback:hover,
+#multi:hover,
+.FlightClass.hidden-box li:hover {
+    background-color: var(--special-1);
+    border-radius: 8px !important;
+}
+
+.label-routes,
+.label-dates,
+.label-passengers {
+    display: flex;
+    color: var(--primary-950);
+    font-size: 14px !important;
+    font-weight: bold;
+}
+
+.reserve-field.departure-date,
+.click-content,
+.reserve-field.passengers-field,
+.reserve-field.return-date {
+    height: 56px !important;
+    padding: 0 !important;
+}
+
+.reserve-field.departure-route,
+.reserve-field.destination-route {
+    height: 58px !important;
+}
+
+.flight-routes,
+.Basis_Date_Box,
+.Flightclass-Passenger {
+    border-radius: 12px;
+    height: 56px !important;
+}
+
+.Basis_Date_Box .clr {
+    position: absolute !important;
+}
+
+.click-content,
+.reserve-field.departure-date>div:first-of-type,
+.reserve-field.return-date>div:first-of-type,
+.show-passengers-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 !important;
+}
+
+.departure,
+.destination {
+    color: #71717A !important;
+    padding-left: 30px !important;
+}
+
+.start_date,
+.end_date {
+    position: unset !important;
+    padding: 0 0 0 30px !important;
+    height: auto !important;
+    line-height: unset !important;
+    color: #71717A !important;
+}
+
+.label-routes svg,
+.label-dates svg,
+.label-passengers svg {
+    position: absolute;
+    top: 33px;
+}
+
+.reserve-field.passengers-field{
+    width: 100% !important;
+}
+
+.reserve-field.passengers-field div.border-type-1.h-full.rounded-type-1.px-2:first-child div:first-of-type {
+    display: flex;
+    padding-left: 30px;
+}
+
+.passenger-counts{
+    line-height: normal !important;
+    height: auto !important;
+}
+
+.reserve-search {
+    width: auto !important;
+    height: auto !important;
+}
+
+.reserve-search button {
+    width: 158px !important;
+    background-color: var(--special-1) !important;
+    height: 53px !important;
+    color: white !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    border-radius: 50px;
+    transition: all 300ms ease;
+}
+
+.reserve-search button svg {
+    display: none;
 }
