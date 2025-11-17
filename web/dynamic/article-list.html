@@ -1,0 +1,149 @@
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="article-list">
+    <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
+</basis>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Ajnihat Alkhalij Travel Agency)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" />
+</head>
+
+<body>
+    <div class="relative bg-articleList bg-center bg-cover pt-10 pb-32">
+        <div class="bg-articleList-back-gradient absolute inset-0 w-full h-full"></div>
+        <basis core="call" file="header.inc" lid="2" />
+        <div class="relative z-10 mx-auto max-xl:w-[97%] xl:max-w-7xl mt-72">
+            <h1 class="font-bold text-5xl text-white text-center mb-2">Explore the newest content on our site</h1>
+            <h2 class="text-2xl text-white text-center mb-2">Search for what you’re looking for here</h2>
+            <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex justify-center items-center gap-1">
+                <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                        itemprop="item" href="/" aria-label="home">
+                        <span itemprop="name">Home</span>
+                        <meta itemprop="position" content="1" />
+                    </a>
+                </li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" />
+                </svg>
+                <basis core="print" datamembername="db.navigation">
+                    <face filter="RowNumber=max(RowNumber) and title <> 'root'">
+                        <li class="inline-block font-normal text-specialcolor-1" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+                        </li>
+                    </face>
+                    <face filter="link is null and title <> 'root'">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <a class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                                itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                <span itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" />
+                            </svg>
+                        </li>
+                    </face>
+                    <face filter="title <> 'root'">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-specialcolor-1"
+                                itemprop="item" href="/@link" aria-label="@title">
+                                <span
+                                    class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                                    itemprop="name">
+                                    @title
+                                </span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" />
+                            </svg>
+                        </li>
+                    </face>
+                </basis>
+            </ul>
+            <div class="relative mt-4 w-fit mx-auto">
+                <input type="text"
+                    class="search-blog w-[432px] px-5 h-14 rounded-full bg-primary-50 text-primary-950 placeholder-primary-300 outline-none"
+                    aria-label="Search-blog" placeholder="Search">
+                <svg width="48" height="48" class="article-search-button absolute right-6 top-1/2 -translate-y-1/2">
+                    <use href="/images/sprite-icons.svg#icon-search"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-12">
+            <basis core="tree" datamembername="article-list.cat" idcol="catid" parentidcol="parentid"
+                nullvalue="[##cms.query.catid##]">
+                <layout>
+                    <ul class="flex items-center justify-center gap-3">
+                        @child
+                    </ul>
+                </layout>
+                <face>
+                    <li data-id="@catid"
+                        class="article-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 cursor-pointer transition-all duration-300 hover:border-primary-900 hover:bg-primary-900 hover:text-white">
+                        @title
+                    </li>
+                </face>
+            </basis>
+
+            <div class="fetch-content-article">
+
+            </div>
+        </section>
+        <section
+            class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
+            <img src="../assets/images/dubai-beach.jpg" class="w-full h-[270px] object-cover" alt="" width="1280"
+                height="270" loading="lazy">
+            <div class="absolute z-10 left-20 top-1/2 -translate-y-1/2">
+                <h2 class="w-[90%] text-5xl font-bold text-white mb-2">Experience the best services with us</h2>
+                <a href=""
+                    class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-specialcolor-1 hover:bg-specialcolor-1">View
+                    more
+                    <svg width="48" height="48">
+                        <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="bg-blue-gradient-pc absolute inset-0 w-full h-full"></div>
+            <div class="article-blur absolute inset-0"></div>
+        </section>
+    </main>
+    <basis core="call" file="footer.inc" lid="2" />
+</body>
+
+</html>

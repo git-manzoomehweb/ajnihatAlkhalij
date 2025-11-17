@@ -1,49 +1,57 @@
-<basis core="dbsource" source="basiscore" name="db" mid="5" lid="1" usedforid="[##cms.cms.ownerid##]">
+<basis core="dbsource" source="basiscore" name="db" mid="5" lid="2" usedforid="[##cms.cms.ownerid##]">
     <member name="info" type="view" />
 </basis>
 <basis core="group" if="'[##cms.cms.page_index##]' = 'desktop'">
-<header>
-    <div class="mx-auto max-xl:w-[97%] xl:max-w-7xl">
-        <div class="flex items-center justify-between h-full">
-            <a href="/">
-                <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo-header" width="240" height="50" loading="lazy"
-                    class="w-60 h-auto" />
-            </a>
-            <nav class="flex h-full">
-                <ul class="flex items-center justify-between gap-4">
-                    <li><a href=""
-                            class="relative group text-white font-bold transition-all duration-300 hover:text-specialcolor-1">Home
-                            <span
-                                class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
-                        </a></li>
-                    <li class="h-5 border border-solid border-white"></li>
-                    <li><a href=""
-                            class="relative group text-white font-bold transition-all duration-300 hover:text-specialcolor-1">Services
-                            <span
-                                class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
-                        </a></li>
-                    <li class="h-5 border border-solid border-white"></li>
-                    <li><a href=""
-                            class="relative group text-white font-bold transition-all duration-300 hover:text-specialcolor-1">News
-                            <span
-                                class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
-                        </a></li>
-                    <li class="h-5 border border-solid border-white"></li>
-                    <li><a href=""
-                            class="relative group text-white font-bold transition-all duration-300 hover:text-specialcolor-1">About
-                            Us
-                            <span
-                                class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
-                        </a></li>
-                </ul>
-            </nav>
-            <div
-                class="Login_Information cursor-pointer flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-600 hover:text-primary-600">
-                <basis core="call" file="authentication/modal" lid="2"></basis>
+    <header>
+        <div class="relative z-10 mx-auto max-xl:w-[97%] xl:max-w-7xl">
+            <div class="flex items-center justify-between h-full">
+                <a href="/">
+                    <img src="[##cms.cms.cdn##]/images/logo.png" alt="logo-header" width="240" height="50"
+                        loading="lazy" class="w-60 h-auto" />
+                </a>
+                <nav class="flex h-full">
+                    <ul class="flex items-center justify-between gap-4">
+                        <li>
+                            <a href="/"
+                                class="relative group text-white font-bold">Home
+                                <span
+                                    class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-white group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li class="h-5 border border-solid border-white"></li>
+                        <li>
+                            <a href="/services"
+                                class="relative group text-white font-bold">Services
+                                <span
+                                    class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-white group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li class="h-5 border border-solid border-white"></li>
+                        <li>
+                            <a href="/travel-magazine"
+                                class="relative group text-white font-bold">News
+                                <span
+                                    class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-white group-hover:w-full"></span>
+                            </a>
+                        </li>
+                        <li class="h-5 border border-solid border-white"></li>
+                        <li>
+                            <a href="/about-us"
+                                class="relative group text-white font-bold">About
+                                Us
+                                <span
+                                    class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-white group-hover:w-full"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div
+                    class="Login_Information cursor-pointer flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:bg-specialcolor-1 hover:border-specialcolor-1">
+                    <basis core="call" file="authentication/modal" lid="2"></basis>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 </basis>
 
 <basis core="group" if="'[##cms.cms.page_index##]' = 'mobile phone'">

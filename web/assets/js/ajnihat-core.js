@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   const content = document.querySelector('.content-inner')
   const button = document.querySelector('.see-more')
+
+  if (!content || !button) return;
   let expanded = false
 
   content.style.height = '140px'
@@ -257,4 +259,190 @@ function setupArticleSearch() {
       paging.style.display = visibleCards.length === 0 ? "none" : "";
     }
   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const fetchContentArticle = document.querySelector(".fetch-content-article");
+  const buttons = document.querySelectorAll(".article-fetch-btn");
+
+  if (!fetchContentArticle || buttons.length === 0) return;
+
+  const articleCache = {};
+  let currentCatid = null;
+
+  function highlightSelected(activeBtn) {
+    buttons.forEach((btn) => {
+      btn.style.backgroundColor = "";
+      btn.style.color = "";
+      btn.style.borderColor = "";
+    });
+
+    if (activeBtn) {
+      activeBtn.style.backgroundColor = "var(--primary-900)";
+      activeBtn.style.color = "#FFFFFF";
+      activeBtn.style.borderColor = "var(--primary-900)";
+    }
+  }
+
+  async function fetchArticleContent(catid) {
+    if (currentCatid === catid && articleCache[catid]) {
+      return;
+    }
+
+    currentCatid = catid;
+
+    if (articleCache[catid]) {
+      fetchContentArticle.innerHTML = articleCache[catid];
+
+      if (typeof applyImageFallbacks === "function") {
+        applyImageFallbacks(fetchContentArticle);
+      }
+
+      if (typeof setupArticleSearch === "function") {
+        setupArticleSearch();
+      }
+
+      return;
+    }
+
+    fetchContentArticle.innerHTML = `
+      <div class="w-full flex justify-center mt-10">
+        <span class="fetch-loader"></span>
+      </div>
+    `;
+
+    try {
+      const response = await fetch(`/article-load-items.bc?catid=${catid}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.text();
+
+      articleCache[catid] = data;
+      fetchContentArticle.innerHTML = data;
+
+      if (typeof applyImageFallbacks === "function") {
+        applyImageFallbacks(fetchContentArticle);
+      }
+
+      if (typeof setupArticleSearch === "function") {
+        setupArticleSearch();
+      }
+    } catch (error) {
+      fetchContentArticle.innerHTML =
+        "<p>Error loading data: " + error.message + "</p>";
+    }
+  }
+
+  const hardcodedDefaultCatid = "215683"; 
+  let defaultBtn =
+    Array.from(buttons).find(
+      (btn) => btn.dataset.id === hardcodedDefaultCatid
+    ) || buttons[0];
+
+  if (defaultBtn) {
+    const defaultCatid = defaultBtn.dataset.id;
+    highlightSelected(defaultBtn);
+    fetchArticleContent(defaultCatid);
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const catid = this.dataset.id;
+      if (!catid) return;
+
+      highlightSelected(this);
+      fetchArticleContent(catid);
+    });
+  });
+});
+
+// paging 
+const fetchArticlePage = async (pageNum) => {
+  const fetchContentArticle = document.querySelector(".fetch-content-article");
+  if (!fetchContentArticle) return;
+
+  const catId = fetchContentArticle.dataset.catid;
+  if (!catId) return;
+
+  fetchContentArticle.innerHTML = `
+    <div class="w-full flex justify-center mt-10">
+      <span class="fetch-loader"></span>
+    </div>
+  `;
+
+  try {
+    const response = await fetch(`/article-load-items.bc?catid=${catId}&pagenum=${pageNum}`);
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+
+    const data = await response.text();
+    fetchContentArticle.innerHTML = data;
+
+    if (typeof applyImageFallbacks === "function") {
+      applyImageFallbacks(fetchContentArticle);
+    }
+    if (typeof setupArticleSearch === "function") {
+      setupArticleSearch();
+    }
+
+  } catch (err) {
+    fetchContentArticle.innerHTML = `<p>Error: ${err.message}</p>`;
+  }
+};
+
+// footer-form
+function uploadDocumentFooter(args) {
+  document.querySelector("#footer-form .Loading_Form").style.display = "block";
+  const captcha = document
+    .querySelector("#footer-form")
+    .querySelector("#captchaContainer input[name='captcha']").value;
+  const captchaid = document
+    .querySelector("#footer-form")
+    .querySelector("#captchaContainer input[name='captchaid']").value;
+  const stringJson = JSON.stringify(args.source?.rows[0]);
+  $bc.setSource("cms.uploadFooter", {
+    value: stringJson,
+    captcha: captcha,
+    captchaid: captchaid,
+    run: true,
+  });
+}
+
+function refreshCaptchaFooter(e) {
+  $bc.setSource("captcha.refreshFooter", true);
+}
+
+async function OnProcessedEditObjectFooter(args) {
+  var response = args.response;
+  var json = await response.json();
+  var errorid = json.errorid;
+  if (errorid == "6") {
+    document.querySelector("#footer-form .Loading_Form").style.display = "none";
+    document.querySelector("#footer-form .message-api").innerHTML =
+      "Your request has been successfully submitted.";
+    document.querySelector("#footer-form .message-api").style.color =
+      "rgb(10 240 10)";
+  } else {
+    refreshCaptchaFooter();
+    setTimeout(() => {
+      document.querySelector("#footer-form .Loading_Form").style.display =
+        "none";
+      document.querySelector("#footer-form .message-api").innerHTML =
+        "An error occurred, please try again.";
+      document.querySelector("#footer-form .message-api").style.color =
+        "rgb(220 38 38)";
+    }, 2000);
+  }
+}
+
+async function RenderFormFooter() {
+  var inputElementVisa7 = document.querySelector(
+    " .footer-username input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "First name / Last name");
+  var inputElementVisa7 = document.querySelector(
+    " .footer-email input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "Email");
 }

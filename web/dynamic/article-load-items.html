@@ -1,0 +1,204 @@
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="[##cms.query.catid##]">
+    <member name="article-list" type="list" link="article.bc" propertyid="7244,7249" perpage="3" size="410x276"
+        pageno="[##cms.query.pagenum|(1)##]" order="ord" />
+    <member name="paging" type="list" request="paging" count="3" parentname="article-list" />
+    <member name="cat-description" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"
+        postsql="select * from [db.cat-description] where catid in([##cms.query.catid##])"></member>
+</basis>
+
+
+<basis core="list" datamembername="db.article-list">
+    <layout>
+        <div class="grid grid-cols-3 gap-6 mt-14">
+            @child
+        </div>
+    </layout>
+    <face filter="[00410X00276prp] is null">
+        <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl" data-name="@title">
+            <div class="relative">
+                <img src="[##cms.cms.cdn##]/images/no-image-placeholder.jpg"
+                    class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410"
+                    height="276" loading="lazy">
+                <div
+                    class="absolute -z-10 inset-0 bg-specialcolor-1 rounded-t-3xl transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100">
+                </div>
+                <div class="absolute left-7 bottom-0 flex items-center">
+                    <span
+                        class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
+                        more</span>
+                    <button>
+                        <svg width="48" height="48"
+                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                            <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
+                <h2 class="font-bold text-primary-900 mb-1">@title</h2>
+                <div class="text-zinc-600 text-sm mb-3 line-clamp-4">
+                    @prp_7244
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg width="20" height="20">
+                        <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                    </svg>
+                    <span class="text-zinc-400 text-xs">@prp_7249</span>
+                </div>
+            </div>
+        </a>
+    </face>
+    <face>
+        <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl" data-name="@title">
+            <div class="relative">
+                <img src="[##cms.cms.cdn##]/@00410X00276prp"
+                    class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410"
+                    height="276" loading="lazy">
+                <div
+                    class="absolute -z-10 inset-0 bg-specialcolor-1 rounded-t-3xl transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100">
+                </div>
+                <div class="absolute left-7 bottom-0 flex items-center">
+                    <span
+                        class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
+                        more</span>
+                    <button>
+                        <svg width="48" height="48"
+                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                            <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
+                <h2 class="font-bold text-primary-900 mb-1">@title</h2>
+                <div class="text-zinc-600 text-sm mb-3 line-clamp-4">
+                    @prp_7244
+                </div>
+                <div class="flex items-center gap-1">
+                    <svg width="20" height="20">
+                        <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                    </svg>
+                    <span class="text-zinc-400 text-xs">@prp_7249</span>
+                </div>
+            </div>
+        </a>
+    </face>
+</basis>
+<div id="paging" class="flex justify-center mt-20">
+    <ul class="flex items-center gap-1 cd-pagination no-space" id="wibpaging">
+        <basis core="print" datamembername="db.paging">
+            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
+                    <span class="flex items-center justify-center w-full cursor-pointer"
+                        aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
+                        </svg>
+                    </span>
+                </li>
+            </face>
+            <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
+                    <span class="flex items-center justify-center w-full cursor-pointer"
+                        aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
+                        </svg>
+                    </span>
+                </li>
+            </face>
+        </basis>
+        <basis core="print" datamembername="db.paging">
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='min') and ('[##cms.cms.pageurl##]'='') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='min') and ('[##cms.cms.pageurl##]'<>'') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
+                    <span
+                        class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
+                    <span
+                        class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'='') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='no') and ('[##cms.cms.pageurl##]'<>'') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='max') and ('[##cms.cms.pageurl##]'='') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+            <face
+                filter="(@page<>[##cms.query.pagenum|(1)##]) and (@page>0) and (@sta='max') and ('[##cms.cms.pageurl##]'<>'') ">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-300 text-sm rounded-full bg-specialcolor-2 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        onclick="fetchArticlePage('@page')">@page</span>
+                </li>
+            </face>
+        </basis>
+        <basis core="print" datamembername="db.paging">
+            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'='')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 ml-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no next-page">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer"
+                        aria-label="angle-right" onclick="fetchArticlePage('@page')">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                        </svg>
+                    </span>
+                </li>
+            </face>
+            <face filter="(@sta='nex') and ('[##cms.cms.pageurl##]'<>'')">
+                <li
+                    class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 ml-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no next-page">
+                    <span class="flex items-center justify-center w-full h-full cursor-pointer"
+                        aria-label="angle-right" onclick="fetchArticlePage('@page')">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                        </svg>
+                    </span>
+                </li>
+            </face>
+        </basis>
+    </ul>
+</div>
