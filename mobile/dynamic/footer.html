@@ -2,78 +2,190 @@
     <div class="max-lg:w-[90%] mx-auto">
         <section class="pb-4 border-b border-solid border-white">
             <ul class="flex items-center justify-between gap-4">
-                <li><a href="" class="text-sm text-white">Home</a></li>
+                <li><a href="/" rel="nofollow" class="text-sm text-white">Home</a></li>
                 <li class="h-10 border border-solid border-white"></li>
-                <li><a href="" class="text-sm text-white">Services</a></li>
+                <li><a href="/services" rel="nofollow" class="text-sm text-white">Services</a></li>
                 <li class="h-10 border border-solid border-white"></li>
-                <li><a href="" class="text-sm text-white">News</a></li>
+                <li><a href="/travel-magazine" rel="nofollow" class="text-sm text-white">News</a></li>
                 <li class="h-10 border border-solid border-white"></li>
-                <li><a href="" class="text-sm text-white">About Us</a></li>
+                <li><a href="/about-us" rel="nofollow" class="text-sm text-white">About Us</a></li>
             </ul>
         </section>
         <section class="flex flex-col gap-2 items-center mt-4">
-            <div class="text-center">
-                <h2 class="text-specialcolor-1 font-bold mb-1">Address</h2>
-                <div class="text-xs text-white">IRAQ / NAJAF / ALKUFA /OPPOSITE ALSAHLA MOSQUE</div>
-            </div>
-            <div class="text-center">
-                <h2 class="text-specialcolor-1 font-bold mb-1">Contact Us</h2>
-                <a href="tel:" class="text-xs text-white">07822114617</a>
-            </div>
-            <div class="text-center">
-                <h2 class="text-specialcolor-1 font-bold mb-1">Email</h2>
-                <div class="text-xs text-white">Starman@00964gmail.com</div>
-            </div>
+            <basis core="print" datamembername="db.info">
+                <face filter="TypeID in(244)">
+                    <div class="text-center">
+                        <h2 class="text-specialcolor-1 font-bold mb-1">Address</h2>
+                        <div class="text-xs text-white">@largetext</div>
+                    </div>
+                </face>
+            </basis>
+
+            <basis core="print" datamembername="db.info">
+                <layout>
+                    <div class="text-center">
+                        <h2 class="text-specialcolor-1 font-bold mb-1">Contact Us</h2>
+                        @child
+                    </div>
+                </layout>
+                <face filter="TypeID in(240)">
+                    <a href="tel:@text"
+                        class="text-xs text-white">@text
+                    </a>
+                </face>
+            </basis>
+
+            <basis core="print" datamembername="db.info">
+                <layout>
+                    <div class="text-center">
+                        <h2 class="text-specialcolor-1 font-bold mb-1">Email</h2>
+                        @child
+                    </div>
+                </layout>
+                <face filter="TypeID in(242)">
+                    <a href="mailto:@text"
+                        class="text-xs text-white">@text
+                    </a>
+                </face>
+            </basis>
+
         </section>
         <section class="mt-16">
             <h2 class="text-specialcolor-1 font-bold">Get in Touch with Us</h2>
-            <h3 class="text-xs text-white">Lorem ipsum dolor sit amet, consectetur adipiscing</h3>
+            <h3 class="text-xs text-white">Stay in touch with us for the latest tourism news.</h3>
+            <div class="flex flex-col mx-auto footer-form mt-6" id="footer-form-resize">
+
+                <basis core="schema" run="atclient"
+                    schemaurl="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/282C517E-3819-4511-8BFE-A6544DF5E9F9/en/Get-in-Touch"
+                    displaymode="new" button="[data-btn-uploadfooter]" resultsourceid="upload.datafooter"
+                    OnRendered="RenderFormFooter"></basis>
+                <basis core="api" if="{##cms.uploadFooter.run|(false)##}" run="atclient"
+                    url="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/en/editobject" method="post"
+                    body="object_edit={##cms.uploadFooter.value##}&captcha={##cms.uploadFooter.captcha##}&captchaid={##cms.uploadFooter.captchaid##}"
+                    content-type="application/x-www-form-urlencoded" triggers='cms.uploadFooter'
+                    OnProcessed="OnProcessedEditObjectFooter"></basis>
+                <basis core="callback" run="atclient" method="uploadDocumentFooter"
+                    triggers="upload.datafooter">
+                </basis>
+
+                <div class="flex flex-col gap-2 items-center captcha-button mt-2">
+                    <div id="captchaContainer"
+                        class="captchaContainerclass captcha-sefaresh flex items-center max-xl:ml-0 max-xl:mb-[20px]"
+                        data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                        data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                        <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                            triggers="captcha.refreshFooter">
+                            <member name="code-footer" type="scalar" request="captcha"></member>
+                        </basis>
+                        <basis datamembername="captcha.code-footer" core="print" run="atclient">
+                            <face>
+                                <script type="text/template"><div><div class="flex gap-2">
+                
+                                    <div class="float-right"><input type="text" class="contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="Security Code"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                    <div class="shrink-0 flex items-center gap-2">
+                                        <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-16" />
+                                        <div onclick="refreshCaptchaFooter()" class="flex items-center justify-center bg-primary-900 rounded-full w-14 h-14">
+                                            <svg width="48" height="48" class="text-zinc-900 cursor-pointer">
+                                                <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                            </svg>
+                                        </div>
+                                    
+                                    </div>
+                                    
+                                </div></div></script>
+                            </face>
+                        </basis>
+                    </div>
+                    <button
+                        class="shrink-0 w-full px-4 text-white transition-all duration-300 data-body-btn h-14 bg-specialcolor-1 rounded-full"
+                        type="button" data-btn-uploadfooter><span class="">Send</span></button>
+                </div>
+                <div
+                    class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5">
+                    <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                        <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center message-api"></div>
+            </div>
         </section>
         <section class="flex flex-col items-center mt-16">
-            <img src="../assets/images/logo.png" class="w-[100px] h-auto" alt="logo" width="100" height="20" loading="lazy">
+            <img src="[##cms.cms.cdn##]/images/second-logo.png" class="w-[100px] h-auto" alt="logo" width="100" height="20" loading="lazy">
             <div class="w-full mt-11">
                 <h2 class="font-bold text-white text-center mb-4">Follow me</h2>
-                <ul class="flex items-center justify-between">
-                    <li class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
-                        <a href="" rel="noopener noreferrer" aria-label="telegram">
-                            <svg width="26" height="26">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-telegram"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
-                        <a href="" rel="noopener noreferrer" aria-label="linkedin">
-                            <svg width="26" height="26">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-linkedin"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
-                        <a href="" rel="noopener noreferrer" aria-label="twitter">
-                            <svg width="26" height="26">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-twitter"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
-                        <a href="" rel="noopener noreferrer" aria-label="instagram">
-                            <svg width="26" height="26">
-                                <use href="../assets/images/sprite-icons-mobile.svg#icon-instagram"></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
+                <basis core="print" datamembername="db.info">
+                    <layout>
+                        <ul class="flex items-center justify-between">
+                            @child
+                        </ul>
+                    </layout>
+                    <face filter="TypeID in(245) and text in('Telegram')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="telegram">
+                                <svg width="26" height="26"
+                                    class="text-white">
+                                    <use href="/images/sprite-icons.svg#icon-telegram"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('linkedin')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="linkedin">
+                                <svg width="26" height="26"
+                                    class="text-white">
+                                    <use href="/images/sprite-icons.svg#icon-linkedin"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('Twitter')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="twitter">
+                                <svg width="26" height="26"
+                                    class="text-white">
+                                    <use href="/images/sprite-icons.svg#icon-twitter"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('Instagram')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-white rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="instagram">
+                                <svg width="26" height="26"
+                                    class="text-white">
+                                    <use href="/images/sprite-icons.svg#icon-instagram"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                </basis>
             </div>
         </section>
         <section class="flex flex-col items-center gap-1 mt-10">
-            <a href="https://www.basisfly.com/" target="_blank"
+            <a href="https://basisfly.ae/" target="_blank"
                 class="flex text-xs text-primary-200 text-center transition-all duration-300 hover:text-primary-600">
                 Web Design & Online Reservation By
             </a>
             <div class="flex w-full items-center justify-center gap-2">
-                <img src="https://cdn.basiscore.net/haghagasht.com/_images/white-basisfly-logo.png" alt="basisfly-logo" width="68" height="17"
+                <img src="[##cms.cms.cdn##]/_images/white-basisfly-logo.png" alt="basisfly-logo" width="68" height="17"
                     loading="lazy">
-                <img src="https://cdn.basiscore.net/haghagasht.com/PrimeTemplate_A/images/trust-login.png" alt="trust-login" width="90" height="15"
+                <img src="[##cms.cms.cdn##]/images/trust-login.png" alt="trust-login" width="90" height="15"
                     loading="lazy">
             </div>
         </section>

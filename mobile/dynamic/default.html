@@ -1,0 +1,375 @@
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218868">
+    <member name="banners" type="list" link="article.bc" propertyid="7244,7249" perpage="2" size="" order="ord" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218756">
+    <member name="services" type="list" link="article.bc" propertyid="7244" perpage="5" order="ord" size="" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="services-description">
+    <member name="cat" type="tree" request="cat" parentid="218756" order="ord"
+        postsql="select * from [services-description.cat] where catid in(218756)"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218758">
+    <member name="faq-list" type="list" link="article.bc" propertyid="" perpage="8" order="ord" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="faq-description">
+    <member name="cat" type="tree" request="cat" parentid="218758" order="ord"
+        postsql="select * from [faq-description.cat] where catid in(218758)"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218757">
+    <member name="travel-magazine" type="list" link="tour.bc" propertyid="7244,7249" perpage="3" order="ord"
+        size="410x276" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="magazine-description">
+    <member name="cat" type="tree" request="cat" parentid="218757" order="ord"
+        postsql="select * from [magazine-description.cat] where catid in(218757)"></member>
+</basis>
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>Ajnihat Alkhalij Travel Agency</title>
+    <meta name="description"
+        content="If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency">
+    <!-- canonical for Homepage -->
+    <link rel="canonical" href="[##cms.request.:scheme##]://[##cms.request.full-url##]" />
+    <!-- fill items with Agancy Info -->
+    <meta name="og:locale" content="en-US">
+    <meta property="og:title" content="Ajnihat Alkhalij Travel Agency">
+    <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ajnihat Alkhalij Travel Agency">
+    <meta property="og:image"
+        content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
+    <meta property="og:image:alt" content="Ajnihat Alkhalij Travel Agency Logo">
+    <meta property="og:description"
+        content="If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content=" ">
+    <meta name="twitter:creator" content="Ajnihat Alkhalij Travel Agency">
+    <meta name="twitter:image"
+        content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
+    <meta name="twitter:title" content=" ">
+    <meta name="twitter:description" content=" ">
+    <meta property="seo:robots" content="index, follow" />
+    <!-- samandehi-enamad optional -->
+    <meta name="enamad" content="" />
+    <meta name="samandehi" content="" />
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+    <!-- define -->
+    <link rel="preload" as="image" imageSrcSet="image address" fetchpriority="high" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+</head>
+
+<body>
+    <div class="relative h-[455px]">
+        <div class="mask-default-back w-full absolute inset-0">
+            <img src="[##cms.cms.cdn##]/images/default-background.jpg" class="w-full h-full object-cover absolute inset-0 z-0">
+            <div class="blur-bottom-mask pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-32"></div>
+        </div>
+
+
+        <div class="relative z-20 pt-5">
+            <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+            <div class="flex flex-col items-center mt-20">
+                <h1 class="text-white font-bold">Experience the world together</h1>
+                <p class="text-white text-xs mt-4">
+                    Find awesome flights,hotel and packages
+                </p>
+                <img src="[##cms.cms.cdn##]/images/airplane.png" class="w-full h-20 object-cover -scale-x-100" alt=""
+                    width="272" height="80" loading="lazy">
+
+                <div class="mt-14">
+                    <p class="text-primary-900 font-bold mb-5">You should start from here</p>
+                    <button class="bg-specialcolor-1 text-white rounded-full w-44 h-12">
+                        Get Start
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <section class="mx-auto max-lg:w-[90%] -mt-40">
+            <div class="search-banner">
+                <div class="relative search-box-container en mobile-search-box">
+                    <div id="search-box" class="dir-ltr">
+                        <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
+                            <span class="search-engine-loader"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-7">
+            <h2 class="text-gradient font-bold text-center mb-2">Our services for customers</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="flex flex-col gap-3 mt-4">
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons-mobile.svg#icon-3person"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Corporate Flight Management Service</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons-mobile.svg#icon-diamond"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Multi-Airline Ticketing Solution</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons-mobile.svg#icon-blade"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Global Flight Booking System</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons-mobile.svg#icon-ticket"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Real-Time Fare API Integration</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+                <a href="" class="block">
+                    <div
+                        class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8">
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons-mobile.svg#icon-card"></use>
+                        </svg>
+                    </div>
+                    <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
+                        <h2 class="text-primary-950 font-bold mb-1">Dynamic Pricing & Commission Control</h2>
+                        <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur
+                            adipiscing
+                            elit, sed
+                            do eiusmod tempor incididunt ut </div>
+                        <button class="mt-2">
+                            <svg width="48" height="48" class="text-specialcolor-1">
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a>
+            </div>
+            <a href="" class="flex items-center gap-2 mt-4">
+                <span class="text-sm
+                     text-primary-950">View more</span>
+                <button>
+                    <svg width="48" height="48" class="text-specialcolor-1">
+                        <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                    </svg>
+                </button>
+            </a>
+            <div>
+                <h2 class="font-bold text-3xl text-specialcolor-1 mb-2">services</h2>
+                <div class="text-zinc-700 text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit</div>
+            </div>
+        </section>
+        <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] mt-11">
+            <img src="[##cms.cms.cdn##]/images/dubai-beach.jpg" class="w-full h-[517px] object-cover" alt="" width="288"
+                height="517" loading="lazy">
+            <div class="absolute z-10 px-5 bottom-7">
+                <h2 class="text-lg font-bold text-white mb-2">Experience the best services with us</h2>
+                <a href=""
+                    class="flex items-center justify-center w-full h-12 text-white text-sm rounded-full border border-solid border-white">View
+                    more
+                    <svg width="48" height="48">
+                        <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                    </svg>
+                </a>
+            </div>
+            <div class="bg-blue-gradient absolute inset-0 w-full h-full"></div>
+            <div class="article-blur absolute inset-0"></div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-11">
+            <h2 class="text-gradient font-bold text-center mb-3">Your questions to us</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <ul class="flex items-center gap-3 mt-6 overflow-x-auto scrollbar-thin whitespace-nowrap">
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">Servis
+                </li>
+                <li
+                    class="border border-solid border-primary-900 text-white bg-primary-900 rounded-full py-3 px-8 text-xs">
+                    Servis</li>
+            </ul>
+            <div class="flex flex-col gap-6 mt-14">
+                <div class="bg-specialcolor-2 rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
+                            <svg width="40" height="40">
+                                <use href="/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
+                            </svg>
+                        </div>
+                        <span class="text-5xl text-primary-50 font-bold">1</span>
+                    </div>
+                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
+                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit, sed
+                        do eiusmod tempor incididunt ut </div>
+                </div>
+                <div class="bg-specialcolor-2 rounded-3xl p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
+                            <svg width="40" height="40">
+                                <use href="/images/sprite-icons-mobile.svg#icon-flight-ticket"></use>
+                            </svg>
+                        </div>
+                        <span class="text-5xl text-primary-50 font-bold">2</span>
+                    </div>
+                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
+                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit, sed
+                        do eiusmod tempor incididunt ut </div>
+                </div>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-11">
+            <h2 class="text-gradient font-bold text-center mb-3">A travel magazine</h2>
+            <p class="text-zinc-600 text-xs text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="flex flex-col gap-3 mt-3">
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="[##cms.cms.cdn##]/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="[##cms.cms.cdn##]/images/article-card.jpg" class="mask-article-card w-full h-48 object-cover"
+                            alt="" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                         text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua.
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <a href=""
+                class="flex items-center justify-center w-44 h-12 mx-auto text-specialcolor-1 text-sm rounded-full border border-solid border-specialcolor-1 mt-3">View
+                more
+                <svg width="48" height="48">
+                    <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                </svg>
+            </a>
+        </section>
+    </main>
+    <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+</body>
+
+</html>

@@ -551,6 +551,58 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
+//--------------POV-form-------------//
+document.querySelectorAll('.pov-form').forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault()
+
+    const loading = form.closest('form').querySelector('.Loading_Form')
+    const message = form.closest('form').querySelector('.Message-Form')
+
+    loading.classList.remove('hidden')
+
+    const formData = new FormData(form)
+
+    fetch(form.getAttribute('action'), {
+      method: form.getAttribute('method'),
+      body: formData,
+    })
+      .then((response) =>
+        response.text().then((text) => ({ text, ok: response.ok }))
+      )
+      .then(({ text, ok }) => {
+        loading.classList.add('hidden')
+        message.innerHTML = text
+
+        if (ok) {
+          message.style.color = 'green'
+        } else {
+          message.style.color = 'red'
+        }
+
+        form.querySelectorAll('textarea, input').forEach((el) => (el.value = ''))
+      })
+      .catch(() => {
+        loading.classList.add('hidden')
+        message.innerHTML = 'An error occurred. Please try again.'
+        message.style.color = 'red'
+      })
+  })
+})
+
+
+// refresh_captch
+function refresh_captcha(element, event) {
+  const form = element.closest("form");
+  const captchaContainer = form.querySelector(".load-captcha");
+
+  fetch("/Client_Captcha.bc?lid=1")
+    .then((response) => response.text())
+    .then((data) => {
+      captchaContainer.innerHTML = data;
+    });
+}
+
 // footer-form
 function uploadDocumentFooter(args) {
   document.querySelector("#footer-form .Loading_Form").style.display = "block";
@@ -686,7 +738,7 @@ var swiperComment = new Swiper(".swiper-comment", {
     breakpoints: {
         1024: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 24,
         },
     },
 });

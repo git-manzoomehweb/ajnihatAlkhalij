@@ -357,6 +357,10 @@
     width: 6rem;
 }
 
+.w-32 {
+    width: 8rem;
+}
+
 .w-40 {
     width: 10rem;
 }
@@ -1105,6 +1109,10 @@
     color: var(--special-1);
 }
 
+.hover\:text-primary-900:hover {
+    color: var(--primary-900);
+}
+
 .hover\:text-white:hover {
     --tw-text-opacity: 1;
     color: rgb(255 255 255 / var(--tw-text-opacity, 1));
@@ -1564,7 +1572,7 @@
 }
 
 .exchangeRoute:hover{
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 .reserve-field.CheckHotelDate {
