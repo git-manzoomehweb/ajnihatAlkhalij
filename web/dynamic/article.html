@@ -1,0 +1,468 @@
+<basis core="dbsource" source="basiscore" name="db" lid="2" mid="1" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.id##]">
+    <member name="view" type="view" propertyid="7249" />
+</basis>
+<basis core="dbsource" source="media" lid="2" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="2" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.adsid##]">
+    <member name="ads" type="view" propertyid="" />
+</basis>
+<basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="[##cms.host.command_order|(date desc)##]" request="listcomment" />
+</basis>
+<basis core="dbsource" name="captcha" source="trust_login">
+    <member name="code" type="scalar" request="captcha"></member>
+</basis>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Ajnihat Alkhalij Travel Agency)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" />
+</head>
+
+<body>
+    <div class="bg-primary-950 pt-12 h-52">
+        <basis core="call" file="header.inc" lid="2" />
+    </div>
+    <main>
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl -mt-14">
+            <div class="relative">
+                <basis core="print" datamembername="view.gallery">
+                    <face filter="ord in(1)">
+                        <img src="[##cms.cms.cdn##]/@largeIMG"
+                            class="w-full h-[530px] object-cover mask-article-image-pc" alt="@name" width="1280"
+                            height="530" loading="lazy">
+                    </face>
+                </basis>
+
+                <div class="absolute bottom-0 flex items-center justify-between w-[65%]">
+                    <ul itemscope itemtype="https://schema.org/BreadcrumbList"
+                        class="breadcrumb flex justify-center items-center gap-1">
+                        <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <a class="flex items-center text-primary-200 text-sm transition-all duration-300 hover:text-primary-900"
+                                itemprop="item" href="/" aria-label="home">
+                                <span itemprop="name">Home</span>
+                                <meta itemprop="position" content="1" />
+                            </a>
+                        </li>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 6L15 12L9 18" stroke="#000" stroke-width="2" />
+                        </svg>
+                        <basis core="print" datamembername="db.navigation">
+                            <face filter="RowNumber=max(RowNumber) and title <> 'root'">
+                                <li class="inline-block font-normal text-primary-900" itemprop="itemListElement"
+                                    itemscope itemtype="https://schema.org/ListItem">
+                                    <span itemprop="name">@title</span>
+                                    <meta itemprop="position" content="@rownumber" />
+                                </li>
+                            </face>
+                            <face filter="link is null and title <> 'root'">
+                                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                                    itemtype="https://schema.org/ListItem">
+                                    <a class="flex items-center text-primary-200 text-sm transition-all duration-300 hover:text-primary-900"
+                                        itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                        <span itemprop="name">@title</span>
+                                        <meta itemprop="position" content="@rownumber" />
+                                    </a>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 6L15 12L9 18" stroke="#000" stroke-width="2" />
+                                    </svg>
+                                </li>
+                            </face>
+                            <face filter="title <> 'root'">
+                                <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                                    itemtype="https://schema.org/ListItem">
+                                    <a class="flex items-center text-primary-200 text-sm transition-all duration-300 hover:text-primary-900"
+                                        itemprop="item" href="/@link" aria-label="@title">
+                                        <span
+                                            class="flex items-center text-primary-200 text-sm transition-all duration-300 hover:text-primary-900"
+                                            itemprop="name">
+                                            @title
+                                        </span>
+                                        <meta itemprop="position" content="@rownumber" />
+                                    </a>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 6L15 12L9 18" stroke="#000" stroke-width="2" />
+                                    </svg>
+                                </li>
+                            </face>
+                        </basis>
+                    </ul>
+                    <basis core="print" datamembername="db.view">
+                        <layout>
+                            <div class="flex items-center gap-6">
+                                @child
+                            </div>
+                        </layout>
+                        <face filter="TypeID in(128) and vocabulary in('publication-date')">
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">@text</span>
+                            </div>
+                        </face>
+                        <face filter="TypeID in(200) and vocabulary in('Study-duration')">
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-clock"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">@text</span>
+                            </div>
+                        </face>
+                        <face filter="TypeID in(128) and vocabulary in('author')">
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-user"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">@text</span>
+                            </div>
+                        </face>
+                    </basis>
+                </div>
+            </div>
+        </section>
+        <div class="flex gap-4 mx-auto max-xl:w-[97%] xl:max-w-7xl mt-9">
+            <div class="flex-1 min-w-0">
+                <basis core="print" datamembername="db.view">
+                    <layout>
+                        <section class="border-x border-b border-primary-100 px-10 pt-5 pb-12 rounded-b-2xl">
+                            @child
+                        </section>
+                    </layout>
+                    <face filter="TypeID in(150)">
+                        <h1 class="text-primary-950 text-5xl font-bold mb-7">@text</h1>
+                    </face>
+                    <face filter="TypeID in(129)">
+                        <h2 id="@valueID" class="text-primary-950 text-lg font-bold mb-3">@text</h2>
+                        <div class="text-zinc-600 text-justify leading-7 mb-7">
+                            @largetext
+                        </div>
+                    </face>
+                    <face filter="TypeID in(250)">
+                        <h2 id="@valueID" class="text-primary-950 text-lg font-bold mb-3">@text</h2>
+                        <div class="text-zinc-600 text-justify leading-7 mb-7">
+                            @largetext
+                        </div>
+                    </face>
+                </basis>
+                <section class="border border-primary-100 rounded-2xl p-6 mt-3">
+                    <h2 class="text-primary-900 text-lg font-bold mb-4">Add Your Comment</h2>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2">
+                            <input type="text" name="" id=""
+                                class="flex-1 h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900"
+                                placeholder="First/Last Name">
+                            <input type="number" name="" id=""
+                                class="flex-1 h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900"
+                                placeholder="Number Phone">
+                        </div>
+                        <textarea name="" id=""
+                            class="w-full h-32 rounded-3xl bg-specialcolor-2 px-6 pt-2 placeholder-primary-300 text-zinc-900"
+                            placeholder="Description"></textarea>
+                    </div>
+                </section>
+            </div>
+            <aside class="w-[330px] sticky h-full top-0">
+                <section>
+                    <div class="bg-primary-950 rounded-xl px-4 py-5">
+                        <h2 class="font-bold text-white">Quick Links</h2>
+                    </div>
+                    <basis core="print" datamembername="db.view">
+                        <layout>
+                            <div class="flex flex-col gap-6 divide-y divide-primary-50">
+                                @child
+                            </div>
+                        </layout>
+                        <face filter="TypeID in(250 , 129)">
+                            <a href="#@valueID"
+                                class="relative group flex items-center justify-between gap-2 pt-6 transition-all duration-300 hover:text-specialcolor-1">
+                                <span class="text-sm text-primary-800">@text
+                                    <span
+                                        class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
+                                </span>
+                                <svg width="48" height="48" class="shrink-0">
+                                    <use href="/images/sprite-icons.svg#icon-mouse"></use>
+                                </svg>
+                            </a>
+                        </face>
+                    </basis>
+                </section>
+                <div class="relative mt-12" id="shareWrap">
+                    <button id="shareBtn" type="button"
+                        class="flex items-center justify-center w-full h-14 bg-specialcolor-1 rounded-full font-medium text-white transition-all duration-300 hover:bg-primary-900"
+                        aria-haspopup="menu" aria-expanded="false" data-title="Great page" data-text="watch this page"
+                        data-url="">
+                        <svg width="48" height="48" aria-hidden="true">
+                            <use href="/images/sprite-icons.svg#icon-share"></use>
+                        </svg>
+                        share
+                    </button>
+
+                    <div id="shareMenu" class="invisible opacity-0 pointer-events-none absolute z-50 left-0
+                rounded-xl overflow-hidden bg-white shadow-xl
+                transition-opacity duration-300">
+
+                        <ul class="flex items-center gap-3 p-2" role="menu" aria-label="گزینه‌های اشتراک‌گذاری">
+                            <li class="group">
+                                <a id="shareTelegram" target="_blank" rel="noopener noreferrer"
+                                    class="flex flex-col items-center gap-2" role="menuitem">
+                                    <span
+                                        class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full transition-all duration-300 group-hover:bg-specialcolor-1">
+                                        <svg width="26" height="26" aria-hidden="true" class="text-white">
+                                            <use href="/images/sprite-icons.svg#icon-telegram"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="text-secondary-800 text-sm">Telegram</span>
+                                </a>
+                            </li>
+
+                            <li class="group">
+                                <a id="shareTwitter" target="_blank" rel="noopener noreferrer"
+                                    class="flex flex-col items-center gap-2" role="menuitem">
+                                    <span
+                                        class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full transition-all duration-300 group-hover:bg-specialcolor-1">
+                                        <svg width="26" height="26" aria-hidden="true" class="text-white">
+                                            <use href="/images/sprite-icons.svg#icon-twitter"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="text-secondary-800 text-sm">Twitter</span>
+                                </a>
+                            </li>
+
+                            <li class="group">
+                                <a id="shareWhatsapp" target="_blank" rel="noopener noreferrer"
+                                    class="flex flex-col items-center gap-2" role="menuitem">
+                                    <span
+                                        class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full transition-all duration-300 group-hover:bg-specialcolor-1">
+                                        <svg width="48" height="48" aria-hidden="true" class="text-white">
+                                            <use href="/images/sprite-icons.svg#icon-whatsapp"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="text-secondary-800 text-sm">Whatsapp</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <basis core="print" datamembername="db.ads">
+                    <layout>
+                        <section
+                            class="relative group rounded-[30px] overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-8 transition-all duration-300 hover:shadow-2xl">
+                            @child
+                            <div class="bg-black-gradient absolute inset-0 w-full h-full"></div>
+                        </section>
+                    </layout>
+                    <face filter="TypeID in(159)">
+                        <img src="[##cms.cms.cdn##]/@text" class="w-full h-[498px] object-cover" alt=""
+                        width="330" height="498" loading="lazy">
+                    </face>
+                    <face filter="TypeID in(150)">
+                        <div class="absolute z-10 px-5 bottom-8">
+                            <h2 class="text-2xl font-bold text-white mb-6">@text</h2>
+                            <a href="/article.bc?id=[##cms.query.adsid##]"
+                                class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-900 hover:bg-primary-900">View
+                                more
+                                <svg width="48" height="48">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </face>
+                </basis>
+
+            </aside>
+        </div>
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-24">
+            <h2 class="text-gradient text-5xl font-bold text-center mb-2">User Comments</h2>
+            <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit,
+                sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="swiper swiper-comment mt-12">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet,
+                                consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet,
+                                consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                            <div>
+                                <img src="../assets/images/article-card.jpg" class="w-24 h-24 object-cover rounded-full"
+                                    alt="" width="96" height="96" loading="lazy">
+                                <h2 class="text-primary-900 font-bold mt-3">Mohsen Heydari</h2>
+                            </div>
+                            <div class="text-zinc-800 text-sm text-center">Lorem ipsum dolor sit amet,
+                                consectetur
+                                adipiscing elit, sed
+                                do eiusmod tempor incididunt </div>
+                            <div class="flex items-center gap-1">
+                                <svg width="24" height="24">
+                                    <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                                </svg>
+                                <span class="text-primary-200 text-sm">2025-02-02</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
+            <h2 class="text-gradient text-5xl font-bold text-center mb-3">You may also like</h2>
+            <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit,
+                sed do
+                eiusmod
+                tempor incididunt </p>
+            <div class="grid grid-cols-3 gap-6 mt-14">
+                <a href="" class="group rounded-b-2xl transition-all duration-300 hover:shadow-xl" data-name="">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg"
+                            class="mask-article-card-pc w-full h-[276px] object-cover" alt="" width="410" height="276"
+                            loading="lazy">
+                        <div
+                            class="absolute -z-10 inset-0 bg-specialcolor-1 rounded-t-3xl transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100">
+                        </div>
+                        <div class="absolute left-7 bottom-0 flex items-center">
+                            <span class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
+                                more</span>
+                            <button>
+                                <svg width="48" height="48"
+                                    class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-sm mb-3 line-clamp-4">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus
+                            aenean vel elit
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="../assets/images/article-card.jpg"
+                            class="mask-article-card-pc w-full h-[276px] object-cover" alt="" width="410" height="276"
+                            loading="lazy">
+                        <div class="absolute left-7 bottom-0 flex items-center">
+                            <span class="text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">Songkran ,the biggest water splashing festival in
+                            the
+                            world</h2>
+                        <div class="text-zinc-600 text-sm mb-3 line-clamp-4">Lorem ipsum dolor sit amet,
+                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                            aliqua. Egestas purus viverra accumsan in nisl nisi. Arcu cursus vitae congue mauris rhoncus
+                            aenean vel elit
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">2025-02-02</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdn.basiscore.net/basisfly.com/js/swiper-bundle.min.js"></script>
+    <basis core="call" file="footer.inc" lid="2" />
+
+    <script type="application/ld+json">
+        [##db.json.Column1##]
+      </script>
+</body>
+
+</html>

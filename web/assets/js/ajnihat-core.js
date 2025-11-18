@@ -235,20 +235,21 @@ function setupArticleSearch() {
     return;
   }
 
-  searchButton.addEventListener("click", function () {
-    const searchTerm = searchInput.value.toLowerCase();
+  const runSearch = () => {
+    const searchTerm = (searchInput.value || "").toLowerCase().trim();
     let anyVisible = false;
 
     articleCards.forEach((card) => {
-      const articleName = (
-        card.getAttribute("data-name") || ""
-      ).toLowerCase();
-      const match = articleName.includes(searchTerm);
+      const articleName = (card.getAttribute("data-name") || "").toLowerCase();
+      const match = !searchTerm || articleName.includes(searchTerm);
+
       card.style.display = match ? "" : "none";
       if (match) anyVisible = true;
     });
 
     const fetchContent = document.querySelector(".fetch-content-article");
+    if (!fetchContent) return;
+
     const cardWrapper = fetchContent.querySelector(".article-card-wrapper");
     const paging = fetchContent.querySelector("#paging");
 
@@ -258,9 +259,21 @@ function setupArticleSearch() {
       );
       paging.style.display = visibleCards.length === 0 ? "none" : "";
     }
+  };
+
+  searchButton.addEventListener("click", function () {
+    runSearch();
+  });
+
+  searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      runSearch();
+    }
   });
 }
 
+// fetch-content-article
 document.addEventListener("DOMContentLoaded", function () {
   const fetchContentArticle = document.querySelector(".fetch-content-article");
   const buttons = document.querySelectorAll(".article-fetch-btn");
@@ -272,12 +285,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function highlightSelected(activeBtn) {
     buttons.forEach((btn) => {
+      btn.classList.remove("is-active");
       btn.style.backgroundColor = "";
       btn.style.color = "";
       btn.style.borderColor = "";
     });
 
     if (activeBtn) {
+      activeBtn.classList.add("is-active");
       activeBtn.style.backgroundColor = "var(--primary-900)";
       activeBtn.style.color = "#FFFFFF";
       activeBtn.style.borderColor = "var(--primary-900)";
@@ -285,66 +300,72 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   async function fetchArticleContent(catid) {
-    if (currentCatid === catid && articleCache[catid]) {
-      return;
-    }
-
-    currentCatid = catid;
-
     if (articleCache[catid]) {
+      currentCatid = catid;
       fetchContentArticle.innerHTML = articleCache[catid];
-
-      if (typeof applyImageFallbacks === "function") {
-        applyImageFallbacks(fetchContentArticle);
+  
+      if (!fetchContentArticle.style.minHeight) {
+        fetchContentArticle.style.minHeight =
+          fetchContentArticle.offsetHeight + "px";
       }
-
+  
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
       }
-
+  
       return;
     }
-
-    fetchContentArticle.innerHTML = `
-      <div class="w-full flex justify-center mt-10">
+  
+    currentCatid = catid;
+  
+    const loaderHTML = `
+      <div class="w-full h-full flex items-center justify-center">
         <span class="fetch-loader"></span>
       </div>
     `;
-
+  
+    const loaderTimeout = setTimeout(() => {
+      fetchContentArticle.innerHTML = loaderHTML;
+    }, 200);
+  
     try {
-      const response = await fetch(`/article-load-items.bc?catid=${catid}`);
+      const response = await fetch(
+        `/load-items.bc?fetch=article&catid=${encodeURIComponent(catid)}`
+      );
+      
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
+  
       const data = await response.text();
-
+  
+      clearTimeout(loaderTimeout);
       articleCache[catid] = data;
       fetchContentArticle.innerHTML = data;
-
-      if (typeof applyImageFallbacks === "function") {
-        applyImageFallbacks(fetchContentArticle);
+  
+      if (!fetchContentArticle.style.minHeight) {
+        fetchContentArticle.style.minHeight =
+          fetchContentArticle.offsetHeight + "px";
       }
-
+  
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
       }
     } catch (error) {
+      clearTimeout(loaderTimeout);
       fetchContentArticle.innerHTML =
         "<p>Error loading data: " + error.message + "</p>";
     }
   }
 
-  const hardcodedDefaultCatid = "215683"; 
-  let defaultBtn =
-    Array.from(buttons).find(
-      (btn) => btn.dataset.id === hardcodedDefaultCatid
-    ) || buttons[0];
+  const defaultBtn = buttons[0];
 
   if (defaultBtn) {
     const defaultCatid = defaultBtn.dataset.id;
     highlightSelected(defaultBtn);
-    fetchArticleContent(defaultCatid);
+    if (defaultCatid) {
+      fetchArticleContent(defaultCatid);
+    }
   }
 
   buttons.forEach((btn) => {
@@ -358,38 +379,177 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+
 // paging 
-const fetchArticlePage = async (pageNum) => {
+const getSelectedCatId = () => {
+  let activeBtn = document.querySelector(".article-fetch-btn.is-active");
+  if (!activeBtn) {
+    activeBtn = document.querySelector(".article-fetch-btn");
+  }
+  return activeBtn ? activeBtn.dataset.id : null;
+};
+
+const fetchArticlePage = async (dataPageNum) => {
   const fetchContentArticle = document.querySelector(".fetch-content-article");
   if (!fetchContentArticle) return;
 
-  const catId = fetchContentArticle.dataset.catid;
-  if (!catId) return;
+  const cmsQuery = getSelectedCatId();
+  if (!cmsQuery) return;
 
-  fetchContentArticle.innerHTML = `
-    <div class="w-full flex justify-center mt-10">
+  const loaderHTML = `
+    <div class="w-full h-full flex items-center justify-center">
       <span class="fetch-loader"></span>
     </div>
   `;
 
+  const loaderTimeout = setTimeout(() => {
+    fetchContentArticle.innerHTML = loaderHTML;
+  }, 200);
+
   try {
-    const response = await fetch(`/article-load-items.bc?catid=${catId}&pagenum=${pageNum}`);
-    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-
-    const data = await response.text();
-    fetchContentArticle.innerHTML = data;
-
-    if (typeof applyImageFallbacks === "function") {
-      applyImageFallbacks(fetchContentArticle);
+    const pagingResponse = await fetch(
+      `/load-items.bc?fetch=article&catid=${encodeURIComponent(
+        cmsQuery
+      )}&pagenum=${dataPageNum}`
+    );
+    
+    if (!pagingResponse.ok) {
+      throw new Error(`HTTP error! Status: ${pagingResponse.status}`);
     }
+
+    const pagingData = await pagingResponse.text();
+
+    clearTimeout(loaderTimeout);
+    fetchContentArticle.innerHTML = pagingData;
+
+    if (!fetchContentArticle.style.minHeight) {
+      fetchContentArticle.style.minHeight =
+        fetchContentArticle.offsetHeight + "px";
+    }
+
     if (typeof setupArticleSearch === "function") {
       setupArticleSearch();
     }
-
-  } catch (err) {
-    fetchContentArticle.innerHTML = `<p>Error: ${err.message}</p>`;
+  } catch (error) {
+    clearTimeout(loaderTimeout);
+    fetchContentArticle.innerHTML =
+      "<p>Error loading data: " + error.message + "</p>";
   }
 };
+
+//fetch-content-faq
+document.addEventListener("DOMContentLoaded", function () {
+  const faqContainer = document.querySelector(".fetch-content-faq");
+  const faqButtons = document.querySelectorAll(".faq-fetch-btn");
+
+  if (!faqContainer || faqButtons.length === 0) return;
+
+  const faqCache = {};
+  let currentFaqId = null;
+
+  function highlightSelectedFaq(activeBtn) {
+    faqButtons.forEach((btn) => {
+      btn.classList.remove("is-active");
+      btn.style.backgroundColor = "";
+      btn.style.color = "";
+      btn.style.borderColor = "";
+    });
+
+    if (activeBtn) {
+      btn = activeBtn;
+      btn.classList.add("is-active");
+      btn.style.backgroundColor = "var(--primary-900)";
+      btn.style.color = "#FFFFFF";
+      btn.style.borderColor = "var(--primary-900)";
+    }
+  }
+
+  async function fetchFaqContent(id) {
+    if (faqCache[id]) {
+      currentFaqId = id;
+      faqContainer.innerHTML = faqCache[id];
+      return;
+    }
+
+    currentFaqId = id;
+
+    const loaderHTML = `
+      <div class="w-full h-full flex items-center justify-center">
+        <span class="fetch-loader"></span>
+      </div>
+    `;
+
+    const loaderTimeout = setTimeout(() => {
+      faqContainer.innerHTML = loaderHTML;
+    }, 200);
+
+    try {
+      const response = await fetch(
+        `/load-items.bc?fetch=faq&id=${encodeURIComponent(id)}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.text();
+
+      clearTimeout(loaderTimeout);
+      faqCache[id] = data;
+      faqContainer.innerHTML = data;
+    } catch (error) {
+      clearTimeout(loaderTimeout);
+      faqContainer.innerHTML =
+        "<p>Error loading data: " + error.message + "</p>";
+    }
+  }
+
+  const defaultFaqBtn = faqButtons[0];
+
+  if (defaultFaqBtn) {
+    const defaultId = defaultFaqBtn.dataset.id;
+    highlightSelectedFaq(defaultFaqBtn);
+    if (defaultId) {
+      fetchFaqContent(defaultId);
+    }
+  }
+
+  faqButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const id = this.dataset.id;
+      if (!id) return;
+
+      highlightSelectedFaq(this);
+      fetchFaqContent(id);
+    });
+  });
+});
+
+//-------dont repeat breadcrumb-----
+document.addEventListener('DOMContentLoaded', function () {
+  const breadcrumbContainer = document.querySelector('.breadcrumb')
+  if (!breadcrumbContainer) return
+
+  const items = breadcrumbContainer.querySelectorAll('li')
+  if (!items || items.length === 0) return
+
+  const uniqueLinks = new Map()
+
+  items.forEach((li) => {
+    if (!li) return
+
+    const link = li.querySelector('a')
+    if (!link) return
+
+    const text = link.textContent.trim()
+    if (!text) return
+
+    if (!uniqueLinks.has(text)) {
+      uniqueLinks.set(text, li)
+    } else {
+      li.remove()
+    }
+  })
+})
 
 // footer-form
 function uploadDocumentFooter(args) {
@@ -445,4 +605,89 @@ async function RenderFormFooter() {
     " .footer-email input[data-bc-text-input]"
   );
   inputElementVisa7.setAttribute("placeholder", "Email");
+}
+
+// about-form
+function uploadDocumentAbout(args) {
+  document.querySelector("#about-form .Loading_Form").style.display = "block";
+  const captcha = document
+    .querySelector("#about-form")
+    .querySelector("#captchaContainer input[name='captcha']").value;
+  const captchaid = document
+    .querySelector("#about-form")
+    .querySelector("#captchaContainer input[name='captchaid']").value;
+  const stringJson = JSON.stringify(args.source?.rows[0]);
+  $bc.setSource("cms.uploadAbout", {
+    value: stringJson,
+    captcha: captcha,
+    captchaid: captchaid,
+    run: true,
+  });
+}
+
+function refreshCaptchaAbout(e) {
+  $bc.setSource("captcha.refreshAbout", true);
+}
+
+async function OnProcessedEditObjectAbout(args) {
+  var response = args.response;
+  var json = await response.json();
+  var errorid = json.errorid;
+  if (errorid == "6") {
+    document.querySelector("#about-form .Loading_Form").style.display = "none";
+    document.querySelector("#about-form .message-api").innerHTML =
+      "Your request has been successfully submitted.";
+    document.querySelector("#about-form .message-api").style.color =
+      "rgb(10 240 10)";
+  } else {
+    refreshCaptchaAbout();
+    setTimeout(() => {
+      document.querySelector("#about-form .Loading_Form").style.display =
+        "none";
+      document.querySelector("#about-form .message-api").innerHTML =
+        "An error occurred, please try again.";
+      document.querySelector("#about-form .message-api").style.color =
+        "rgb(220 38 38)";
+    }, 2000);
+  }
+}
+
+async function RenderFormAbout() {
+  var inputElementVisa7 = document.querySelector(
+    " .contact-company-name input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "Company Name");
+  var inputElementVisa7 = document.querySelector(
+    " .contact-number-phone input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "Number Phone");
+  var inputElementVisa7 = document.querySelector(
+    " .contact-address input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "Address");
+  var inputElementVisa7 = document.querySelector(
+    " .contact-phone input[data-bc-text-input]"
+  );
+  inputElementVisa7.setAttribute("placeholder", "Phone");
+}
+
+if (document.querySelector('.swiper-comment')) {
+var swiperComment = new Swiper(".swiper-comment", {
+    slidesPerView: 1.3,
+    speed: 400,
+    centeredSlides: false,
+    spaceBetween: 24,
+    grabCursor: true,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    loop: true,
+    breakpoints: {
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+        },
+    },
+});
 }

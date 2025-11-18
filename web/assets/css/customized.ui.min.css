@@ -1045,7 +1045,7 @@ body {
 .footer-form [data-bc-answer-container] input[type="text"] {
   background-color: var(--primary-900) !important;
   color: #ffffff !important;
-  height: 50px !important;
+  height: 55px !important;
   padding: 16px 24px !important;
   font-weight: 400 !important;
   outline: none !important;
@@ -1062,6 +1062,9 @@ body {
 }
 .footer-form [data-bc-answer-container] {
   width: 100% !important;
+}
+.footer-form [data-bc-question] {
+  margin-bottom: 0 !important;
 }
 .footer-form [data-bc-schema-column] {
   display: flex;

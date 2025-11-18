@@ -1,0 +1,457 @@
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="2389915">
+    <member name="about-us" type="view" propertyid="7249" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218756">
+    <member name="services" type="list" link="article.bc" propertyid="7244" perpage="5" order="ord" size="" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="services-description">
+    <member name="cat" type="tree" request="cat" parentid="218756" order="ord"
+        postsql="select * from [services-description.cat] where catid in(218756)"></member>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="2389963">
+    <member name="our-vision" type="view" propertyid="" />
+</basis>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Ajnihat Alkhalij Travel Agency)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" />
+</head>
+
+<body>
+    <div class="relative bg-contact bg-center bg-cover pt-10 pb-16">
+        <div class="bg-articleList-back-gradient absolute inset-0 w-full h-full"></div>
+        <basis core="call" file="header.inc" lid="2" />
+        <div class="relative z-10 mx-auto max-xl:w-[97%] xl:max-w-7xl mt-[368px]">
+            <h1 class="font-bold text-5xl text-white text-center mb-4">Learn More About Us</h1>
+            <div class="text-white text-specialcolor-1 text-2xl text-center">Home / blog</div>
+        </div>
+    </div>
+    <main>
+        <basis core="print" datamembername="db.about-us">
+            <layout>
+                <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-14">
+                    @child
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h2 class="text-gradient text-5xl font-bold text-center mb-2">@text</h2>
+            </face>
+            <face filter="TypeID in(129)">
+                <div class="text-zinc-600 text-sm text-center">@largetext</div>
+            </face>
+            <face filter="TypeID in(250)">
+                <h2 class="text-gradient text-xl font-bold text-center mb-2">@text</h2>
+                <div class="text-zinc-600 mt-7 leading-7 text-center">
+                    @largetext
+                </div>
+            </face>
+        </basis>
+
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
+            <basis core="list" datamembername="services-description.cat">
+                <face>
+                    <h2 class="text-gradient text-5xl font-bold text-center mb-2">@urltitle</h2>
+                    <p class="text-zinc-600 text-sm text-center">@urldescription
+                    </p>
+                </face>
+            </basis>
+            <basis core="list" datamembername="db.services">
+                <layout>
+                    <div class="grid grid-cols-3 gap-6 mt-12">
+                        @child
+                        <div class="px-14 py-10">
+                            <a href="/travel-magazine"
+                                class="group flex items-center gap-2 mt-4 transition-all duration-300">
+                                <span
+                                    class="text-2xl font-medium
+                                         text-primary-950 transition-all duration-300 group-hover:text-specialcolor-1">View
+                                    more</span>
+                                <button>
+                                    <svg width="55" height="55" class="text-specialcolor-1">
+                                        <use href="/images/sprite-icons.svg#icon-chevron-right-big"></use>
+                                    </svg>
+                                </button>
+                            </a>
+                            <div>
+                                <h2 class="font-bold text-5xl text-specialcolor-1 mb-2">services</h2>
+                                <div class="text-zinc-700 text-sm">Let's get in touch with our services
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </layout>
+                <face filter="ord in(1)">
+                    <a href="/@link" class="group block">
+                        <div
+                            class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                            <svg width="48" height="48" class="text-white hit-spin">
+                                <use href="/images/sprite-icons.svg#icon-3person"></use>
+                            </svg>
+                        </div>
+                        <div
+                            class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                                <use href="/images/sprite-icons.svg#icon-3person"></use>
+                            </svg>
+                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">
+                                @title
+                            </h2>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">@prp_7244</div>
+                            <button class="mt-2">
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </a>
+                </face>
+                <face filter="ord in(2)">
+                    <a href="/@link" class="group block">
+                        <div
+                            class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                            <svg width="48" height="48" class="text-white hit-spin">
+                                <use href="/images/sprite-icons.svg#icon-blade"></use>
+                            </svg>
+                        </div>
+                        <div
+                            class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                                <use href="/images/sprite-icons.svg#icon-blade"></use>
+                            </svg>
+                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title</h2>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <button class="mt-2">
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </a>
+                </face>
+                <face filter="ord in(3)">
+                    <a href="/@link" class="group block">
+                        <div
+                            class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                            <svg width="48" height="48" class="text-white hit-spin">
+                                <use href="/images/sprite-icons.svg#icon-card"></use>
+                            </svg>
+                        </div>
+                        <div
+                            class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                                <use href="/images/sprite-icons.svg#icon-card"></use>
+                            </svg>
+                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
+                            </h2>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <button class="mt-2">
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </a>
+                </face>
+                <face filter="ord in(4)">
+                    <a href="/@link" class="group block">
+                        <div
+                            class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                            <svg width="48" height="48" class="text-white hit-spin">
+                                <use href="/images/sprite-icons.svg#icon-diamond"></use>
+                            </svg>
+                        </div>
+                        <div
+                            class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                                <use href="/images/sprite-icons.svg#icon-diamond"></use>
+                            </svg>
+                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
+                            </h2>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <button class="mt-2">
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </a>
+                </face>
+                <face filter="ord in(5)">
+
+                    <a href="/@link" class="group block">
+                        <div
+                            class="relative z-10 w-24 h-24 flex items-center justify-center bg-primary-900 rounded-full ml-8 hit-move">
+                            <svg width="48" height="48" class="text-white hit-spin">
+                                <use href="/images/sprite-icons.svg#icon-ticket"></use>
+                            </svg>
+                        </div>
+                        <div
+                            class="relative bg-specialcolor-2 rounded-3xl pl-8 pr-14 pb-2 pt-14 -mt-12 transition-all duration-300 group-hover:shadow-xl">
+                            <svg width="82" height="82" class="absolute right-7 text-zinc-200">
+                                <use href="/images/sprite-icons.svg#icon-ticket"></use>
+                            </svg>
+                            <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
+                            </h2>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <button class="mt-2">
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </a>
+                </face>
+            </basis>
+        </section>
+        <div class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
+            <div class="">
+                <h2 class="text-gradient text-5xl font-bold text-center mb-2">Reach Out to Us</h2>
+                <p class="text-zinc-600 text-sm text-center">Let's get in touch with us
+                </p>
+            </div>
+            <div class="flex gap-16 mt-12">
+                <section class="flex-[1.1]">
+                    <h2 class="text-specialcolor-1 text-2xl font-bold">Get in Touch with Us</h2>
+                    <p class="text-sm text-zinc-500">Stay in touch with us for the latest tourism news.
+                    </p>
+                    <div class="flex flex-col mx-auto about-form mt-6" id="about-form-resize">
+
+                        <basis core="schema" run="atclient"
+                            schemaurl="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/7E28AA71-0F60-4DCC-9681-9456402B1FC4/en/Get-in-Touch-With-Us"
+                            displaymode="new" button="[data-btn-uploadabout]" resultsourceid="upload.dataabout"
+                            OnRendered="RenderFormAbout"></basis>
+                        <basis core="api" if="{##cms.uploadAbout.run|(false)##}" run="atclient"
+                            url="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/en/editobject" method="post"
+                            body="object_edit={##cms.uploadAbout.value##}&captcha={##cms.uploadAbout.captcha##}&captchaid={##cms.uploadAbout.captchaid##}"
+                            content-type="application/x-www-form-urlencoded" triggers='cms.uploadAbout'
+                            OnProcessed="OnProcessedEditObjectAbout"></basis>
+                        <basis core="callback" run="atclient" method="uploadDocumentAbout"
+                            triggers="upload.dataabout">
+                        </basis>
+
+                        <div class="flex gap-2 items-center captcha-button mt-2">
+                            <div id="captchaContainer"
+                                class="captchaContainerclass captcha-sefaresh flex items-center max-xl:ml-0 max-xl:mb-[20px]"
+                                data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                                data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                                <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                                    triggers="captcha.refreshAbout">
+                                    <member name="code-about" type="scalar" request="captcha"></member>
+                                </basis>
+                                <basis datamembername="captcha.code-about" core="print" run="atclient">
+                                    <face>
+                                        <script type="text/template"><div><div class="flex gap-2">
+                        
+                                            <div class="float-right"><input type="text" class="contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="Security Code"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                            <div class="shrink-0 flex items-center gap-2">
+                                                <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-16" />
+                                                <div onclick="refreshCaptchaAbout()" class="flex items-center justify-center bg-specialcolor-2 rounded-full w-14 h-14">
+                                                    <svg width="48" height="48" class="text-zinc-900 cursor-pointer">
+                                                        <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                                    </svg>
+                                                </div>
+                                            
+                                            </div>
+                                            
+                                        </div></div></script>
+                                    </face>
+                                </basis>
+                            </div>
+                            <button
+                                class="shrink-0 w-24 px-4 text-white transition-all duration-300 data-body-btn h-14 bg-specialcolor-1 rounded-full hover:bg-primary-900 hover:text-white"
+                                type="button" data-btn-uploadabout><span class="">Send</span></button>
+                        </div>
+                        <div
+                            class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5">
+                            <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                                <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                                <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center message-api"></div>
+                    </div>
+                </section>
+                <section class="flex-[1.1]">
+                    <div>
+                        <h2 class="text-specialcolor-1 text-2xl font-bold mb-1">Contact Us</h2>
+                        <p class="text-zinc-500 text-sm">
+                            Stay in touch with us
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-10">
+                        <basis core="print" datamembername="db.info">
+                            <face filter="TypeID in(244)">
+                                <div>
+                                    <h2 class="text-specialcolor-1 font-bold mb-1">Address</h2>
+                                    <div class="text-sm text-primary-950">@largetext</div>
+                                </div>
+                            </face>
+                        </basis>
+
+                        <basis core="print" datamembername="db.info">
+                            <layout>
+                                <div>
+                                    <h2 class="text-specialcolor-1 font-bold mb-1">Contact Us</h2>
+                                    <div>
+                                        @child
+                                    </div>
+                                </div>
+                            </layout>
+                            <face filter="TypeID in(240)">
+                                <a href="tel:@text"
+                                    class="relative group text-sm text-primary-950 transition-all duration-300 hover:text-specialcolor-1">@text
+                                    <span
+                                        class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                        </basis>
+
+                        <basis core="print" datamembername="db.info">
+                            <layout>
+                                <div>
+                                    <h2 class="text-specialcolor-1 font-bold mb-1">Email</h2>
+                                    <div>
+                                        @child
+                                    </div>
+                                </div>
+                            </layout>
+                            <face filter="TypeID in(242)">
+                                <a href="mailto:@text"
+                                    class="relative group text-sm text-primary-950 transition-all duration-300 hover:text-specialcolor-1">@text
+                                    <span
+                                        class="absolute -bottom-px left-0 w-0 transition-all duration-300 h-px bg-specialcolor-1 group-hover:w-full"></span>
+                                </a>
+                            </face>
+                        </basis>
+
+                    </div>
+                    <div class="w-full mt-10">
+                        <h2 class="font-bold text-specialcolor-1 mb-4">Follow me</h2>
+                        <basis core="print" datamembername="db.info">
+                            <layout>
+                                <ul class="flex items-center gap-3">
+                                    @child
+                                </ul>
+                            </layout>
+                            <face filter="TypeID in(245) and text in('Telegram')">
+                                <li
+                                    class="group flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full transition-all duration-300 hover:bg-specialcolor-1">
+                                    <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                        rel="noopener noreferrer" aria-label="telegram">
+                                        <svg width="26" height="26"
+                                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                                            <use href="/images/sprite-icons.svg#icon-telegram"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="TypeID in(245) and text in('Linkedin')">
+                                <li
+                                    class="group flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full transition-all duration-300 hover:bg-specialcolor-1">
+                                    <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                        rel="noopener noreferrer" aria-label="linkedin">
+                                        <svg width="26" height="26"
+                                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                                            <use href="/images/sprite-icons.svg#icon-linkedin"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="TypeID in(245) and text in('Twitter')">
+                                <li
+                                    class="group flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full transition-all duration-300 hover:bg-specialcolor-1">
+                                    <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                        rel="noopener noreferrer" aria-label="twitter">
+                                        <svg width="26" height="26"
+                                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                                            <use href="/images/sprite-icons.svg#icon-twitter"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                            <face filter="TypeID in(245) and text in('Instagram')">
+                                <li
+                                    class="group flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full transition-all duration-300 hover:bg-specialcolor-1">
+                                    <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                        rel="noopener noreferrer" aria-label="instagram">
+                                        <svg width="26" height="26"
+                                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
+                                            <use href="/images/sprite-icons.svg#icon-instagram"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </face>
+                        </basis>
+                    </div>
+                </section>
+                <section class="flex flex-col flex-1">
+                    <div>
+                        <h2 class="text-specialcolor-1 text-2xl font-bold mb-1">Find us on the map</h2>
+                        <p class="text-sm text-zinc-500 mb-8">Where are we?
+                        </p>
+                    </div>
+                    <basis core="print" datamembername="db.info">
+                        <face filter="prpID=91462">
+                            <iframe defer title="gato-location" class="w-full h-full object-cover rounded-3xl"
+                                width="360" height="304" loading="lazy" target="_blank" allowfullscreen
+                                src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed">
+                            </iframe>
+                        </face>
+                    </basis>
+                </section>
+            </div>
+        </div>
+        <basis core="print" datamembername="db.our-vision">
+            <layout>
+                <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
+                    @child
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h2 class="text-gradient text-5xl font-bold text-center mb-2">@text</h2>
+            </face>
+            <face filter="TypeID in(129)">
+                <div class="text-zinc-600 text-sm text-center">@largetext</div>
+            </face>
+            <face filter="TypeID in(250)">
+                <h2 class="text-gradient text-xl font-bold text-center mb-2">@text</h2>
+                <div class="text-zinc-600 leading-7 text-center mt-7">
+                    @largetext
+                </div>
+            </face>
+        </basis>
+
+    </main>
+    <basis core="call" file="footer.inc" lid="2" />
+</body>
+
+</html>

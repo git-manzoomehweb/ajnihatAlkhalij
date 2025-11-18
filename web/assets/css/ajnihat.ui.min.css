@@ -265,6 +265,10 @@
     display: none;
 }
 
+.min-h-\[585px\] {
+    min-height: 585px;
+}
+
 .h-12 {
     height: 3rem;
 }
@@ -410,6 +414,10 @@
     flex: 1.1;
 }
 
+.flex-\[2\.1\] {
+    flex: 2.1;
+}
+
 .shrink-0 {
     flex-shrink: 0;
 }
@@ -435,6 +443,10 @@
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .grid-cols-3 {
@@ -1018,6 +1030,40 @@
     animation: hit-move 1.5s ease-in-out forwards;
 }
 
+.fetch-loader {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 4px solid #FFF;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+.fetch-loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border-bottom: 4px solid var(--special-1);
+    border-left: 4px solid transparent;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .hover\:rounded-lg:hover {
     border-radius: 0.5rem;
 }
@@ -1233,7 +1279,9 @@
 .reserve-field.destination-route p,
 .reserve-field.departure-date p,
 .reserve-field.return-date p,
-.label-flightclass>svg:first-of-type {
+.label-flightclass>svg:first-of-type,
+.second-room-type,
+.deleteRoom {
     display: none !important;
 }
 
@@ -1258,6 +1306,11 @@
     align-items: center;
     gap: 18px;
     flex: 1.3;
+}
+
+#hotelSearch .reserve-field.departure-route{
+    flex: 3.3;
+    border-right: 1px solid #D4D4D8;
 }
 
 .reserve-field.departure-route .click-content,
@@ -1288,6 +1341,10 @@
     right: 192px;
 }
 
+#flightHotelSearch .reserve-field.flightclass-field{
+    right: 0;
+}
+
 .reserve-field.flightclass-field div:first-of-type {
     display: flex;
     align-items: center;
@@ -1296,13 +1353,26 @@
     gap: 12px;
 }
 
-.flighttype-items {
-    background-color: #fff3e0;
-    border-radius: 8px;
+.flighttype-items,
+.FlightClass.hidden-box {
+    border: 1px solid var(--primary-100) !important;
+    border-radius: 8px !important;
     padding: 8px;
     margin-bottom: 30px !important;
     top: 100%;
     left: 0;
+}
+
+.FlightClass.hidden-box li,
+.flighttype-items li {
+    line-height: 2rem;
+    font-size: 1rem;
+    text-align: center !important;
+    display: block;
+    margin: 4px 0;
+    border: unset;
+    padding: 2px 6px;
+    transition: all 300ms ease;
 }
 
 .flighttype-dropDown-text {
@@ -1329,20 +1399,26 @@
 .active-FlightClass {
     border-radius: 8px !important;
     background-color: var(--special-1) !important;
+    color: white;
     transition: all 300ms ease;
 }
 
-#oneway:hover,
-#backtoback:hover,
-#multi:hover,
+.flighttype-items li:hover,
 .FlightClass.hidden-box li:hover {
     background-color: var(--special-1);
+    color: white !important;
     border-radius: 8px !important;
 }
 
-.label-routes,
-.label-dates,
-.label-passengers {
+
+.flighttype-items li:hover span,
+.FlightClass.hidden-box li:hover label {
+    color: white !important;
+}
+
+.label-routes .label-text,
+.label-dates .label-text,
+.label-passengers .label-text {
     display: flex;
     color: var(--primary-950);
     font-size: 14px !important;
@@ -1487,7 +1563,19 @@
     position: unset !important;
 }
 
+.exchangeRoute:hover{
+    background-color: transparent;
+}
+
 .reserve-field.CheckHotelDate {
+    float: unset !important;
+}
+
+.createChildDropdown .select-age {
+    border: 1px solid var(--primary-400);
+    border-radius: 8px;
+    outline: none;
+    height: 40px !important;
     float: unset !important;
 }
 
@@ -1515,6 +1603,12 @@
     margin-bottom: 24px !important;
     font-weight: bold;
     color: var(--primary-400) !important;
+}
+
+.route-container {
+    display: grid;
+    column-gap: 6rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .route-content {
@@ -1562,8 +1656,7 @@
     width: 100% !important;
     font-size: 14px !important;
     font-weight: 500;
-    transition: all 300ms 
-ease;
+    transition: all 300ms ease;
 }
 
 .passenger-item.child-passenger-item ul,
@@ -1609,4 +1702,62 @@ ease;
 
 .reserve-search button svg {
     display: none;
+}
+
+
+
+.about-form [data-bc-schema-direction="rtl"] [data-bc-title-container] [data-bc-question-title] {
+    display: none !important;
+}
+
+.about-form [data-bc-answer-container] input[type="text"] {
+    background-color: var(--special-2) !important;
+    color: #000 !important;
+    height: 55px !important;
+    padding: 16px 24px !important;
+    font-weight: 400 !important;
+    outline: none !important;
+    border-radius: 50px !important;
+    border: none !important;
+    font-size: 16px !important;
+    direction: ltr !important;
+}
+
+.about-form [data-bc-schema-direction="rtl"] [data-bc-part-container] {
+    width: 100%;
+}
+
+.about-form [data-bc-answer-container] input[type="text"]::placeholder {
+    color: var(--primary-300) !important;
+}
+
+.about-form [data-bc-answer-container] {
+    width: 100% !important;
+}
+
+.about-form [data-bc-question] {
+    margin-bottom: 0 !important;
+}
+
+.about-form [data-bc-schema-column] {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.about-form [data-bc-schema-info-part="1"] [data-bc-part-related-cell] {
+    width: 100% !important;
+}
+
+.about-form [data-bc-section] {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.about-form [data-bc-part] {
+    margin-bottom: 0 !important;
+}
+
+.about-form [data-bc-validation-part] {
+    direction: ltr;
 }

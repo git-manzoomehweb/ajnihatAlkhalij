@@ -1,13 +1,29 @@
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218868">
+    <member name="banners" type="list" link="article.bc" propertyid="7244,7249" perpage="2" size="" order="ord" />
+</basis>
 <basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218756">
-    <member name="services" type="list" link="tour.bc" propertyid="7244" perpage="5" order="ord" size="" />
+    <member name="services" type="list" link="article.bc" propertyid="7244" perpage="5" order="ord" size="" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="services-description">
+    <member name="cat" type="tree" request="cat" parentid="218756" order="ord"
+        postsql="select * from [services-description.cat] where catid in(218756)"></member>
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218758">
+    <member name="faq-list" type="list" link="article.bc" propertyid="" perpage="8" order="ord" />
+</basis>
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="faq-description">
+    <member name="cat" type="tree" request="cat" parentid="218758" order="ord"
+        postsql="select * from [faq-description.cat] where catid in(218758)"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="218757">
     <member name="travel-magazine" type="list" link="tour.bc" propertyid="7244,7249" perpage="3" order="ord"
         size="410x276" />
 </basis>
-<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.aid##]">
-    <member name="p-under" type="view" propertyid="7249" />
+<basis core="dbsource" source="basiscore" lid="2" mid="1" name="magazine-description">
+    <member name="cat" type="tree" request="cat" parentid="218757" order="ord"
+        postsql="select * from [magazine-description.cat] where catid in(218757)"></member>
 </basis>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -27,7 +43,8 @@
     <meta property="og:url" content="[##cms.request.:scheme##]://[##cms.request.full-url##]">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ajnihat Alkhalij Travel Agency">
-    <meta property="og:image" content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
+    <meta property="og:image"
+        content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
     <meta property="og:image:alt" content="Ajnihat Alkhalij Travel Agency Logo">
     <meta property="og:description"
         content="If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency">
@@ -37,7 +54,8 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content=" ">
     <meta name="twitter:creator" content="Ajnihat Alkhalij Travel Agency">
-    <meta name="twitter:image" content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
+    <meta name="twitter:image"
+        content="[##cms.request.:scheme##]://[##cms.request.full-url##]/images/custom_image_1200x630.png">
     <meta name="twitter:title" content=" ">
     <meta name="twitter:description" content=" ">
     <meta property="seo:robots" content="index, follow" />
@@ -49,7 +67,7 @@
     <!-- define -->
     <link rel="preload" as="image" imageSrcSet="image address" fetchpriority="high" />
     <!-- common styles for all page -->
-    <basis core="call" file="style.inc" lid="2"/>
+    <basis core="call" file="style.inc" lid="2" />
 </head>
 
 <body>
@@ -85,28 +103,39 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-2 mt-20">
-                    <p class="text-primary-900 font-bold">You should start from here</p>
-                    <button class="bg-specialcolor-1 text-white rounded-full w-44 h-12">
-                        Get Start
-                    </button>
-                </div>
+                <basis core="list" datamembername="db.banners">
+                    <face filter="ord in(1)">
+                        <div class="flex items-center gap-2 mt-20">
+                            <h2 class="text-primary-900 font-bold">@title</h2>
+                            <a href="/@link"
+                                class="flex items-center justify-center bg-specialcolor-1 text-white rounded-full w-44 h-12">
+                                Get Start
+                            </a>
+                        </div>
+                    </face>
+                </basis>
+
             </div>
         </div>
 
     </div>
     <main>
         <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
-            <h2 class="text-gradient text-5xl font-bold text-center mb-2">Our services for customers</h2>
-            <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod
-                tempor incididunt </p>
+            <basis core="list" datamembername="services-description.cat">
+                <face>
+                    <h2 class="text-gradient text-5xl font-bold text-center mb-2">@urltitle</h2>
+                    <p class="text-zinc-600 text-sm text-center">@urldescription
+                    </p>
+                </face>
+            </basis>
+
             <basis core="list" datamembername="db.services">
                 <layout>
                     <div class="grid grid-cols-3 gap-6 mt-12">
                         @child
                         <div class="px-14 py-10">
-                            <a href="/travel-magazine" class="group flex items-center gap-2 mt-4 transition-all duration-300">
+                            <a href="/travel-magazine"
+                                class="group flex items-center gap-2 mt-4 transition-all duration-300">
                                 <span
                                     class="text-2xl font-medium
                                          text-primary-950 transition-all duration-300 group-hover:text-specialcolor-1">View
@@ -119,8 +148,8 @@
                             </a>
                             <div>
                                 <h2 class="font-bold text-5xl text-specialcolor-1 mb-2">services</h2>
-                                <div class="text-zinc-700 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                    elit</div>
+                                <div class="text-zinc-700 text-sm">Let's get in touch with our services
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,7 +193,7 @@
                                 <use href="/images/sprite-icons.svg#icon-blade"></use>
                             </svg>
                             <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title</h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">@prp_7244</div>
                             <button class="mt-2">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -188,7 +217,7 @@
                             </svg>
                             <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
                             </h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">@prp_7244</div>
                             <button class="mt-2">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -212,7 +241,7 @@
                             </svg>
                             <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
                             </h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">@prp_7244</div>
                             <button class="mt-2">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -237,7 +266,7 @@
                             </svg>
                             <h2 class="relative z-10 text-primary-950 font-bold mb-1">@title
                             </h2>
-                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
+                            <div class="relative z-10 text-sm text-zinc-700 line-clamp-2">@prp_7244</div>
                             <button class="mt-2">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -248,111 +277,68 @@
                 </face>
             </basis>
         </section>
-        <section
-            class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
-            <img src="[##cms.cms.cdn##]/images/dubai-beach.jpg" class="w-full h-[270px] object-cover" alt=""
-                width="1280" height="270" loading="lazy">
-            <div class="absolute z-10 left-20 top-1/2 -translate-y-1/2">
-                <h2 class="w-[90%] text-5xl font-bold text-white mb-2">Experience the best services with us</h2>
-                <a href=""
-                    class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-900 hover:bg-primary-900">View
-                    more
-                    <svg width="48" height="48">
-                        <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
-                    </svg>
-                </a>
-            </div>
-            <div class="bg-blue-gradient-pc absolute inset-0 w-full h-full"></div>
-            <div class="article-blur absolute inset-0"></div>
-        </section>
-        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-28">
-            <h2 class="text-gradient text-5xl font-bold text-center mb-3">Your questions to us</h2>
-            <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod
-                tempor incididunt </p>
-            <ul class="flex items-center justify-center gap-3 mt-6">
-                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 text-xs">
-                    Servis
-                </li>
-                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 text-xs">
-                    Servis
-                </li>
-                <li class="border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 text-xs">
-                    Servis
-                </li>
-                <li
-                    class="border border-solid border-primary-900 text-white bg-primary-900 rounded-full py-3 px-10 text-xs">
-                    Servis</li>
-            </ul>
-            <div class="grid grid-cols-3 gap-6 mt-28">
-                <div class="bg-specialcolor-2 rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                            <svg width="40" height="40">
-                                <use href="/images/sprite-icons.svg#icon-flight-ticket"></use>
+        <basis core="list" datamembername="db.banners">
+            <face filter="ord in(2)">
+                <section
+                    class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
+                    <img src="[##cms.cms.cdn##]/images/banner-image.jpg" class="w-full h-[270px] object-cover"
+                        alt="@titlw" width="1280" height="270" loading="lazy">
+                    <div class="w-[90%] absolute z-10 left-20 top-1/2 -translate-y-1/2">
+                        <h2 class="text-5xl font-bold text-white mb-2">@title</h2>
+                        <a href="/@link"
+                            class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-primary-900 hover:bg-primary-900">View
+                            more
+                            <svg width="48" height="48">
+                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
                             </svg>
-                        </div>
-                        <span class="text-5xl text-primary-50 font-bold">1</span>
+                        </a>
                     </div>
-                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                </div>
-                <div class="relative bg-specialcolor-2 rounded-3xl h-[473px] row-span-2">
+                    <div class="bg-blue-gradient-pc absolute inset-0 w-full h-full"></div>
+                    <div class="article-blur absolute inset-0"></div>
+                </section>
+            </face>
+        </basis>
+
+        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-28">
+            <basis core="list" datamemebrname="faq-description.cat">
+                <face>
+                    <h2 class="text-gradient text-5xl font-bold text-center mb-3">@urltitle</h2>
+                    <p class="text-zinc-600 text-sm text-center">@urldescription</p>
+                </face>
+            </basis>
+
+            <basis core="list" datamembername="db.faq-list">
+                <layout>
+                    <ul class="flex items-center justify-center gap-3 mt-6">
+                        @child
+                    </ul>
+                </layout>
+                <face>
+                    <li data-id="@id"
+                        class="faq-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 cursor-pointer transition-all duration-300 hover:border-primary-900 hover:bg-primary-900 hover:text-white">
+                        @title
+                    </li>
+                </face>
+            </basis>
+            <div class="flex gap-6 mt-28">
+                <div class="flex-1 relative bg-specialcolor-2 rounded-3xl h-[473px]">
                     <img src="[##cms.cms.cdn##]/images/helpdesk.png"
-                        class="absolute bottom-0 w-full h-[553px] object-cover" alt="" width="412" height="553"
+                        class="absolute bottom-0 w-full h-[553px] object-cover" alt="helpdesk" width="412" height="553"
                         loading="lazy">
                 </div>
-                <div class="bg-specialcolor-2 rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                            <svg width="40" height="40">
-                                <use href="/images/sprite-icons.svg#icon-flight-ticket"></use>
-                            </svg>
-                        </div>
-                        <span class="text-5xl text-primary-50 font-bold">2</span>
-                    </div>
-                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                            <svg width="40" height="40">
-                                <use href="/images/sprite-icons.svg#icon-flight-ticket"></use>
-                            </svg>
-                        </div>
-                        <span class="text-5xl text-primary-50 font-bold">1</span>
-                    </div>
-                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
-                </div>
-                <div class="bg-specialcolor-2 rounded-3xl p-6">
-                    <div class="flex items-center justify-between mb-3">
-                        <div class="w-20 h-20 flex items-center justify-center bg-primary-900 rounded-full">
-                            <svg width="40" height="40">
-                                <use href="/images/sprite-icons.svg#icon-flight-ticket"></use>
-                            </svg>
-                        </div>
-                        <span class="text-5xl text-primary-50 font-bold">2</span>
-                    </div>
-                    <h2 class="text-primary-950 font-bold mb-1.5">Dynamic Pricing &amp; Commission Control</h2>
-                    <div class="text-sm text-zinc-700 line-clamp-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit, sed
-                        do eiusmod tempor incididunt ut </div>
+                <div class="fetch-content-faq flex-[2.1]">
+
                 </div>
             </div>
         </section>
         <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-28">
-            <h2 class="text-gradient text-5xl font-bold text-center mb-3">A travel magazine</h2>
-            <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod
-                tempor incididunt </p>
+            <basis core="list" datamembername="magazine-description.cat">
+                <face>
+                    <h2 class="text-gradient text-5xl font-bold text-center mb-3">@urltitle</h2>
+                    <p class="text-zinc-600 text-sm text-center">@urldescription</p>
+                </face>
+            </basis>
+
             <basis core="list" datamembername="db.travel-magazine">
                 <layout>
                     <div class="grid grid-cols-3 gap-6 mt-14">
@@ -382,7 +368,7 @@
                         </div>
                         <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
                             <h2 class="font-bold text-primary-900 mb-1">@title</h2>
-                            <div class="text-zinc-600 text-sm mb-3 line-clamp-4">
+                            <div class="text-zinc-600 text-sm mb-3 h-20 line-clamp-4">
                                 @prp_7244
                             </div>
                             <div class="flex items-center gap-1">
@@ -417,7 +403,7 @@
                         </div>
                         <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-6 pb-6 mt-4">
                             <h2 class="font-bold text-primary-900 mb-1">@title</h2>
-                            <div class="text-zinc-600 text-sm mb-3 line-clamp-4">
+                            <div class="text-zinc-600 text-sm mb-3 h-20 line-clamp-4">
                                 @prp_7244
                             </div>
                             <div class="flex items-center gap-1">
