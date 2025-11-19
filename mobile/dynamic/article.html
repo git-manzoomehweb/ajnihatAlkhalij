@@ -1,0 +1,458 @@
+<basis core="dbsource" source="basiscore" name="db" lid="2" mid="1" usedforid="[##cms.query.id##]">
+    <member request="json-ld" type="scalar" name="json" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.id##]">
+    <member name="view" type="view" propertyid="7249" />
+    <member name="related-article" type="list" blgid="222" link="article.bc" propertyid="7244,7248" perpage="3"
+        size="288x192" typeid="159" />
+</basis>
+<basis core="dbsource" source="media" lid="2" name="view" usedforid="[##cms.query.id##]" sourcemid="article">
+    <member type="list" name="gallery" format="4" order="ord"></member>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="2" mid="1" usedforid="[##cms.query.id##]">
+    <member name="navigation" type="tree" request="navigationcat" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="[##cms.query.adsid##]">
+    <member name="ads" type="view" propertyid="" />
+</basis>
+<basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
+    <member name="comment" type="list" order="ord" request="listcomment" />
+</basis>
+<basis core="dbsource" name="captcha" source="trust_login8">
+    <member name="code" type="scalar" request="captcha"></member>
+</basis>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Ajnihat Alkhalij Travel Agency)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+    <!-- common styles for all page -->
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/_css/swiper-bundle.min.css" />
+    <basis core="call" file="style.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+</head>
+
+<body>
+    <div class="bg-primary-950 pt-3 h-52">
+        <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+    </div>
+    <main>
+        <section class="mx-auto max-lg:w-[90%] -mt-24">
+            <basis core="print" datamembername="view.gallery">
+                <else-layout>
+                    <img src="[##cms.cms.cdn##]/images/article-hero.jpg"
+                        class="w-full h-48 object-cover mask-article-image" alt="banner" width="291" height="192"
+                        loading="lazy">
+                </else-layout>
+                <face filter="ord in(1)">
+                    <img src="[##cms.cms.cdn##]/@largeIMG" class="w-full h-48 object-cover mask-article-image"
+                        alt="@name" width="291" height="192" loading="lazy">
+                </face>
+            </basis>
+            <ul itemscope itemtype="https://schema.org/BreadcrumbList"
+                class="breadcrumb flex flex-wrap justify-center items-center gap-1 mt-4">
+                <li class="inline-block font-normal" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a class="flex items-center text-primary-200 text-xs transition-all duration-300 hover:text-primary-900"
+                        itemprop="item" href="/" aria-label="home">
+                        <span itemprop="name">Home</span>
+                        <meta itemprop="position" content="1" />
+                    </a>
+                </li>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="var(--primary-200)" stroke-width="2" />
+                </svg>
+                <basis core="print" datamembername="db.navigation">
+                    <face filter="RowNumber=max(RowNumber) and title <> 'root'">
+                        <li class="inline-block font-normal text-primary-900" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">@title</span>
+                            <meta itemprop="position" content="@rownumber" />
+                        </li>
+                    </face>
+                    <face filter="link is null and title <> 'root'">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <a class="flex items-center text-primary-200 text-xs transition-all duration-300 hover:text-primary-900"
+                                itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
+                                <span itemprop="name">@title</span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6L15 12L9 18" stroke="var(--primary-200)" stroke-width="2" />
+                            </svg>
+                        </li>
+                    </face>
+                    <face filter="title <> 'root'">
+                        <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
+                            itemtype="https://schema.org/ListItem">
+                            <a class="flex items-center text-primary-200 text-xs transition-all duration-300 hover:text-primary-900"
+                                itemprop="item" href="/@link" aria-label="@title">
+                                <span
+                                    class="flex items-center text-primary-200 text-xs transition-all duration-300 hover:text-primary-900"
+                                    itemprop="name">
+                                    @title
+                                </span>
+                                <meta itemprop="position" content="@rownumber" />
+                            </a>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 6L15 12L9 18" stroke="var(--primary-200)" stroke-width="2" />
+                            </svg>
+                        </li>
+                    </face>
+                </basis>
+            </ul>
+            <basis core="print" datamembername="db.view">
+                <layout>
+                    <div class="flex flex-col gap-2 mt-4">
+                        @child
+                    </div>
+                </layout>
+                <face filter="TypeID in(128) and vocabulary in('publication-date')">
+                    <div class="flex items-center gap-1">
+                        <svg width="24" height="24">
+                            <use href="/images/sprite-icons.svg#icon-calendar"></use>
+                        </svg>
+                        <span class="text-primary-200 text-xs">@text</span>
+                    </div>
+                </face>
+                <face filter="TypeID in(200) and vocabulary in('Study-duration')">
+                    <div class="flex items-center gap-1">
+                        <svg width="24" height="24">
+                            <use href="/images/sprite-icons.svg#icon-clock"></use>
+                        </svg>
+                        <span class="text-primary-200 text-xs">@text</span>
+                    </div>
+                </face>
+                <face filter="TypeID in(128) and vocabulary in('author')">
+                    <div class="flex items-center gap-1">
+                        <svg width="24" height="24">
+                            <use href="/images/sprite-icons.svg#icon-user"></use>
+                        </svg>
+                        <span class="text-primary-200 text-xs">@text</span>
+                    </div>
+                </face>
+            </basis>
+        </section>
+        <basis core="print" datamembername="db.view">
+            <layout>
+                <section
+                    class="border-x border-b border-primary-100 px-4 pt-5 pb-7 rounded-b-2xl mx-auto max-lg:w-[90%] mt-4">
+                    @child
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h1 class="text-primary-950 text-lg font-bold mb-3">@text</h1>
+            </face>
+            <face filter="TypeID in(129)">
+                <h2 id="@valueID" class="text-primary-950 font-bold mb-3">@text</h2>
+                <div class="text-zinc-600 text-xs text-justify leading-5 mb-7">
+                    @largetext
+                </div>
+            </face>
+            <face filter="TypeID in(250)">
+                <h2 id="@valueID" class="text-primary-950 font-bold mb-3">@text</h2>
+                <div class="text-zinc-600 text-xs text-justify leading-5 mb-7">
+                    @largetext
+                </div>
+            </face>
+        </basis>
+
+        <section class="border border-primary-100 rounded-2xl p-3 mx-auto max-lg:w-[90%] mt-4">
+            <h2 class="text-primary-900 font-bold mb-3">Add Your Comment</h2>
+            <form action="/Tem1_OpinionAction.bc" method="POST" class="pov-form">
+                <input type="hidden" name="title" value="[##cms.seo.title##]">
+                <div>
+                    <div class="flex flex-col gap-2">
+                        <input type="text" name="Username" required
+                            class="w-full h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900 outline-none"
+                            placeholder="First/Last Name">
+                        <input type="number" name="_root.Phone" required
+                            class="w-full h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900 outline-none"
+                            placeholder="Number Phone">
+                        <textarea
+                            class="w-full h-32 rounded-3xl bg-specialcolor-2 px-6 pt-2 placeholder-primary-300 text-zinc-900 outline-none"
+                            required name="OpinionMessage" placeholder="Description" cols="30" rows="7"></textarea>
+                    </div>
+
+                    <input name="productid" value="[##cms.query.id##]" type="hidden">
+                    <input name="mid" value="1" type="hidden">
+                    <div class="flex flex-col items-center gap-2 mt-2">
+                        <div class="flex gap-2 w-full">
+                            <div>
+                                <input
+                                    class="w-full h-14 rounded-full bg-specialcolor-2 px-6 placeholder-primary-300 text-zinc-900 outline-none"
+                                    type="text" name="Captcha" placeholder="Security code" required="">
+                            </div>
+                            <span class="field-captcha shrink-0 flex items-center gap-2">
+                                <span class="load-captcha">
+                                    <img class="captchaa w-20 h-auto" alt="Security code"
+                                        src="[##captcha.code.captcha##]" width="80" height="40">
+                                    <input type="hidden" value="[##captcha.code.captcha##]" name="Captchaid">
+                                </span>
+                                <div onclick="refresh_captcha(this,event)"
+                                    class="flex items-center justify-center bg-specialcolor-2 rounded-full w-14 h-14">
+                                    <svg width="48" height="48" class="text-zinc-900 cursor-pointer">
+                                        <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                    </svg>
+                                </div>
+                            </span>
+                        </div>
+                        <button
+                            class="shrink-0 w-full px-4 text-white transition-all duration-300 data-body-btn h-14 bg-specialcolor-1 rounded-full hover:bg-primary-900 hover:text-white"
+                            type="submit">Submit
+                        </button>
+                    </div>
+                </div>
+                <div class="Loading_Form hidden mt-6">
+                    <div id="ballsWaveG">
+                        <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                    </div>
+                </div>
+                <div class="Message-Form text-center mt-6"></div>
+            </form>
+        </section>
+        <basis core="tree" datamembername="db.comment" idcol="id" parentidcol="parentid" nullvalue="0">
+            <layout>
+                <section class="mx-auto max-lg:w-[90%] mt-4">
+                    <h2 class="text-gradient font-bold text-center mb-2">User Comments</h2>
+                    <p class="text-zinc-600 text-xs text-center">Send us your comments</p>
+                    <div class="swiper swiper-comment mt-12">
+                        <div class="swiper-wrapper">
+                            @child
+                        </div>
+                    </div>
+                </section>
+            </layout>
+            <face level="1">
+                <div class="swiper-slide">
+                    <div
+                        class="flex flex-col items-center gap-7 border border-solid border-zinc-100 bg-zinc-50 rounded-3xl px-1 py-7">
+                        <div>
+                            <img src="[##cms.cms.cdn##]/images/comment-image.png"
+                                class="w-24 h-24 object-cover rounded-full" alt="comment-image" width="96" height="96"
+                                loading="lazy">
+                            <h2 class="text-primary-900 font-bold text-center mt-3">@username</h2>
+                        </div>
+                        <div class="text-zinc-800 text-sm text-center">@comment</div>
+                        <div class="flex items-center gap-1">
+                            <svg width="24" height="24">
+                                <use href="/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-primary-200 text-sm">@createdate</span>
+                        </div>
+                    </div>
+                </div>
+            </face>
+        </basis>
+
+        <section class="mx-auto max-lg:w-[90%] mt-4">
+            <div class="bg-primary-950 rounded-xl px-4 py-5">
+                <h2 class="font-bold text-white">Quick Links</h2>
+            </div>
+            <basis core="print" datamembername="db.view">
+                <layout>
+                    <div class="flex flex-col gap-6 divide-y divide-primary-50">
+                        @child
+                    </div>
+                </layout>
+                <face filter="TypeID in(250 , 129)">
+                    <a href="#@valueID" class="flex items-center justify-between gap-2 pt-6">
+                        <span class="text-sm text-primary-800">@text</span>
+                        <svg width="48" height="48" class="shrink-0">
+                            <use href="/images/sprite-icons-mobile.svg#icon-mouse"></use>
+                        </svg>
+                    </a>
+                </face>
+            </basis>
+        </section>
+        <div class="relative mx-auto max-lg:w-[90%] mt-12" id="shareWrap">
+            <button id="shareBtn" type="button"
+                class="flex items-center justify-center w-full h-14 bg-specialcolor-1 rounded-full font-medium text-white"
+                aria-haspopup="menu" aria-expanded="false" data-title="Great page" data-text="watch this page"
+                data-url="">
+                <svg width="48" height="48" aria-hidden="true">
+                    <use href="/images/sprite-icons-mobile.svg#icon-share"></use>
+                </svg>
+                share
+            </button>
+
+            <div id="shareMenu" class="invisible opacity-0 pointer-events-none absolute z-50 left-0
+            rounded-xl overflow-hidden bg-white shadow-xl
+            transition-opacity duration-300">
+
+                <ul class="flex items-center gap-3 p-2" role="menu" aria-label="Sharing options">
+                    <li class="group">
+                        <a id="shareTelegram" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="26" height="26" aria-hidden="true" class="text-secondary-600">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-telegram"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Telegram</span>
+                        </a>
+                    </li>
+
+                    <li class="group">
+                        <a id="shareTwitter" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="26" height="26" aria-hidden="true" class="text-secondary-600">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-twitter"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Twitter</span>
+                        </a>
+                    </li>
+
+                    <li class="group">
+                        <a id="shareWhatsapp" target="_blank" rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2" role="menuitem">
+                            <span class="flex items-center justify-center w-12 h-12 bg-primary-600 rounded-full">
+                                <svg width="48" height="48" aria-hidden="true" class="text-secondary-600">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-whatsapp"></use>
+                                </svg>
+                            </span>
+                            <span class="text-secondary-800 text-sm">Whatsapp</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <basis core="print" datamembername="db.ads">
+            <layout>
+                <section class="relative rounded-[30px] overflow-hidden mx-auto max-lg:w-[90%] mt-11">
+                    @child
+                    <div class="bg-black-gradient absolute inset-0 w-full h-full"></div>
+                </section>
+            </layout>
+            <face filter="TypeID in(159)">
+                <img src="[##cms.cms.cdn##]/@text" class="w-full h-[408px] object-cover" alt="@text" width="288"
+                    height="408" loading="lazy">
+            </face>
+            <face filter="TypeID in(150)">
+                <div class="absolute z-10 px-5 bottom-8">
+                    <h2 class="text-2xl font-bold text-white mb-6">@text</h2>
+                    <a href="/article.bc?id=[##cms.query.adsid##]"
+                        class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white">View
+                        more
+                        <svg width="48" height="48">
+                            <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                        </svg>
+                    </a>
+                </div>
+            </face>
+        </basis>
+
+
+        <basis core="list" datamembername="db.related-article">
+            <layout>
+                <section class="mx-auto max-lg:w-[90%] mt-6">
+                    <h2 class="text-gradient font-bold text-center mb-3">You may also like</h2>
+                    <p class="text-zinc-600 text-xs text-center">Also get in touch with other related news</p>
+                    <div class="flex flex-col gap-3 mt-3">
+                        @child
+                    </div>
+                </section>
+            </layout>
+            <face filter="[00288X00192prp] is null">
+                <a href="/@link" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="[##cms.cms.cdn##]/images/no-image-placeholder.jpg"
+                            class="mask-article-card w-full h-48 object-cover" alt="@title" width="288" height="192"
+                            loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                                 text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">@title</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">@prp_7244
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">@prp_7249</span>
+                        </div>
+                    </div>
+                </a>
+            </face>
+            <face>
+                <a href="/@link" class="rounded-2xl overflow-hidden">
+                    <div class="relative">
+                        <img src="[##cms.cms.cdn##]/@00288X00192prp" class="mask-article-card w-full h-48 object-cover"
+                            alt="@title" width="288" height="192" loading="lazy">
+                        <div class="absolute left-3 bottom-0 flex items-center">
+                            <span class="text-sm
+                                                 text-specialcolor-1">Read more</span>
+                            <button>
+                                <svg width="48" height="48" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="border-x border-b border-solid border-primary-950 rounded-b-2xl px-3 pb-4 mt-4">
+                        <h2 class="font-bold text-primary-900 mb-1">@title</h2>
+                        <div class="text-zinc-600 text-xs mb-3 leading-5 line-clamp-3">@prp_7244
+                        </div>
+                        <div class="flex items-center gap-1">
+                            <svg width="20" height="20">
+                                <use href="/images/sprite-icons-mobile.svg#icon-calendar"></use>
+                            </svg>
+                            <span class="text-zinc-400 text-xs">@prp_7249</span>
+                        </div>
+                    </div>
+                </a>
+            </face>
+        </basis>
+
+    </main>
+
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle.11.2.5.min.js"></script>
+    <script src="[##cms.cms.cdn##]/js/aljenhat-core.js"></script>
+    <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+    <script type="application/ld+json">
+        [##db.json.Column1##]
+      </script>
+</body>
+
+</html>

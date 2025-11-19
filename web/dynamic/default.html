@@ -70,7 +70,7 @@
     <basis core="call" file="style.inc" lid="2" />
 </head>
 
-<body>
+<body class="default">
     <div class="relative w-full">
         <div class="mask-default-back-pc absolute inset-0">
             <img src="[##cms.cms.cdn##]/images/default-background.jpg"
@@ -108,7 +108,7 @@
                         <div class="flex items-center gap-2 mt-20">
                             <h2 class="text-primary-900 font-bold">@title</h2>
                             <a href="/@link"
-                                class="flex items-center justify-center bg-specialcolor-1 text-white rounded-full w-44 h-12">
+                                class="flex items-center justify-center bg-specialcolor-1 text-white rounded-full w-44 h-12 transition-all duration-300 hover:bg-primary-900">
                                 Get Start
                             </a>
                         </div>
@@ -148,8 +148,8 @@
                             </a>
                             <div>
                                 <h2 class="font-bold text-5xl text-specialcolor-1 mb-2">services</h2>
-                                <div class="text-zinc-700 text-sm">Let's get in touch with our services
-                                </div>
+                                <p class="text-zinc-700 text-sm">Let's get in touch with our services
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                 <section
                     class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
                     <img src="[##cms.cms.cdn##]/images/banner-image.jpg" class="w-full h-[270px] object-cover"
-                        alt="@titlw" width="1280" height="270" loading="lazy">
+                        alt="@title" width="1280" height="270" loading="lazy">
                     <div class="w-[90%] absolute z-10 left-20 top-1/2 -translate-y-1/2">
                         <h2 class="text-5xl font-bold text-white mb-2">@title</h2>
                         <a href="/@link"

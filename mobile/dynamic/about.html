@@ -1,0 +1,283 @@
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="2389915">
+    <member name="about-us" type="view" propertyid="7249" />
+</basis>
+<basis core="dbsource" source="basiscore" name="db" mid="1" lid="2" usedforid="2389963">
+    <member name="our-vision" type="view" propertyid="" />
+</basis>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no,viewport-fit=cover">
+    <!-- Title & Description -->
+    <title>[##cms.seo.title|(Ajnihat Alkhalij Travel Agency)##]
+    </title>
+    <meta name="description"
+        content="[##cms.seo.description|(If you want to have the best experience on your travel get in touch with Ajnihat Alkhalij Travel Agency)##]">
+    <!-- Title & Description -->
+    <basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+        <member type="list" name="list" request="taglist" preview=""></member>
+    </basis>
+    <basis core="print" datamembername="tag.list">
+        <face filter="key = 'canonical'">
+            <link rel="canonical" href="@value" />
+        </face>
+        <face>
+            <meta property="@key" content="@value" />
+        </face>
+    </basis>
+    <!-- pwa metatags -->
+    <basis core="call" file="pwa.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+    <!-- common styles for all page -->
+    <basis core="call" file="style.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+</head>
+
+<body class="about">
+    <div class="relative bg-contact bg-center bg-cover pt-3 pb-10">
+        <div class="bg-articleList-back-gradient absolute inset-0 w-full h-full"></div>
+        <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+        <div class="relative z-10 mx-auto max-lg:w-[90%] mt-72">
+            <h1 class="font-bold text-white text-center mb-1">Learn More About Us</h1>
+            <div class="relative flex items-center justify-center gap-1">
+                <a href="/" class="text-white text-xs">Home</a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 6L15 12L9 18" stroke="#ffffff" stroke-width="2" />
+                </svg>
+                <span class="text-xs text-specialcolor-1">About us</span>
+            </div>
+        </div>
+    </div>
+    <main>
+        <basis core="print" datamembername="db.about-us">
+            <layout>
+                <section class="mx-auto max-lg:w-[90%] mt-7">
+                    <div class="content-inner">
+                        @child
+                    </div>
+                    <button class="see-more flex mx-auto text-xs text-specialcolor-1 mt-4 text-center">Learn
+                        more</button>
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h2 class="text-gradient font-bold text-center mb-2">@text</h2>
+            </face>
+            <face filter="TypeID in(129)">
+                <div class="text-zinc-600 text-xs text-center">@largetext</div>
+            </face>
+            <face filter="TypeID in(250)">
+                <h2 class="text-gradient font-bold text-center mb-2">@text</h2>
+                <div class="text-zinc-600 text-xs mt-4 leading-5 text-justify">
+                    @largetext
+                </div>
+            </face>
+        </basis>
+        <section class="mx-auto max-lg:w-[90%] mt-12">
+            <h2 class="text-gradient font-bold text-center mb-2">Reach Out to Us</h2>
+            <p class="text-zinc-600 text-xs text-center">Let's get in touch with us</p>
+            <div class="flex flex-col mx-auto about-form mt-6" id="about-form-resize">
+
+                <basis core="schema" run="atclient"
+                    schemaurl="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/7E28AA71-0F60-4DCC-9681-9456402B1FC4/en/Get-in-Touch-With-Us"
+                    displaymode="new" button="[data-btn-uploadabout]" resultsourceid="upload.dataabout"
+                    OnRendered="RenderFormAbout"></basis>
+                <basis core="api" if="{##cms.uploadAbout.run|(false)##}" run="atclient"
+                    url="/schema/domainform/340C3B41-A099-4CF0-BCB8-1FE4DA04810E/en/editobject" method="post"
+                    body="object_edit={##cms.uploadAbout.value##}&captcha={##cms.uploadAbout.captcha##}&captchaid={##cms.uploadAbout.captchaid##}"
+                    content-type="application/x-www-form-urlencoded" triggers='cms.uploadAbout'
+                    OnProcessed="OnProcessedEditObjectAbout"></basis>
+                <basis core="callback" run="atclient" method="uploadDocumentAbout" triggers="upload.dataabout">
+                </basis>
+
+                <div class="flex flex-col gap-2 items-center captcha-button mt-2">
+                    <div id="captchaContainer"
+                        class="captchaContainerclass captcha-sefaresh flex items-center max-xl:ml-0 max-xl:mb-[20px]"
+                        data-bc-answer-container data-bc-schema-info-multi="0" data-bc-schema-info-word="58"
+                        data-bc-schema-info-part="1" data-bc-schema-info-part-0-type="text">
+                        <basis core="dbsource" source="trust_login" name="captcha" run="atclient"
+                            triggers="captcha.refreshAbout">
+                            <member name="code-about" type="scalar" request="captcha"></member>
+                        </basis>
+                        <basis datamembername="captcha.code-about" core="print" run="atclient">
+                            <face>
+                                <script type="text/template"><div><div class="flex gap-2">
+                    
+                                        <div class="float-right"><input type="text" class="contactUsInput codeinputm" name="captcha" maxlength="4" placeholder="Security Code"/><input type="hidden" name="captchaid" value="@captcha@" /></div>
+                                        <div class="shrink-0 flex items-center gap-2">
+                                            <img src="/@captcha@" loading="lazy" width="120" height="60" alt="captcha" class="w-16" />
+                                            <div onclick="refreshCaptchaAbout()" class="flex items-center justify-center bg-specialcolor-2 rounded-full w-14 h-14">
+                                                <svg width="48" height="48" class="text-zinc-900 cursor-pointer">
+                                                    <use href="/images/sprite-icons.svg#icon-refresh"></use>
+                                                </svg>
+                                            </div>
+                                        
+                                        </div>
+                                        
+                                    </div></div></script>
+                            </face>
+                        </basis>
+                    </div>
+                    <button
+                        class="shrink-0 w-full px-4 text-white transition-all duration-300 data-body-btn h-14 bg-specialcolor-1 rounded-full hover:bg-primary-900 hover:text-white"
+                        type="button" data-btn-uploadabout><span class="">Send</span></button>
+                </div>
+                <div
+                    class="Loading_Form hidden data-body-btn w-[126px] h-12 px-4 py-2 rounded-2xl justify-center items-center gap-2.5">
+                    <div id="ballsWaveG" class="text-base font-normal leading-normal ext-zinc-50">
+                        <div id="ballsWaveG_1" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_2" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_3" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_4" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_5" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_6" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_7" class="ballsWaveG"></div>
+                        <div id="ballsWaveG_8" class="ballsWaveG"></div>
+                    </div>
+                </div>
+                <div class="mt-4 text-center message-api"></div>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-6">
+            <h2 class="text-specialcolor-1 font-bold">Get in Touch with Us</h2>
+            <p class="text-xs text-zinc-500">Stay in touch with us for the latest tourism news.</p>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-6">
+            <div>
+                <h2 class="text-specialcolor-1 font-bold mb-1">Contact Us</h2>
+                <p class="text-zinc-500 text-sm">
+                    Stay in touch with us
+                </p>
+            </div>
+            <div class="flex flex-col gap-2 mt-4">
+                <basis core="print" datamembername="db.info">
+                    <face filter="TypeID in(244)">
+                        <div>
+                            <h2 class="text-specialcolor-1 font-bold mb-1">Address</h2>
+                            <div class="text-xs text-primary-950">@largetext</div>
+                        </div>
+                    </face>
+                </basis>
+
+                <basis core="print" datamembername="db.info">
+                    <layout>
+                        <div>
+                            <h2 class="text-specialcolor-1 font-bold mb-1">Contact Us</h2>
+                            <div>
+                                @child
+                            </div>
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(240)">
+                        <a href="tel:@text" class="text-xs text-primary-950">@text
+                        </a>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.info">
+                    <layout>
+                        <div>
+                            <h2 class="text-specialcolor-1 font-bold mb-1">Email</h2>
+                            <div>
+                                @child
+                            </div>
+                        </div>
+                    </layout>
+                    <face filter="TypeID in(242)">
+                        <a href="mailto:@text" class="text-xs text-primary-950">@text
+                        </a>
+                    </face>
+                </basis>
+            </div>
+            <div class="w-full mt-4">
+                <h2 class="font-bold text-specialcolor-1 mb-4">Follow me</h2>
+                <basis core="print" datamembername="db.info">
+                    <layout>
+                        <ul class="flex items-center justify-between">
+                            @child
+                        </ul>
+                    </layout>
+                    <face filter="TypeID in(245) and text in('Telegram')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="telegram">
+                                <svg width="26" height="26" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-telegram"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('linkedin')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="linkedin">
+                                <svg width="26" height="26" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-linkedin"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('Twitter')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="twitter">
+                                <svg width="26" height="26" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-twitter"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                    <face filter="TypeID in(245) and text in('Instagram')">
+                        <li
+                            class="flex items-center justify-center w-12 h-12 border border-solid border-specialcolor-1 rounded-full">
+                            <a href="@largetext" class="w-full h-full flex items-center justify-center"
+                                rel="noopener noreferrer" aria-label="instagram">
+                                <svg width="26" height="26" class="text-specialcolor-1">
+                                    <use href="/images/sprite-icons.svg#icon-instagram"></use>
+                                </svg>
+                            </a>
+                        </li>
+                    </face>
+                </basis>
+            </div>
+        </section>
+        <section class="mx-auto max-lg:w-[90%] mt-10">
+            <div>
+                <h2 class="text-specialcolor-1 font-bold mb-1">Find us on the map</h2>
+                <div class="text-xs text-zinc-500 mb-4">Where are we?</div>
+            </div>
+            <basis core="print" datamembername="db.info">
+                <face filter="prpID=91462">
+                    <iframe defer title="ajnihat-location" class="w-full h-40 object-cover rounded-3xl" width="288"
+                        height="160" loading="lazy" target="_blank" allowfullscreen
+                        src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed">
+                    </iframe>
+                </face>
+            </basis>
+        </section>
+        <basis core="print" datamembername="db.our-vision">
+            <layout>
+                <section class="mx-auto max-lg:w-[90%] mt-12">
+                    @child
+                </section>
+            </layout>
+            <face filter="TypeID in(150)">
+                <h2 class="text-gradient font-bold text-center mb-2">@text</h2>
+            </face>
+            <face filter="TypeID in(129)">
+                <div class="text-zinc-600 text-xs text-center">@largetext</div>
+            </face>
+            <face filter="TypeID in(250)">
+                <h2 class="text-gradient font-bold text-center mb-2">@text</h2>
+                <div class="text-zinc-600 text-xs leading-5 text-justify mt-7">
+                    @largetext
+                </div>
+            </face>
+        </basis>
+    </main>
+
+    <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+</body>
+
+</html>

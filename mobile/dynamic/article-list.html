@@ -35,27 +35,26 @@
         </face>
     </basis>
     <!-- pwa metatags -->
-    <basis core="call" file="pwa.inc" lid="2" />
+    <basis core="call" file="pwa.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
     <!-- common styles for all page -->
-    <basis core="call" file="style.inc" lid="2" />
+    <basis core="call" file="style.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
 </head>
 
 <body class="article-list">
-    <div class="relative bg-articleList bg-center bg-cover pt-10 pb-32">
+    <div class="relative bg-articleList bg-center bg-cover pt-3 pb-10">
         <div class="bg-articleList-back-gradient absolute inset-0 w-full h-full"></div>
-        <basis core="call" file="header.inc" lid="2" />
-        <div class="relative z-10 mx-auto max-xl:w-[97%] xl:max-w-7xl mt-72">
+        <basis core="call" file="header.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
+        <div class="relative z-10 mx-auto max-lg:w-[90%] mt-52">
             <basis core="list" datamembername="article-list-description.cat">
                 <face>
-                    <h1 class="font-bold text-5xl text-white text-center mb-2">@urltitle</h1>
-                    <h2 class="text-2xl text-white text-center mb-2">@urldescription</h2>
+                    <h1 class="font-bold text-white text-center mb-2">@urltitle</h1>
+                    <h2 class="text-sm text-white text-center">@urldescription</h2>
                 </face>
             </basis>
-            
             <ul itemscope itemtype="https://schema.org/BreadcrumbList" class="flex justify-center items-center gap-1">
                 <li class="inline-block font-normal" itemprop="itemListElement" itemscope
                     itemtype="https://schema.org/ListItem">
-                    <a class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                    <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-specialcolor-1"
                         itemprop="item" href="/" aria-label="home">
                         <span itemprop="name">Home</span>
                         <meta itemprop="position" content="1" />
@@ -75,7 +74,7 @@
                     <face filter="link is null and title <> 'root'">
                         <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
                             itemtype="https://schema.org/ListItem">
-                            <a class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                            <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-specialcolor-1"
                                 itemprop="item" href="/tour-list.bc?catid=@parentcatid" aria-label="@title">
                                 <span itemprop="name">@title</span>
                                 <meta itemprop="position" content="@rownumber" />
@@ -89,10 +88,10 @@
                     <face filter="title <> 'root'">
                         <li class="flex gap-1 font-normal" itemprop="itemListElement" itemscope
                             itemtype="https://schema.org/ListItem">
-                            <a class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                            <a class="flex items-center text-white text-xs transition-all duration-300 hover:text-specialcolor-1"
                                 itemprop="item" href="/@link" aria-label="@title">
                                 <span
-                                    class="flex items-center text-white text-sm transition-all duration-300 hover:text-specialcolor-1"
+                                    class="flex items-center text-white text-xs transition-all duration-300 hover:text-specialcolor-1"
                                     itemprop="name">
                                     @title
                                 </span>
@@ -106,61 +105,59 @@
                     </face>
                 </basis>
             </ul>
-            <div class="relative mt-4 w-fit mx-auto">
+            <div class="relative mt-4">
                 <input type="text"
-                    class="search-blog w-[432px] px-5 h-14 rounded-full bg-primary-50 text-primary-950 placeholder-primary-300 outline-none"
+                    class="search-blog w-full px-5 h-14 rounded-full bg-primary-50 text-primary-950 placeholder-primary-300 outline-none"
                     aria-label="Search-blog" placeholder="Search">
-                <svg width="48" height="48" class="article-search-button absolute right-6 top-1/2 -translate-y-1/2 cursor-pointer">
-                    <use href="/images/sprite-icons.svg#icon-search"></use>
+                <svg width="48" height="48" class="article-search-button absolute right-6 top-1/2 -translate-y-1/2">
+                    <use href="/images/sprite-icons-mobile.svg#icon-search"></use>
                 </svg>
             </div>
         </div>
     </div>
     <main>
-        <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-12">
+        <section class="mx-auto max-lg:w-[90%] mt-2">
             <basis core="tree" datamembername="article-list.cat" idcol="catid" parentidcol="parentid"
                 nullvalue="[##cms.query.catid##]">
                 <layout>
-                    <ul class="flex items-center justify-center gap-3">
+                    <ul class="flex items-center gap-3 mt-7 overflow-x-auto scrollbar-thin whitespace-nowrap">
                         @child
                     </ul>
                 </layout>
                 <face>
                     <li data-id="@catid"
-                        class="article-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-10 cursor-pointer transition-all duration-300 hover:border-primary-900 hover:bg-primary-900 hover:text-white">
+                        class="article-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">
                         @title
                     </li>
                 </face>
             </basis>
 
-            <div class="fetch-content-article flex flex-col items-center justify-center min-h-[585px]">
+            <div class="fetch-content-article flex flex-col min-h-[585px]">
 
             </div>
         </section>
         <basis core="list" datamembername="db.banners">
             <face filter="ord in(2)">
-                <section
-                    class="relative rounded-2xl overflow-hidden mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20 transition-all duration-300 hover:shadow-2xl">
-                    <img src="[##cms.cms.cdn##]/images/banner-image.jpg" class="w-full h-[270px] object-cover" alt="@title"
-                        width="1280" height="270" loading="lazy">
-                    <div class="w-[90%] absolute z-10 left-20 top-1/2 -translate-y-1/2">
-                        <h2 class="text-5xl font-bold text-white mb-2">@title</h2>
+                <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] mt-11">
+                    <img src="[##cms.cms.cdn##]/images/banner-image.jpg" class="w-full h-[517px] object-cover"
+                        alt="@title" width="288" height="517" loading="lazy">
+                    <div class="absolute z-10 px-5 bottom-7">
+                        <h2 class="text-lg font-bold text-white mb-2">@title</h2>
                         <a href="/@link"
-                            class="flex items-center justify-center w-44 h-12 text-white text-sm rounded-full border border-solid border-white transition-all duration-300 hover:border-specialcolor-1 hover:bg-specialcolor-1">View
+                            class="flex items-center justify-center w-full h-12 text-white text-sm rounded-full border border-solid border-white">View
                             more
                             <svg width="48" height="48">
-                                <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
+                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                             </svg>
                         </a>
                     </div>
-                    <div class="bg-blue-gradient-pc absolute inset-0 w-full h-full"></div>
+                    <div class="bg-blue-gradient absolute inset-0 w-full h-full"></div>
                     <div class="article-blur absolute inset-0"></div>
                 </section>
             </face>
         </basis>
-
     </main>
-    <basis core="call" file="footer.inc" lid="2" />
+    <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
 </body>
 
 </html>

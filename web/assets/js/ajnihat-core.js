@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (!content || !button) return;
   let expanded = false
 
-  content.style.height = '140px'
+  content.style.height = '320px'
   content.style.overflow = 'hidden'
   content.style.transition = 'height 0.5s ease'
 
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
       content.style.height = content.scrollHeight + 'px'
       button.textContent = 'See less'
     } else {
-      content.style.height = '140px'
+      content.style.height = '320px'
       button.textContent = 'Learn more'
     }
     expanded = !expanded
@@ -312,6 +312,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
       }
+
+      if (typeof setupPaging === "function") {
+        setupPaging(); 
+      }
   
       return;
     }
@@ -350,6 +354,10 @@ document.addEventListener("DOMContentLoaded", function () {
   
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
+      }
+
+      if (typeof setupPaging === "function") {
+        setupPaging(); 
       }
     } catch (error) {
       clearTimeout(loaderTimeout);
@@ -429,6 +437,10 @@ const fetchArticlePage = async (dataPageNum) => {
 
     if (typeof setupArticleSearch === "function") {
       setupArticleSearch();
+    }
+
+    if (typeof setupPaging === "function") {
+      setupPaging(Number(dataPageNum)); 
     }
   } catch (error) {
     clearTimeout(loaderTimeout);
@@ -590,7 +602,6 @@ document.querySelectorAll('.pov-form').forEach(function (form) {
   })
 })
 
-
 // refresh_captch
 function refresh_captcha(element, event) {
   const form = element.closest("form");
@@ -602,6 +613,172 @@ function refresh_captcha(element, event) {
       captchaContainer.innerHTML = data;
     });
 }
+
+//---------paging order-----
+function setupPaging(currentPageOverride) {
+  console.log("[paging] setupPaging called", { currentPageOverride });
+
+  const paging = document.querySelector("#wibpaging");
+  if (!paging) {
+    console.warn("[paging] #wibpaging NOT FOUND in DOM");
+    return;
+  }
+
+  console.log(
+    "[paging] #wibpaging FOUND li count:",
+    paging.querySelectorAll("li").length
+  );
+
+  // حذف دات‌های قبلی
+  [...paging.querySelectorAll("li")].forEach(li => {
+    if (li.textContent.trim() === "…") li.remove();
+  });
+
+  // لی‌هایی که واقعا شماره صفحه هستن (نه prev / next)
+  const pageItems = [...paging.querySelectorAll("li")].filter(li => {
+    if (li.classList.contains("prev-page")) return false;
+    if (li.classList.contains("next-page")) return false;
+
+    const num = parseInt(li.textContent.trim(), 10);
+    return !isNaN(num);
+  });
+
+  console.log(
+    "[paging] pageItems (numbered lis):",
+    pageItems.map(li => li.textContent.trim())
+  );
+
+  if (pageItems.length === 0) {
+    console.warn("[paging] NO numbered <li> found, EXITING");
+    return;
+  }
+
+  // تعیین صفحه فعلی
+  let currentPage;
+  if (typeof currentPageOverride === "number") {
+    currentPage = currentPageOverride;
+    console.log("[paging] currentPage from override:", currentPage);
+  } else {
+    // اگر لی active داریم، از همون
+    const activeLi =
+      paging.querySelector("li.active") ||
+      paging.querySelector("li[aria-current='page']");
+    if (activeLi) {
+      currentPage = parseInt(activeLi.textContent.trim(), 10);
+      console.log("[paging] currentPage from active <li>:", currentPage);
+    } else {
+      const urlParams = new URLSearchParams(window.location.search);
+      currentPage = parseInt(urlParams.get("pagenum") || "1", 10);
+      console.log("[paging] currentPage from URL:", currentPage);
+    }
+  }
+
+  const pageNumbers = pageItems.map(li =>
+    parseInt(li.textContent.trim(), 10)
+  );
+  console.log("[paging] pageNumbers parsed:", pageNumbers);
+
+  const minPage = Math.min(...pageNumbers);
+  const maxPage = Math.max(...pageNumbers);
+
+  console.log("[paging] minPage:", minPage, "maxPage:", maxPage);
+
+  const createDots = () => {
+    const li = document.createElement("li");
+    li.textContent = "…";
+    li.className = "flex items-center justify-center font-bold text-zinc-700";
+    console.log("[paging] createDots() called, new LI created");
+    return li;
+  };
+
+  const getLiList = () => [...paging.querySelectorAll("li")];
+
+  const prevLi = getLiList().find(li => li.classList.contains("prev-page"));
+  const nextLi = getLiList().find(li => li.classList.contains("next-page"));
+
+  let firstPageLi = pageItems.find(
+    li => li.textContent.trim() === String(minPage)
+  );
+  let lastPageLi = pageItems.find(
+    li => li.textContent.trim() === String(maxPage)
+  );
+
+  // جابه‌جا کردن اولین و آخرین صفحه کنار prev/next
+  if (firstPageLi && prevLi && prevLi.nextElementSibling !== firstPageLi) {
+    paging.insertBefore(firstPageLi, prevLi.nextElementSibling);
+  }
+
+  if (lastPageLi && nextLi && lastPageLi.nextElementSibling !== nextLi) {
+    paging.insertBefore(lastPageLi, nextLi);
+  }
+
+  firstPageLi = pageItems.find(
+    li => li.textContent.trim() === String(minPage)
+  );
+  lastPageLi = pageItems.find(
+    li => li.textContent.trim() === String(maxPage)
+  );
+
+  // دات سمت چپ
+  if (currentPage - minPage > 2 && firstPageLi) {
+    const afterFirst = firstPageLi.nextElementSibling;
+    if (afterFirst && afterFirst.textContent.trim() !== "…") {
+      paging.insertBefore(createDots(), afterFirst);
+    }
+  }
+
+  // دات سمت راست
+  if (maxPage - currentPage > 2 && lastPageLi) {
+    const beforeLast = lastPageLi.previousElementSibling;
+    if (beforeLast && beforeLast.textContent.trim() !== "…") {
+      paging.insertBefore(createDots(), lastPageLi);
+    }
+  }
+
+  // هندل کلیک روی شماره‌ صفحات (li ها)
+  paging.addEventListener(
+    "click",
+    function (e) {
+      const li = e.target.closest("li");
+      if (!li) return;
+
+      // اگر روی prev/next کلیک شده دوست داری جدا هندل کنی
+      if (li.classList.contains("prev-page")) {
+        console.log("[paging] prev-page clicked (TODO: handle if needed)");
+        return;
+      }
+      if (li.classList.contains("next-page")) {
+        console.log("[paging] next-page clicked (TODO: handle if needed)");
+        return;
+      }
+
+      const num = parseInt(li.textContent.trim(), 10);
+      if (isNaN(num)) {
+        console.log("[paging] clicked <li> is not a number");
+        return;
+      }
+
+      console.log("[paging] numbered <li> clicked → page:", num);
+
+      if (typeof fetchArticlePage === "function") {
+        fetchArticlePage(num);
+      } else {
+        console.warn(
+          "[paging] fetchArticlePage is not a function:",
+          typeof fetchArticlePage
+        );
+      }
+    },
+    { once: true }
+  );
+
+  console.log("[paging] setupPaging finished");
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  setupPaging();
+});
 
 // footer-form
 function uploadDocumentFooter(args) {

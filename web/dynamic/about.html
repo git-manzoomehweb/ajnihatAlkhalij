@@ -40,13 +40,19 @@
     <basis core="call" file="style.inc" lid="2" />
 </head>
 
-<body>
+<body class="about">
     <div class="relative bg-contact bg-center bg-cover pt-10 pb-16">
         <div class="bg-articleList-back-gradient absolute inset-0 w-full h-full"></div>
         <basis core="call" file="header.inc" lid="2" />
         <div class="relative z-10 mx-auto max-xl:w-[97%] xl:max-w-7xl mt-[368px]">
             <h1 class="font-bold text-5xl text-white text-center mb-4">Learn More About Us</h1>
-            <div class="text-white text-specialcolor-1 text-2xl text-center">Home / blog</div>
+            <div class="relative flex items-center gap-1">
+                <a href="/" class="text-white text-2xl transition-all duration-300 hover:text-specialcolor-1">Home</a>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 6L9 12L15 18" stroke="white" stroke-width="2"></path>
+                </svg>
+                <span class="text-2xl text-specialcolor-1">About us</span>
+            </div>
         </div>
     </div>
     <main>
@@ -248,8 +254,7 @@
                             body="object_edit={##cms.uploadAbout.value##}&captcha={##cms.uploadAbout.captcha##}&captchaid={##cms.uploadAbout.captchaid##}"
                             content-type="application/x-www-form-urlencoded" triggers='cms.uploadAbout'
                             OnProcessed="OnProcessedEditObjectAbout"></basis>
-                        <basis core="callback" run="atclient" method="uploadDocumentAbout"
-                            triggers="upload.dataabout">
+                        <basis core="callback" run="atclient" method="uploadDocumentAbout" triggers="upload.dataabout">
                         </basis>
 
                         <div class="flex gap-2 items-center captcha-button mt-2">
@@ -421,7 +426,7 @@
                     </div>
                     <basis core="print" datamembername="db.info">
                         <face filter="prpID=91462">
-                            <iframe defer title="gato-location" class="w-full h-full object-cover rounded-3xl"
+                            <iframe defer title="ajnihat-location" class="w-full h-full object-cover rounded-3xl"
                                 width="360" height="304" loading="lazy" target="_blank" allowfullscreen
                                 src="https://maps.google.com/maps?q=@largetext,@text&z=14&output=embed">
                             </iframe>

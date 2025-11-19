@@ -16,7 +16,7 @@
     <member name="ads" type="view" propertyid="" />
 </basis>
 <basis core="dbsource" source="userbehavior" mid="1" name="db" usedforid="[##cms.query.id##]">
-    <member name="comment" type="list" order="[##cms.host.command_order|(date desc)##]" request="listcomment" />
+    <member name="comment" type="list" order="ord" request="listcomment" />
 </basis>
 <basis core="dbsource" name="captcha" source="trust_login8">
     <member name="code" type="scalar" request="captcha"></member>
@@ -291,7 +291,7 @@
                 rounded-xl overflow-hidden bg-white shadow-xl
                 transition-opacity duration-300">
 
-                        <ul class="flex items-center gap-3 p-2" role="menu" aria-label="گزینه‌های اشتراک‌گذاری">
+                        <ul class="flex items-center gap-3 p-2" role="menu" aria-label="Sharing options">
                             <li class="group">
                                 <a id="shareTelegram" target="_blank" rel="noopener noreferrer"
                                     class="flex flex-col items-center gap-2" role="menuitem">
@@ -343,7 +343,7 @@
                         </section>
                     </layout>
                     <face filter="TypeID in(159)">
-                        <img src="[##cms.cms.cdn##]/@text" class="w-full h-[498px] object-cover" alt="" width="330"
+                        <img src="[##cms.cms.cdn##]/@text" class="w-full h-[498px] object-cover" alt="@text" width="330"
                             height="498" loading="lazy">
                     </face>
                     <face filter="TypeID in(150)">
@@ -367,11 +367,7 @@
             <layout>
                 <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-24">
                     <h2 class="text-gradient text-5xl font-bold text-center mb-2">User Comments</h2>
-                    <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit,
-                        sed do
-                        eiusmod
-                        tempor incididunt </p>
+                    <p class="text-zinc-600 text-sm text-center">Send us your comments</p>
                     <div class="swiper swiper-comment mt-12">
                         <div class="swiper-wrapper">
                             @child
@@ -405,11 +401,7 @@
             <layout>
                 <section class="mx-auto max-xl:w-[97%] xl:max-w-7xl mt-20">
                     <h2 class="text-gradient text-5xl font-bold text-center mb-3">You may also like</h2>
-                    <p class="text-zinc-600 text-sm text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit,
-                        sed do
-                        eiusmod
-                        tempor incididunt </p>
+                    <p class="text-zinc-600 text-sm text-center">Also get in touch with other related news</p>
                     <div class="grid grid-cols-3 gap-6 mt-14">
                         @child
                     </div>
