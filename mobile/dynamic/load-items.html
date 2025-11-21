@@ -6,7 +6,7 @@
     </basis>
     <basis core="list" datamembername="db.article-list">
         <layout>
-            <div class="article-card-wrapper flex flex-col gap-3 mt-3">
+            <div class="article-card-wrapper w-full flex flex-col gap-3 mt-3">
                 @child
             </div>
         </layout>
@@ -16,10 +16,10 @@
                     <img src="[##cms.cms.cdn##]/images/no-image-placeholder.jpg"
                         class="mask-article-card w-full h-48 object-cover" alt="@title" width="288" height="192"
                         loading="lazy">
-                    <div class="absolute left-3 bottom-0 flex items-center">
-                        <span class="text-sm
+                    <div class="absolute left-3 bottom-0">
+                        <button class="flex items-center">
+                            <span class="text-sm
                                  text-specialcolor-1">Read more</span>
-                        <button>
                             <svg width="48" height="48" class="text-specialcolor-1">
                                 <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                             </svg>
@@ -44,10 +44,10 @@
                 <div class="relative">
                     <img src="[##cms.cms.cdn##]/@00288X00192prp" class="mask-article-card w-full h-48 object-cover"
                         alt="@title" width="288" height="192" loading="lazy">
-                    <div class="absolute left-3 bottom-0 flex items-center">
-                        <span class="text-sm
+                    <div class="absolute left-3 bottom-0">
+                        <button class="flex items-center">
+                            <span class="text-sm
                                  text-specialcolor-1">Read more</span>
-                        <button>
                             <svg width="48" height="48" class="text-specialcolor-1">
                                 <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                             </svg>
@@ -74,8 +74,8 @@
                 <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
-                        <span class="flex items-center justify-center w-full cursor-pointer"
-                            aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <span class="flex items-center justify-center w-full cursor-pointer" aria-label="angle-left"
+                            onclick="fetchArticlePage('@page')">
                             <svg width="48" height="48">
                                 <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
                             </svg>
@@ -85,8 +85,8 @@
                 <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
-                        <span class="flex items-center justify-center w-full cursor-pointer"
-                            aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <span class="flex items-center justify-center w-full cursor-pointer" aria-label="angle-left"
+                            onclick="fetchArticlePage('@page')">
                             <svg width="48" height="48">
                                 <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
                             </svg>
@@ -114,16 +114,14 @@
                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
-                        <span
-                            class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                             onclick="fetchArticlePage('@page')">@page</span>
                     </li>
                 </face>
                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
-                        <span
-                            class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                             onclick="fetchArticlePage('@page')">@page</span>
                     </li>
                 </face>

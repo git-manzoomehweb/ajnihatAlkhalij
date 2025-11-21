@@ -618,6 +618,14 @@ body.default header{
   margin-bottom: 1rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -656,6 +664,10 @@ body.default header{
 
 .h-12 {
   height: 3rem;
+}
+
+.h-14 {
+  height: 3.5rem;
 }
 
 .h-auto {
@@ -734,6 +746,11 @@ body.default header{
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.brightness-75 {
+  --tw-brightness: brightness(.75);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .cursor-pointer {
@@ -950,6 +967,19 @@ body.default header{
   --primary-800: #151a5c;
   --primary-900: #070a47;
   --primary-950: #030420;
+
+  --secondary: #8f94ba;
+  --secondary-50: #f6f6f9;
+  --secondary-100: #ededf3;
+  --secondary-200: #d8d9e6;
+  --secondary-300: #c6c8dc;
+  --secondary-400: #b4b7d1;
+  --secondary-500: #a0a4c4;
+  --secondary-600: #8f94ba;
+  --secondary-700: #656c9e;
+  --secondary-800: #41476b;
+  --secondary-900: #23263d;
+  --secondary-950: #141726;
   --special-1: #2458DE;
   --special-2: #F3F4FF;
 
@@ -1009,8 +1039,18 @@ body.default header{
   border-color: var(--special-1);
 }
 
+.hover\:bg-specialcolor-1:hover {
+  background-color: var(--special-1);
+}
+
+
 .hover\:bg-primary-600:hover {
   background-color: var(--primary-600);
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-primary-600:hover {

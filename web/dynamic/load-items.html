@@ -11,19 +11,19 @@
             </div>
         </layout>
         <face filter="[00410X00276prp] is null">
-            <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl" data-name="@title">
+            <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl"
+                data-name="@title">
                 <div class="relative">
                     <img src="[##cms.cms.cdn##]/images/no-image-placeholder.jpg"
-                        class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410"
-                        height="276" loading="lazy">
+                        class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410" height="276"
+                        loading="lazy">
                     <div
                         class="absolute -z-10 inset-0 bg-specialcolor-1 rounded-t-3xl transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100">
                     </div>
-                    <div class="absolute left-7 bottom-0 flex items-center">
-                        <span
-                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
-                            more</span>
-                        <button>
+                    <div class="absolute left-7 bottom-0">
+                        <button class="flex items-center">
+                            <span class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
+                                more</span>
                             <svg width="48" height="48"
                                 class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
                                 <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -46,19 +46,19 @@
             </a>
         </face>
         <face>
-            <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl" data-name="@title">
+            <a href="/@link" class="article-card group rounded-b-2xl transition-all duration-300 hover:shadow-xl"
+                data-name="@title">
                 <div class="relative">
                     <img src="[##cms.cms.cdn##]/@00410X00276prp"
-                        class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410"
-                        height="276" loading="lazy">
+                        class="mask-article-card-pc w-full h-[276px] object-cover" alt="@title" width="410" height="276"
+                        loading="lazy">
                     <div
                         class="absolute -z-10 inset-0 bg-specialcolor-1 rounded-t-3xl transition-all duration-300 opacity-0 invisible group-hover:visible group-hover:opacity-100">
                     </div>
-                    <div class="absolute left-7 bottom-0 flex items-center">
-                        <span
-                            class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
-                            more</span>
-                        <button>
+                    <div class="absolute left-7 bottom-0">
+                        <button class="flex items-center">
+                            <span class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">Read
+                                more</span>
                             <svg width="48" height="48"
                                 class="text-specialcolor-1 transition-all duration-300 group-hover:text-white">
                                 <use href="/images/sprite-icons.svg#icon-chevron-right"></use>
@@ -87,8 +87,8 @@
                 <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'='')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
-                        <span class="flex items-center justify-center w-full cursor-pointer"
-                            aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <span class="flex items-center justify-center w-full cursor-pointer" aria-label="angle-left"
+                            onclick="fetchArticlePage('@page')">
                             <svg width="48" height="48">
                                 <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
                             </svg>
@@ -98,8 +98,8 @@
                 <face filter="(@sta='pre')and('[##cms.cms.pageurl##]'<>'')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-primary-100 rounded-full bg-specialcolor-2 mr-4 transition-all duration-300 hover:bg-specialcolor-1 hover:text-white page-no prev-page">
-                        <span class="flex items-center justify-center w-full cursor-pointer"
-                            aria-label="angle-left" onclick="fetchArticlePage('@page')">
+                        <span class="flex items-center justify-center w-full cursor-pointer" aria-label="angle-left"
+                            onclick="fetchArticlePage('@page')">
                             <svg width="48" height="48">
                                 <use href="/images/sprite-icons.svg#icon-chevron-left"></use>
                             </svg>
@@ -127,16 +127,14 @@
                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'='')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
-                        <span
-                            class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                             onclick="fetchArticlePage('@page')">@page</span>
                     </li>
                 </face>
                 <face filter="(@page=[##cms.query.pagenum|(1)##])and('[##cms.cms.pageurl##]'<>'')">
                     <li
                         class="flex items-center justify-center w-12 h-12 text-white rounded-full bg-specialcolor-1 page-no">
-                        <span
-                            class="flex items-center justify-center w-full h-full cursor-pointer page-number"
+                        <span class="flex items-center justify-center w-full h-full cursor-pointer page-number"
                             onclick="fetchArticlePage('@page')">@page</span>
                     </li>
                 </face>
@@ -203,7 +201,8 @@
 
 <basis core="group" if="'[##cms.query.fetch##]' = 'faq'">
     <basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" usedforid="[##cms.query.id##]">
-        <member name="faq" type="view" size="" propertyid=""  postsql="select * from [db.faq] where TypeID not in(150)"/>
+        <member name="faq" type="view" size="" propertyid=""
+            postsql="select * from [db.faq] where TypeID not in(150)" />
     </basis>
     <basis core="print" datamembername="db.faq">
         <layout>

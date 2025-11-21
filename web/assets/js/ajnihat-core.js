@@ -304,11 +304,6 @@ document.addEventListener("DOMContentLoaded", function () {
       currentCatid = catid;
       fetchContentArticle.innerHTML = articleCache[catid];
   
-      if (!fetchContentArticle.style.minHeight) {
-        fetchContentArticle.style.minHeight =
-          fetchContentArticle.offsetHeight + "px";
-      }
-  
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
       }
@@ -346,11 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
       clearTimeout(loaderTimeout);
       articleCache[catid] = data;
       fetchContentArticle.innerHTML = data;
-  
-      if (!fetchContentArticle.style.minHeight) {
-        fetchContentArticle.style.minHeight =
-          fetchContentArticle.offsetHeight + "px";
-      }
+
   
       if (typeof setupArticleSearch === "function") {
         setupArticleSearch();
@@ -429,11 +420,6 @@ const fetchArticlePage = async (dataPageNum) => {
 
     clearTimeout(loaderTimeout);
     fetchContentArticle.innerHTML = pagingData;
-
-    if (!fetchContentArticle.style.minHeight) {
-      fetchContentArticle.style.minHeight =
-        fetchContentArticle.offsetHeight + "px";
-    }
 
     if (typeof setupArticleSearch === "function") {
       setupArticleSearch();
@@ -616,7 +602,6 @@ function refresh_captcha(element, event) {
 
 //---------paging order-----
 function setupPaging(currentPageOverride) {
-  console.log("[paging] setupPaging called", { currentPageOverride });
 
   const paging = document.querySelector("#wibpaging");
   if (!paging) {
@@ -624,17 +609,10 @@ function setupPaging(currentPageOverride) {
     return;
   }
 
-  console.log(
-    "[paging] #wibpaging FOUND li count:",
-    paging.querySelectorAll("li").length
-  );
-
-  // حذف دات‌های قبلی
   [...paging.querySelectorAll("li")].forEach(li => {
     if (li.textContent.trim() === "…") li.remove();
   });
 
-  // لی‌هایی که واقعا شماره صفحه هستن (نه prev / next)
   const pageItems = [...paging.querySelectorAll("li")].filter(li => {
     if (li.classList.contains("prev-page")) return false;
     if (li.classList.contains("next-page")) return false;
@@ -643,51 +621,38 @@ function setupPaging(currentPageOverride) {
     return !isNaN(num);
   });
 
-  console.log(
-    "[paging] pageItems (numbered lis):",
-    pageItems.map(li => li.textContent.trim())
-  );
-
   if (pageItems.length === 0) {
     console.warn("[paging] NO numbered <li> found, EXITING");
     return;
   }
 
-  // تعیین صفحه فعلی
   let currentPage;
   if (typeof currentPageOverride === "number") {
     currentPage = currentPageOverride;
-    console.log("[paging] currentPage from override:", currentPage);
   } else {
-    // اگر لی active داریم، از همون
     const activeLi =
       paging.querySelector("li.active") ||
       paging.querySelector("li[aria-current='page']");
     if (activeLi) {
       currentPage = parseInt(activeLi.textContent.trim(), 10);
-      console.log("[paging] currentPage from active <li>:", currentPage);
     } else {
       const urlParams = new URLSearchParams(window.location.search);
       currentPage = parseInt(urlParams.get("pagenum") || "1", 10);
-      console.log("[paging] currentPage from URL:", currentPage);
     }
   }
 
   const pageNumbers = pageItems.map(li =>
     parseInt(li.textContent.trim(), 10)
   );
-  console.log("[paging] pageNumbers parsed:", pageNumbers);
 
   const minPage = Math.min(...pageNumbers);
   const maxPage = Math.max(...pageNumbers);
 
-  console.log("[paging] minPage:", minPage, "maxPage:", maxPage);
 
   const createDots = () => {
     const li = document.createElement("li");
     li.textContent = "…";
     li.className = "flex items-center justify-center font-bold text-zinc-700";
-    console.log("[paging] createDots() called, new LI created");
     return li;
   };
 
@@ -703,7 +668,6 @@ function setupPaging(currentPageOverride) {
     li => li.textContent.trim() === String(maxPage)
   );
 
-  // جابه‌جا کردن اولین و آخرین صفحه کنار prev/next
   if (firstPageLi && prevLi && prevLi.nextElementSibling !== firstPageLi) {
     paging.insertBefore(firstPageLi, prevLi.nextElementSibling);
   }
@@ -719,7 +683,6 @@ function setupPaging(currentPageOverride) {
     li => li.textContent.trim() === String(maxPage)
   );
 
-  // دات سمت چپ
   if (currentPage - minPage > 2 && firstPageLi) {
     const afterFirst = firstPageLi.nextElementSibling;
     if (afterFirst && afterFirst.textContent.trim() !== "…") {
@@ -727,7 +690,6 @@ function setupPaging(currentPageOverride) {
     }
   }
 
-  // دات سمت راست
   if (maxPage - currentPage > 2 && lastPageLi) {
     const beforeLast = lastPageLi.previousElementSibling;
     if (beforeLast && beforeLast.textContent.trim() !== "…") {
@@ -735,30 +697,23 @@ function setupPaging(currentPageOverride) {
     }
   }
 
-  // هندل کلیک روی شماره‌ صفحات (li ها)
   paging.addEventListener(
     "click",
     function (e) {
       const li = e.target.closest("li");
       if (!li) return;
 
-      // اگر روی prev/next کلیک شده دوست داری جدا هندل کنی
       if (li.classList.contains("prev-page")) {
-        console.log("[paging] prev-page clicked (TODO: handle if needed)");
         return;
       }
       if (li.classList.contains("next-page")) {
-        console.log("[paging] next-page clicked (TODO: handle if needed)");
         return;
       }
 
       const num = parseInt(li.textContent.trim(), 10);
       if (isNaN(num)) {
-        console.log("[paging] clicked <li> is not a number");
         return;
       }
-
-      console.log("[paging] numbered <li> clicked → page:", num);
 
       if (typeof fetchArticlePage === "function") {
         fetchArticlePage(num);
@@ -771,8 +726,6 @@ function setupPaging(currentPageOverride) {
     },
     { once: true }
   );
-
-  console.log("[paging] setupPaging finished");
 }
 
 

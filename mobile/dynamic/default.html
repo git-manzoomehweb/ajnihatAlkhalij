@@ -74,7 +74,7 @@
     <div class="relative h-[455px]">
         <div class="mask-default-back w-full absolute inset-0">
             <img src="[##cms.cms.cdn##]/images/default-background.jpg"
-                class="w-full h-full object-cover absolute inset-0 z-0">
+                class="w-full h-full object-cover absolute inset-0 z-0" alt="hero-section" width="320" height="455">
             <div class="blur-bottom-mask pointer-events-none absolute bottom-0 right-0 left-0 z-10 h-32"></div>
         </div>
 
@@ -86,8 +86,8 @@
                 <p class="text-white text-xs mt-4">
                     Find awesome flights,hotel and packages
                 </p>
-                <img src="[##cms.cms.cdn##]/images/airplane.png" class="w-full h-20 object-cover -scale-x-100" alt=""
-                    width="272" height="80" loading="lazy">
+                <img src="[##cms.cms.cdn##]/images/airplane.png" class="w-full h-20 object-cover -scale-x-100"
+                    alt="airplane" width="272" height="80" loading="lazy">
 
                 <basis core="list" datamembername="db.banners">
                     <face filter="ord in(1)">
@@ -131,11 +131,9 @@
                     <a href="/travel-magazine" class="flex items-center gap-2 mt-4">
                         <span class="text-sm
                              text-primary-950">View more</span>
-                        <button>
-                            <svg width="48" height="48" class="text-specialcolor-1">
-                                <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
-                            </svg>
-                        </button>
+                        <svg width="48" height="48" class="text-specialcolor-1">
+                            <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
+                        </svg>
                     </a>
                     <div>
                         <h2 class="font-bold text-3xl text-specialcolor-1 mb-2">services</h2>
@@ -153,7 +151,7 @@
                         <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
                             <h2 class="text-primary-950 font-bold mb-1">@title</h2>
                             <div class="text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
-                            <button class="mt-2">
+                            <button class="mt-2" aria-label="Open article">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                 </svg>
@@ -172,7 +170,7 @@
                         <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
                             <h2 class="text-primary-950 font-bold mb-1">@title</h2>
                             <div class="text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
-                            <button class="mt-2">
+                            <button class="mt-2" aria-label="Open article">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                 </svg>
@@ -191,7 +189,7 @@
                         <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
                             <h2 class="text-primary-950 font-bold mb-1">@title</h2>
                             <div class="text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
-                            <button class="mt-2">
+                            <button class="mt-2" aria-label="Open article">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                 </svg>
@@ -210,7 +208,7 @@
                         <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
                             <h2 class="text-primary-950 font-bold mb-1">@title</h2>
                             <div class="text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
-                            <button class="mt-2">
+                            <button class="mt-2" aria-label="Open article">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                 </svg>
@@ -229,7 +227,7 @@
                         <div class="bg-specialcolor-2 rounded-3xl px-3 pb-2 pt-14 -mt-12">
                             <h2 class="text-primary-950 font-bold mb-1">@title</h2>
                             <div class="text-sm text-zinc-700 line-clamp-3">@prp_7244</div>
-                            <button class="mt-2">
+                            <button class="mt-2" aria-label="Open article">
                                 <svg width="48" height="48" class="text-specialcolor-1">
                                     <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                 </svg>
@@ -280,7 +278,7 @@
                     </li>
                 </face>
             </basis>
-            <div class="fetch-content-faq">
+            <div class="fetch-content-faq flex items-center justify-center min-h-60">
 
             </div>
         </section>
@@ -311,10 +309,10 @@
                             <img src="[##cms.cms.cdn##]/images/no-image-placeholder.jpg"
                                 class="mask-article-card w-full h-48 object-cover" alt="@title" width="288" height="192"
                                 loading="lazy">
-                            <div class="absolute left-3 bottom-0 flex items-center">
-                                <span class="text-sm
+                            <div class="absolute left-3 bottom-0">
+                                <button class="flex items-center">
+                                    <span class="text-sm
                                              text-specialcolor-1">Read more</span>
-                                <button>
                                     <svg width="48" height="48" class="text-specialcolor-1">
                                         <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                     </svg>
@@ -340,10 +338,10 @@
                             <img src="[##cms.cms.cdn##]/@00288X00192prp"
                                 class="mask-article-card w-full h-48 object-cover" alt="@title" width="288" height="192"
                                 loading="lazy">
-                            <div class="absolute left-3 bottom-0 flex items-center">
-                                <span class="text-sm
+                            <div class="absolute left-3 bottom-0">
+                                <button class="flex items-center">
+                                    <span class="text-sm
                                              text-specialcolor-1">Read more</span>
-                                <button>
                                     <svg width="48" height="48" class="text-specialcolor-1">
                                         <use href="/images/sprite-icons-mobile.svg#icon-chevron-right"></use>
                                     </svg>

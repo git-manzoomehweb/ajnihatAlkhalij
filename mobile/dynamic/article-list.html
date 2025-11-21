@@ -7,6 +7,8 @@
 </basis>
 <basis core="dbsource" source="basiscore" lid="2" mid="1" name="article-list">
     <member name="cat" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord"></member>
+    <member name="error" type="tree" request="cat" parentid="[##cms.query.catid##]" order="ord" postsql="SELECT COUNT(*) AS TotalRows
+    from [article-list.error] where parentid in ([##cms.query.catid##])"></member>
 </basis>
 <basis core="dbsource" source="basiscore" lid="2" mid="1" name="db" catid="[##cms.query.catid##]">
     <member name="navigation" type="tree" request="navcatid" parentid="[##cms.query.catid##]" />
@@ -117,31 +119,48 @@
     </div>
     <main>
         <section class="mx-auto max-lg:w-[90%] mt-2">
-            <basis core="tree" datamembername="article-list.cat" idcol="catid" parentidcol="parentid"
-                nullvalue="[##cms.query.catid##]">
-                <layout>
-                    <ul class="flex items-center gap-3 mt-7 overflow-x-auto scrollbar-thin whitespace-nowrap">
-                        @child
-                    </ul>
-                </layout>
-                <face>
-                    <li data-id="@catid"
-                        class="article-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">
-                        @title
-                    </li>
-                </face>
+            <basis core="group" if="'[##article-list.error.TotalRows##]' <> '0'">
+                <basis core="tree" datamembername="article-list.cat" idcol="catid" parentidcol="parentid"
+                    nullvalue="[##cms.query.catid##]">
+                    <layout>
+                        <ul class="flex items-center gap-3 mt-7 overflow-x-auto scrollbar-thin whitespace-nowrap">
+                            @child
+                        </ul>
+                    </layout>
+                    <face>
+                        <li data-id="@catid"
+                            class="article-fetch-btn border border-solid border-primary-50 text-primary-900 rounded-full py-3 px-8 text-xs">
+                            @title
+                        </li>
+                    </face>
+                </basis>
+
+                <div class="fetch-content-article flex flex-col items-center justify-center min-h-60">
+
+                </div>
             </basis>
-
-            <div class="fetch-content-article flex flex-col min-h-[585px]">
-
-            </div>
+            <basis core="group" if="'[##article-list.error.TotalRows##]' = '0'">
+                <div class="w-full flex flex-col items-center text-center">
+                    <div class="not-found-loader">
+                        <span>N</span>
+                        <span>O</span>
+                        <span class="w-2"></span>
+                        <span>I</span>
+                        <span>T</span>
+                        <span>E</span>
+                        <span>M</span>
+                        <span>S</span>
+                      </div>
+                    <p class="text-sm">There are currently no items available.</p>
+                  </div>
+            </basis>
         </section>
         <basis core="list" datamembername="db.banners">
             <face filter="ord in(2)">
                 <section class="relative rounded-2xl overflow-hidden mx-auto max-lg:w-[90%] mt-11">
                     <img src="[##cms.cms.cdn##]/images/banner-image.jpg" class="w-full h-[517px] object-cover"
                         alt="@title" width="288" height="517" loading="lazy">
-                    <div class="absolute z-10 px-5 bottom-7">
+                    <div class="w-full absolute z-10 px-5 bottom-7">
                         <h2 class="text-lg font-bold text-white mb-2">@title</h2>
                         <a href="/@link"
                             class="flex items-center justify-center w-full h-12 text-white text-sm rounded-full border border-solid border-white">View
