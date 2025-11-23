@@ -735,12 +735,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // footer-form
 function uploadDocumentFooter(args) {
-  document.querySelector("#footer-form .Loading_Form").style.display = "block";
+  document.querySelector("#footer-form-resize .Loading_Form").style.display = "block";
   const captcha = document
-    .querySelector("#footer-form")
+    .querySelector("#footer-form-resize")
     .querySelector("#captchaContainer input[name='captcha']").value;
   const captchaid = document
-    .querySelector("#footer-form")
+    .querySelector("#footer-form-resize")
     .querySelector("#captchaContainer input[name='captchaid']").value;
   const stringJson = JSON.stringify(args.source?.rows[0]);
   $bc.setSource("cms.uploadFooter", {
@@ -760,19 +760,19 @@ async function OnProcessedEditObjectFooter(args) {
   var json = await response.json();
   var errorid = json.errorid;
   if (errorid == "6") {
-    document.querySelector("#footer-form .Loading_Form").style.display = "none";
-    document.querySelector("#footer-form .message-api").innerHTML =
+    document.querySelector("#footer-form-resize .Loading_Form").style.display = "none";
+    document.querySelector("#footer-form-resize .message-api").innerHTML =
       "Your request has been successfully submitted.";
-    document.querySelector("#footer-form .message-api").style.color =
+    document.querySelector("#footer-form-resize .message-api").style.color =
       "rgb(10 240 10)";
   } else {
     refreshCaptchaFooter();
     setTimeout(() => {
-      document.querySelector("#footer-form .Loading_Form").style.display =
+      document.querySelector("#footer-form-resize .Loading_Form").style.display =
         "none";
-      document.querySelector("#footer-form .message-api").innerHTML =
+      document.querySelector("#footer-form-resize .message-api").innerHTML =
         "An error occurred, please try again.";
-      document.querySelector("#footer-form .message-api").style.color =
+      document.querySelector("#footer-form-resize .message-api").style.color =
         "rgb(220 38 38)";
     }, 2000);
   }
@@ -791,12 +791,12 @@ async function RenderFormFooter() {
 
 // about-form
 function uploadDocumentAbout(args) {
-  document.querySelector("#about-form .Loading_Form").style.display = "block";
+  document.querySelector("#about-form-resize .Loading_Form").style.display = "block";
   const captcha = document
-    .querySelector("#about-form")
+    .querySelector("#about-form-resize")
     .querySelector("#captchaContainer input[name='captcha']").value;
   const captchaid = document
-    .querySelector("#about-form")
+    .querySelector("#about-form-resize")
     .querySelector("#captchaContainer input[name='captchaid']").value;
   const stringJson = JSON.stringify(args.source?.rows[0]);
   $bc.setSource("cms.uploadAbout", {
@@ -816,19 +816,19 @@ async function OnProcessedEditObjectAbout(args) {
   var json = await response.json();
   var errorid = json.errorid;
   if (errorid == "6") {
-    document.querySelector("#about-form .Loading_Form").style.display = "none";
-    document.querySelector("#about-form .message-api").innerHTML =
+    document.querySelector("#about-form-resize .Loading_Form").style.display = "none";
+    document.querySelector("#about-form-resize .message-api").innerHTML =
       "Your request has been successfully submitted.";
-    document.querySelector("#about-form .message-api").style.color =
+    document.querySelector("#about-form-resize .message-api").style.color =
       "rgb(10 240 10)";
   } else {
     refreshCaptchaAbout();
     setTimeout(() => {
-      document.querySelector("#about-form .Loading_Form").style.display =
+      document.querySelector("#about-form-resize .Loading_Form").style.display =
         "none";
-      document.querySelector("#about-form .message-api").innerHTML =
+      document.querySelector("#about-form-resize .message-api").innerHTML =
         "An error occurred, please try again.";
-      document.querySelector("#about-form .message-api").style.color =
+      document.querySelector("#about-form-resize .message-api").style.color =
         "rgb(220 38 38)";
     }, 2000);
   }
