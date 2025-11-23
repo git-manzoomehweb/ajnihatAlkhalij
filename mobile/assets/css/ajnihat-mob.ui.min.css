@@ -1402,6 +1402,7 @@
     width: auto !important;
     position: absolute;
     display: flex;
+    justify-content: end;
     line-height: normal !important;
 }
 
