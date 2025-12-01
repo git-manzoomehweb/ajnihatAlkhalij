@@ -91,7 +91,9 @@
 }
 
 .-mt-40 {
-    margin-top: -10rem /* -160px */;
+    margin-top: -10rem
+        /* -160px */
+    ;
 }
 
 .mb-1 {
@@ -261,8 +263,16 @@
     height: 100%;
 }
 
+.min-h-40 {
+    min-height: 10rem
+        /* 160px */
+    ;
+}
+
 .min-h-60 {
-    min-height: 15rem /* 240px */;
+    min-height: 15rem
+        /* 240px */
+    ;
 }
 
 .w-2 {
@@ -972,10 +982,17 @@
 #search-box {
     position: relative;
     z-index: 20;
+}
+
+#search-box>div.m-auto.w-full:first-of-type {
     border-radius: 12px;
     background: rgba(245, 245, 245, 0.6);
     border: 1px solid #F4F4F5;
     padding: 8px;
+}
+
+div.clear-both.float-right.w-full{
+    float: unset !important;
 }
 
 .search-box-container input,
@@ -1003,7 +1020,7 @@
     gap: 8px !important;
 }
 
-.flighthotel-btn{
+.flighthotel-btn {
     grid-column: span 2;
 }
 
@@ -1063,7 +1080,7 @@
     padding: 12px;
 }
 
-#flightHotelSearch{
+#flightHotelSearch {
     margin-top: 56px;
 }
 
@@ -1112,7 +1129,7 @@
     height: auto !important;
 }
 
-#hotelSearch .reserve-field.departure-route{
+#hotelSearch .reserve-field.departure-route {
     border-bottom: 1px solid #D4D4D8;
     padding-bottom: 16px;
 }
@@ -1139,7 +1156,7 @@
     right: 0px !important;
 }
 
-#flightHotelSearch .reserve-field.flightclass-field{
+#flightHotelSearch .reserve-field.flightclass-field {
     right: 0;
 }
 
@@ -1191,11 +1208,11 @@
     height: auto !important;
 }
 
-.close_Dropdownflighttype{
+.close_Dropdownflighttype {
     float: right !important;
 }
 
-.FlightClass.hidden-box ul{
+.FlightClass.hidden-box ul {
     clear: both;
 }
 
@@ -1373,7 +1390,7 @@
     top: 40px !important;
 }
 
-.exchangeRoute:hover{
+.exchangeRoute:hover {
     background-color: transparent !important;
 }
 
@@ -1513,6 +1530,9 @@
     display: none;
 }
 
+body:has(.reservation-item:not(:empty)) .get-started {
+    display: none;
+}
 
 
 .about-form [data-bc-schema-direction="rtl"] [data-bc-title-container] [data-bc-question-title] {

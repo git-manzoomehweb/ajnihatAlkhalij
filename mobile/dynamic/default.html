@@ -91,7 +91,7 @@
 
                 <basis core="list" datamembername="db.banners">
                     <face filter="ord in(1)">
-                        <div class="mt-14">
+                        <div class="get-started mt-14">
                             <h2 class="text-primary-900 font-bold mb-5">@title</h2>
                             <a href="/@link"
                                 class="flex items-center justify-center bg-specialcolor-1 text-white rounded-full w-44 h-12">
@@ -106,9 +106,9 @@
     <main>
         <section class="mx-auto max-lg:w-[90%] -mt-40">
             <div class="search-banner">
-                <div class="relative search-box-container en mobile-search-box">
-                    <div id="search-box" class="dir-ltr">
-                        <div class="flex justify-center items-center min-w-[808px] min-h-[500px]">
+                <div class="relative search-box-container en mobile-search-box min-h-40">
+                    <div id="search-box" class="dir-ltr flighttypedropdown load-search-box-in-condition">
+                        <div class="flex justify-center items-center">
                             <span class="search-engine-loader"></span>
                         </div>
                     </div>
@@ -365,6 +365,7 @@
 
         </section>
     </main>
+    <basis core="call" file="Client_RkeyScript.inc" lid="2"></basis>
     <basis core="call" file="footer.inc" lid="2" pageindex="[##cms.cms.pageindex##]" />
 </body>
 

@@ -1073,13 +1073,21 @@
     font-family: 'Dana' !important;
 }
 
-.mask-search-engine {
+#search-box>div.m-auto.w-full{
+    position: relative;
+}
+
+#search-box>div.m-auto.w-full:first-of-type::before {
+    content: "";
+    position: absolute;
     top: 3px;
+    left: 0;           
     width: 503px;
     height: 60px;
     background: rgba(255, 255, 255, 0.56);
-    -webkit-backdrop-filter: blur(9px);
     clip-path: path("M0 30C0 13.4315 13.4315 0 30 0H443.366C455.544 0 466.514 7.36227 471.129 18.6325L481.871 44.8675C486.486 56.1377 497.456 63.5 509.634 63.5H1250C1266.57 63.5 1280 76.9315 1280 93.5V164C1280 180.569 1266.57 194 1250 194H30C13.4315 194 0 180.569 0 164V30Z");
+    pointer-events: none;
+    z-index: -10;      
 }
 
 .search-nav {
