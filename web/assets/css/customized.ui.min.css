@@ -1140,3 +1140,7 @@ body.default header{
 .footer-form [data-bc-validation-part] {
   direction: ltr;
 }
+
+.book-provider__name__content{
+  color: var(--primary) !important;
+}
